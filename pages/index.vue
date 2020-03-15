@@ -9,6 +9,9 @@
         <v-card-title class="headline">
           Welcome to the Vuetify + Nuxt.js template
         </v-card-title>
+        <typescript-test
+          :user="{ firstname: 'Brandon', lastName: 'Eichler' }"
+        />
         <v-card-text>
           <p>
             Vuetify is a progressive Material Design component framework for
@@ -63,13 +66,15 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import Logo from '~/components/Logo.vue';
+import VuetifyLogo from '~/components/VuetifyLogo.vue';
+import TypescriptTest from '~/components/TypescriptTest.vue';
 
 export default {
   components: {
     Logo,
-    VuetifyLogo
+    VuetifyLogo,
+    TypescriptTest
   }
-}
+};
 </script>
