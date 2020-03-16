@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
+    },
+    "types": ["@types/node", "@nuxt/types"],
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    /* Additional Checks */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "rootDirs": [
+      "./src"
+    ],
+    "typeRoots": ["./types", "node_modules/@types"],
+
+    /* Experimental Options */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    /* Advanced Options */
+    "forceConsistentCasingInFileNames": true,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "pretty": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules"]
+}

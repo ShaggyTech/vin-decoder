@@ -10,7 +10,10 @@
           Welcome to the Vuetify + Nuxt.js template
         </v-card-title>
         <typescript-test
-          :user="{ firstname: 'Brandon', lastName: 'Eichler' }"
+          :user="{ firstName: 'Brandon', lastName: 'Eichler' }"
+        />
+        <composition-test
+          :user="{ firstName: 'Brandon', lastName: 'Eichler' }"
         />
         <v-card-text>
           <p>
@@ -69,12 +72,14 @@
 import Logo from '~/components/Logo.vue';
 import VuetifyLogo from '~/components/VuetifyLogo.vue';
 import TypescriptTest from '~/components/TypescriptTest.vue';
+import CompositionTest from '~/components/CompositionTest.vue';
 
 export default {
   components: {
     Logo,
     VuetifyLogo,
-    TypescriptTest
+    TypescriptTest,
+    CompositionTest
   }
 };
 </script>
