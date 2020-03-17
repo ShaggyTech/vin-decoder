@@ -1,19 +1,15 @@
 <template>
-  <div>Name: {{ fullName }} ||| Message: {{ message }}</div>
+  <div>Name: {{ fullName }}, Message: {{ message }}</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from '@vue/composition-api';
-
-interface User {
-  firstName: string;
-  lastName: number;
-}
+import { defineComponent, computed, ref, PropType } from '@vue/composition-api';
+import { User } from '@/types';
 
 export default defineComponent({
   props: {
     user: {
-      type: Object as () => User,
+      type: Object as PropType<User>,
       required: true
     }
   },
