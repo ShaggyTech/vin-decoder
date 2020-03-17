@@ -12,7 +12,7 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@types/node", "@nuxt/types"],
+    "types": ["@types/node", "@nuxt/types", "@nuxt/vue-app", "@types/jest"],
 
     /* Strict Type-Checking Options */
     "strict": true,

@@ -1,8 +1,9 @@
 {
   "name": "vin-decoder",
-  "version": "1.0.0",
-  "description": "A web app to decode Vehicle Identification Numbers (VINs) using the National Highway Traffic Safety Administration API.",
+  "version": "0.0.1",
+  "description": "A web app to decode Vehicle Identification Numbers (VINs) using the NHTSA.dot.gov Vehicles API.",
   "author": "Brandon Eichler <github.com/shaggytech>",
+  "license": "MIT",
   "private": false,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
@@ -10,8 +11,31 @@
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
-    "test": "jest"
+    "test": "jest -c ./test/config/jest.config.js",
+    "test-watch": "jest -c ./test/config/jest.config.js --watch --onlyChanged"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShaggyTech/vin-decoder.git",
+    "homepage": "https://github.com/ShaggyTech/vin-decoder"
+  },
+  "bugs": {
+    "url": "https://github.com/ShaggyTech/vin-decoder/issues"
+  },
+  "homepage": "https://www.shaggytech.com/vin-decoder",
+  "keywords": [
+    "VIN",
+    "WMI",
+    "Vehicle Identification Number",
+    "NHTSA.dot.gov",
+    "NHTSA",
+    "National Highway Traffic Safety Administration",
+    "decode",
+    "decoder",
+    "vin decoder",
+    "nuxt",
+    "typescript"
+  ],
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
@@ -23,10 +47,13 @@
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.6.0",
+    "@nuxt/vue-app": "^2.11.0",
     "@nuxtjs/eslint-config": "^2.0.0",
     "@nuxtjs/eslint-config-typescript": "^1.0.2",
     "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/vuetify": "^1.0.0",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.1",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
@@ -34,9 +61,10 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "jest": "^24.1.0",
+    "jest": "^25.1.0",
     "nodemon": "^1.18.9",
     "prettier": "^1.19.1",
+    "ts-jest": "^25.2.1",
     "vue-jest": "^4.0.0-0"
   }
 }
