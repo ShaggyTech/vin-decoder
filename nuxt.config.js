@@ -30,7 +30,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/composition-api'],
+  plugins: ['@/plugins/composition-api', { src: '~/plugins/vee-validate' }],
   /*
    ** Nuxt.js dev-modules
    */
