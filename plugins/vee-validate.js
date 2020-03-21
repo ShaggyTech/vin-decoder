@@ -33,5 +33,5 @@ extend('required', {
 
 extend('alpha_num', {
   ...alphaNum,
-  message: 'A {_field_} may only contain alphabetic characters or numbers'
+  message: 'A {_field_} may only contain alphabetic or numeric characters.'
 });

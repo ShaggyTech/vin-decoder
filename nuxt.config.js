@@ -30,7 +30,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/composition-api', { src: '~/plugins/vee-validate' }],
+  plugins: ['@/plugins/composition-api', '@/plugins/vee-validate'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -80,6 +80,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    transpile: ['vee-validate/dist/rules', 'vuetify/lib/util/colors']
     /*
      ** You can extend webpack config here
      */

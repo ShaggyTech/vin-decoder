@@ -23,6 +23,7 @@ module.exports = {
      ****************/
     'semi': 0,
     'space-before-function-paren': 0,
+    'arrow-parens': 0,
     /*****************
      * Vue Rules
      ****************/

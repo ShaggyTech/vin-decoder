@@ -1,6 +1,6 @@
 # vin-decoder
 
-> A web app to decode Vehicle Identification Numbers (VINs) using the National Highway Traffic Safety Administration API.
+> A Nuxt app to decode Vehicle Identification Numbers (VINs) using the National Highway Traffic Safety Administration API.
 
 ## Build Setup
 
