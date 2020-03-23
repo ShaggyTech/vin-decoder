@@ -1,14 +1,11 @@
 <script lang="ts">
 /* Composition API */
-import { defineComponent, ref, watch, Ref } from '@vue/composition-api';
+import { defineComponent, ref } from '@vue/composition-api';
 /* Vee-Validate */
 import { ValidationObserver } from 'vee-validate';
-/* NHTSA API Wrapper */
-import { DecodeVinValues } from '@shaggytools/nhtsa-api-wrapper';
-/* Utility Methods */
-import { filterResults } from '@/utils/filterResults';
 /* Components */
-import VinInput from '@/components/VinDecoder/VinInput/VinInput.vue';
+import BaseInputWithValidation from '@/components/base/BaseInputWithValidation.vue';
+import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
 /* Types */
 import { Validator } from '@/types';
 
@@ -23,28 +20,27 @@ const setupVinDecoder = (): object => {
     }
   };
 
-  const rawResults: Ref<object | null> = ref(null);
-  const results: Ref<object | null> = ref(null);
-  const vin: Ref<string | null> = ref(null);
-  const alertMessage: Ref<string | null> = ref(null);
-  const showAlert: Ref<boolean> = ref(false);
+  const vin = ref<string | null>(null);
+  const rawResults = ref<object | null>(null);
 
-  watch(
-    rawResults,
-    rawResults =>
-      (results.value = rawResults ? filterResults(rawResults) : null)
-  );
+  const loading = ref<boolean>(false);
+
+  const alertMessage = ref<string | null>(null);
+  const showAlert = ref<boolean>(false);
 
   const handleError = (err: any) => {
     rawResults.value = null;
     alertMessage.value = `Oops! It seems an error occurred when fetching data from the API. - ${err}`;
     showAlert.value = true;
+    loading.value = false;
     return err;
   };
 
   const getResults = async (vinValue: string) => {
     showAlert.value = false;
+    loading.value = true;
 
+    const { DecodeVinValues } = await import('@shaggytools/nhtsa-api-wrapper');
     const Decoder = new DecodeVinValues();
     const { Results } = await Decoder.DecodeVinValues(
       vinValue
@@ -53,23 +49,24 @@ const setupVinDecoder = (): object => {
     if (Results?.[0]) {
       showAlert.value = false;
       rawResults.value = Results[0];
+      loading.value = false;
     }
   };
 
   return {
-    results,
-    rawResults,
-    vin,
-    alertMessage,
     validator,
-    getResults,
-    showAlert
+    vin,
+    rawResults,
+    loading,
+    alertMessage,
+    showAlert,
+    getResults
   };
 };
 
 export default defineComponent({
   name: 'VinDecoder',
-  components: { ValidationObserver, VinInput },
+  components: { ValidationObserver, BaseInputWithValidation, VinResults },
 
   setup() {
     return { ...setupVinDecoder() };
@@ -90,7 +87,7 @@ export default defineComponent({
         <p>
           Enter your VIN to decode useful information about your vehicle.
         </p>
-        <vin-input
+        <base-input-with-validation
           id="VinDecoder"
           v-model="vin"
           :validator="validator"
@@ -100,7 +97,6 @@ export default defineComponent({
           @click:clear="rawResults = null"
           @input="rawResults = null"
         />
-        <div>VIN: {{ vin }}</div>
       </v-card-text>
       <v-card-actions>
         <v-spacer />
@@ -110,15 +106,10 @@ export default defineComponent({
           :disabled="invalid"
           @click.prevent="getResults(vin)"
         >
-          Continue
+          Decode
         </v-btn>
       </v-card-actions>
     </v-card>
-    <v-card v-if="results && !invalid">
-      <v-card-title class="headline">
-        Results
-      </v-card-title>
-      <p v-if="results">{{ results }}</p>
-    </v-card>
+    <vin-results :raw-results.sync="rawResults" :loading.sync="loading" />
   </validation-observer>
 </template>
