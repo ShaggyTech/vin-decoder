@@ -1,67 +1,54 @@
 <script lang="ts">
 /* Composition API */
-import {
-  defineComponent,
-  ref,
-  watch,
-  PropType,
-  Ref
-} from '@vue/composition-api';
+import { defineComponent, ref, watch, PropType } from '@vue/composition-api';
 /* Utility Methods */
 import { filterResults } from '@/utils/filterResults';
-/* Components */
-import BaseInputWithValidation from '@/components/base/BaseInputWithValidation.vue';
-
-export type ResultsObject = { [propName: string]: string };
+/* Types */
+import { ResultsObjectType } from '@/types';
 
 export default defineComponent({
   name: 'VinResults',
-  components: { BaseInputWithValidation },
+  inheritAttrs: false,
   props: {
     rawResults: {
       required: false,
-      type: Object as PropType<object | null>
+      type: Object as PropType<ResultsObjectType | null>,
+      default: null
     },
     loading: {
       required: false,
       type: Boolean as PropType<boolean>,
-      default: true
+      default: false
     },
     transition: {
       required: false,
       type: String as PropType<string>,
       default: 'slide-y-transition'
+    },
+    tableHeight: {
+      required: false,
+      type: [Number, String] as PropType<number | string>,
+      default: 300
+    },
+    maxWidth: {
+      required: false,
+      type: [Number, String] as PropType<number | string>,
+      default: 600
     }
   },
 
   setup(props) {
-    const results = ref<object | null>(null);
-    const headlineResults = ref<object | null>(null);
+    const results = ref<ResultsObjectType | null>(null);
 
     watch(
-      () => props.rawResults as Ref<object | null>,
-      (newRawResults: object | null): void => {
+      () => props.rawResults,
+      (newRawResults: ResultsObjectType | null): void => {
         results.value = newRawResults ? filterResults(newRawResults) : null;
       }
     );
 
-    watch(
-      () => results as Ref<object | null>,
-      (results: object | null): void => {
-        if (results) {
-          const { Make, Model, ModelYear, Series, VIN }: ResultsObject = {
-            ...results
-          };
-          headlineResults.value = { Make, Model, ModelYear, Series, VIN };
-        } else {
-          headlineResults.value = null;
-        }
-      }
-    );
-
     return {
-      results,
-      headlineResults
+      results
     };
   }
 });
@@ -74,29 +61,34 @@ export default defineComponent({
   >
     <v-skeleton-loader
       v-if="loading"
-      height="300px"
+      :max-width="maxWidth"
       type="card-heading, text@7"
     >
     </v-skeleton-loader>
     <v-card
       v-else-if="results && rawResults"
-      max-width="600"
+      v-bind="$attrs"
+      :max-width="maxWidth"
       raised
-      class="mx-auto px-2 indigo"
     >
-      <v-card-title class="mx-auto">
-        <v-card-subtitle class="mx-auto title">
+      <v-card-title class="mx-auto px-2 title">
+        <v-divider></v-divider>
+        <span class="mx-auto px-4">
           {{ results.ModelYear }} {{ results.Make }} {{ results.Model }}
           {{ results.Series }}
-          <v-divider></v-divider>
-        </v-card-subtitle>
-        <v-card-subtitle class="mx-auto title">
-          {{ results.VIN }}
-          <v-divider></v-divider>
-        </v-card-subtitle>
+        </span>
+        <v-divider></v-divider>
       </v-card-title>
-      <v-card-text class="px-0">
-        <v-simple-table fixed-header height="300px">
+      <v-card-subtitle class="mx-auto px-2 title text-center">
+        {{ results.VIN }}
+        <v-divider></v-divider>
+      </v-card-subtitle>
+      <v-card-text>
+        <v-simple-table
+          fixed-header
+          :height="tableHeight"
+          :max-width="maxWidth"
+        >
           <template v-slot:default>
             <thead>
               <tr>

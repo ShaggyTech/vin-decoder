@@ -32,7 +32,7 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content>
+    <v-content class="grey lighten-1">
       <v-container>
         <nuxt />
       </v-container>
