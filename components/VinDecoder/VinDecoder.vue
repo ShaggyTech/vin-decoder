@@ -1,13 +1,13 @@
 <script lang="ts">
 /* Composition API */
-import { defineComponent, computed, ref } from '@vue/composition-api';
+import { defineComponent, computed, ref, Ref } from '@vue/composition-api';
 /* Vee-Validate */
 import { ValidationObserver } from 'vee-validate';
 /* Vuex Types */
 import { Store } from 'vuex';
 import { StoreStateRoot, HistoryItem } from '@/types/store';
 /* Vuex Store Provide and Use */
-import { provideStore, useStore } from '@/composables/provide-use-store';
+import { useStore } from '@/utils/provide-use-store';
 /* Components */
 import BaseInputWithValidation from '@/components/base/BaseInputWithValidation.vue';
 import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
@@ -15,62 +15,72 @@ import VinHistory from '@/components/VinDecoder/VinHistory/VinHistory.vue';
 /* App Types */
 import { Validator } from '@/types';
 
-const setupVinDecoder = (storeContext: Store<StoreStateRoot>): object => {
-  const validator: Validator = {
-    rules: { required: true, vin: true },
-    immediate: false,
-    vid: 'vin-input-validator',
-    name: 'vin-input-validator',
-    customMessages: {
-      required: 'Please provide a VIN to decode.'
-    }
-  };
+type Refs = {
+  vin: Ref<string | null>;
+  rawResults: Ref<object | null>;
+  loading: Ref<boolean>;
+  alertMessage: Ref<string | null>;
+  showAlert: Ref<boolean>;
+};
 
-  const vin = ref<string | null>(null);
-  const rawResults = ref<object | null>(null);
+interface SetupContext {
+  refs: Refs;
+  history: any; // TODO: figure out how to correctly type computed properties
+  getHistoryItemIndex: (vinValue: string) => number;
+  addHistoryItem: (item: HistoryItem) => void;
+}
 
-  const loading = ref<boolean>(false);
+const setupRefs = (): Refs => ({
+  vin: ref(null),
+  rawResults: ref(null),
 
-  const alertMessage = ref<string | null>(null);
-  const showAlert = ref<boolean>(false);
+  loading: ref(false),
+  alertMessage: ref(null),
+  showAlert: ref(false)
+});
 
-  const handleError = (err: any) => {
-    rawResults.value = null;
-    alertMessage.value = `Oops! It seems an error occurred when fetching data from the API. - ${err}`;
-    showAlert.value = true;
-    loading.value = false;
-    return err;
-  };
-
-  /* Vuex Setup */
-  provideStore(storeContext);
-  const store = useStore() as Store<StoreStateRoot>;
-
+const setupHistory = (store: Store<StoreStateRoot>) => ({
   /* History Setup */
-  const history = computed(() => [...store.state.history]);
+  history: computed(() => [...store.state.history]),
 
   /* Used to add an item to the store 'history' array */
-  const addHistoryItem = (item: HistoryItem) => {
+  addHistoryItem: (item: HistoryItem): void => {
     store.dispatch('addHistoryItem', item);
-  };
+  },
+
   /* Returns the index if the given history item exists, or -1 if it does not exist */
-  const getHistoryItemIndex = (vinValue: string): number => {
-    const isExisting = (historyItem: HistoryItem) => {
+  getHistoryItemIndex: (vinValue: string): number => {
+    const isExistingItem = (historyItem: HistoryItem) => {
       return vinValue === historyItem.VIN;
     };
-    return history.value.findIndex(isExisting);
+    return store.state.history.findIndex(isExistingItem);
+  }
+});
+
+const setupVinDecoder = ({
+  addHistoryItem,
+  getHistoryItemIndex,
+  history,
+  refs
+}: SetupContext) => {
+  const handleError = (err: any) => {
+    refs.rawResults.value = null;
+    refs.alertMessage.value = `Oops! It seems an error occurred when fetching data from the API. - ${err}`;
+    refs.showAlert.value = true;
+    refs.loading.value = false;
+    return err;
   };
 
   /* Called when a valid VIN is submitted */
   const getResults = async (vinValue: string) => {
-    showAlert.value = false;
-    loading.value = true;
+    refs.showAlert.value = false;
+    refs.loading.value = true;
 
     /* Reduce API calls by returning previously decoded results from the history */
     const historyIndex = getHistoryItemIndex(vinValue);
     if (historyIndex >= 0) {
-      rawResults.value = { ...history.value[historyIndex].results };
-      loading.value = false;
+      refs.rawResults.value = { ...history.value[historyIndex].results };
+      refs.loading.value = false;
       return;
     }
 
@@ -85,13 +95,13 @@ const setupVinDecoder = (storeContext: Store<StoreStateRoot>): object => {
 
     /* Add the results to the Vuex store history array as well as rawResults ref */
     if (Results?.[0]) {
-      showAlert.value = false;
+      refs.showAlert.value = false;
       addHistoryItem({
         VIN: Results[0]?.VIN,
         results: { ...Results[0] }
       });
-      rawResults.value = { ...Results[0] };
-      loading.value = false;
+      refs.rawResults.value = { ...Results[0] };
+      refs.loading.value = false;
     } else {
       const err = new Error(
         `Undefined -or- invalid results returned from the NHTSA API, got results of ${Results}`
@@ -100,29 +110,45 @@ const setupVinDecoder = (storeContext: Store<StoreStateRoot>): object => {
     }
   };
 
+  const validator: Validator = {
+    rules: { required: true, vin: true },
+    immediate: false,
+    vid: 'vin-input-validator',
+    name: 'vin-input-validator',
+    customMessages: {
+      required: 'Please provide a VIN to decode.'
+    }
+  };
+
   return {
+    getResults,
     history,
-    validator,
-    vin,
-    rawResults,
-    loading,
-    alertMessage,
-    showAlert,
-    getResults
+    ...refs,
+    validator
   };
 };
 
 export default defineComponent({
   name: 'VinDecoder',
   components: {
-    ValidationObserver,
     BaseInputWithValidation,
-    VinResults,
-    VinHistory
+    ValidationObserver,
+    VinHistory,
+    VinResults
   },
 
-  setup(_, { root: { $store } }) {
-    return { ...setupVinDecoder($store) };
+  setup() {
+    const refs = { ...setupRefs() };
+
+    const store = useStore();
+    const historySetup = setupHistory(store);
+
+    return {
+      ...setupVinDecoder({
+        ...historySetup,
+        refs
+      })
+    };
   }
 });
 </script>
@@ -166,7 +192,7 @@ export default defineComponent({
         :raw-results.sync="rawResults"
         :loading.sync="loading"
         max-width="600"
-        class="primary darken-4"
+        color="primary darken-4"
       />
     </v-card>
 

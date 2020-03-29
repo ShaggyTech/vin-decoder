@@ -1,15 +1,53 @@
+<script lang="ts">
+import { defineComponent, ref, computed } from '@vue/composition-api';
+/* Vuex Types */
+import { Store } from 'vuex';
+import { StoreStateRoot } from '@/types/store';
+/* Vuex Store Provide and Use */
+import { provideStore, useStore } from '@/utils/provide-use-store';
+
+const setupRefs = () => ({
+  right: ref<boolean>(true),
+  title: ref<string>('ShaggyTech.com - VIN Decoder')
+});
+
+const mapState = (store: Store<StoreStateRoot>) => ({
+  drawerItems: computed(() => [...store.state.drawerItems]),
+  drawer: computed({
+    get: () => store.state.drawer,
+    set: (drawer: boolean) => store.dispatch('setDrawer', drawer)
+  }),
+  rightDrawer: computed({
+    get: () => store.state.rightDrawer,
+    set: (rightDrawer: boolean) => store.dispatch('setRightDrawer', rightDrawer)
+  })
+});
+
+const mapActions = (store: Store<StoreStateRoot>) => ({
+  toggleDrawer: (drawer: boolean) => {
+    return store.dispatch('setDrawer', !drawer);
+  },
+  toggleRightDrawer: (rightDrawer: boolean) => {
+    return store.dispatch('setRightDrawer', !rightDrawer);
+  }
+});
+
+export default defineComponent({
+  setup(_, { root: { $store } }) {
+    provideStore($store);
+    const store = useStore();
+
+    return { ...setupRefs(), ...mapState(store), ...mapActions(store) };
+  }
+});
+</script>
+
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
+    <v-navigation-drawer v-model="drawer" fixed app>
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
+          v-for="(item, i) in drawerItems"
           :key="i"
           :to="item.to"
           router
@@ -24,11 +62,12 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+    <v-app-bar fixed app>
+      <v-app-bar-nav-icon @click.stop="toggleDrawer(drawer)" />
+      <v-spacer />
       <v-toolbar-title class="text-center" v-text="title" />
       <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
+      <v-btn icon @click.stop="toggleRightDrawer(rightDrawer)">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
@@ -49,7 +88,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :fixed="fixed" app class="text-center">
+    <v-footer app class="text-center">
       <v-col class="text-center" cols="12">
         Made with &#10084; by Brandon Eichler - &copy;
         {{ new Date().getFullYear() }}
@@ -57,31 +96,3 @@
     </v-footer>
   </v-app>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'ShaggyTech.com - VIN Decoder'
-    };
-  }
-};
-</script>

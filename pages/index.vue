@@ -1,3 +1,13 @@
+<script>
+import VinDecoder from '~/components/VinDecoder/VinDecoder.vue';
+
+export default {
+  components: {
+    VinDecoder
+  }
+};
+</script>
+
 <template>
   <v-layout column justify-center align-center>
     <v-content>
@@ -5,17 +15,3 @@
     </v-content>
   </v-layout>
 </template>
-
-<script>
-// import TypescriptTest from '~/components/TypescriptTest.vue';
-// import CompositionTest from '~/components/CompositionTest.vue';
-import VinDecoder from '~/components/VinDecoder/VinDecoder.vue';
-
-export default {
-  components: {
-    // TypescriptTest,
-    // CompositionTest,
-    VinDecoder
-  }
-};
-</script>

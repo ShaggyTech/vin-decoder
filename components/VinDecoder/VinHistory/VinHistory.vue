@@ -4,7 +4,7 @@ import { defineComponent, computed } from '@vue/composition-api';
 import { Store } from 'vuex';
 import { StoreStateRoot } from '@/types/store';
 /* Vuex Store Provide and Use */
-import { provideStore, useStore } from '@/composables/provide-use-store';
+import { useStore } from '@/utils/provide-use-store';
 /* Components */
 import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
 
@@ -12,8 +12,7 @@ export default defineComponent({
   name: 'VinHistory',
   components: { VinResults },
 
-  setup(_, { root: { $store } }) {
-    provideStore($store);
+  setup() {
     const store = useStore() as Store<StoreStateRoot>;
 
     const history = computed(() => [...store.state.history]);
@@ -44,13 +43,13 @@ export default defineComponent({
     </v-card-title>
     <v-expansion-panels accordian focusable hover flat tile>
       <v-expansion-panel v-for="(item, key) in history" :key="key">
-        <v-expansion-panel-header class="title info darken-4">
+        <v-expansion-panel-header class="title primary darken-4">
           {{ item.VIN }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <vin-results
             :raw-results.sync="item.results"
-            class="primary darken-4"
+            color="primary darken-4"
             tile
           />
         </v-expansion-panel-content>

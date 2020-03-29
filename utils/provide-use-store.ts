@@ -9,7 +9,7 @@ export const provideStore = (store: Store<StoreStateRoot>) =>
   provide(StoreSymbol, store);
 
 export const useStore = () => {
-  const store = inject(StoreSymbol);
+  const store = inject(StoreSymbol) as Store<StoreStateRoot>;
   if (!store) {
     // do something
   }
