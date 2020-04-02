@@ -1,10 +1,5 @@
 <script lang="ts">
 import { defineComponent, computed } from '@vue/composition-api';
-/* Types */
-import { Store } from 'vuex';
-import { StoreStateRoot } from '@/types/store';
-/* Vuex Store Provide and Use */
-import { useStore } from '@/utils/provide-use-store';
 /* Components */
 import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
 
@@ -12,11 +7,9 @@ export default defineComponent({
   name: 'VinHistory',
   components: { VinResults },
 
-  setup() {
-    const store = useStore() as Store<StoreStateRoot>;
-
-    const history = computed(() => [...store.state.history]);
-    const clearHistory = () => store.dispatch('clearHistory');
+  setup(_, { root: { $accessor } }) {
+    const history = computed(() => [...$accessor.history.history]);
+    const clearHistory = () => $accessor.history.clearHistory();
 
     return {
       history,

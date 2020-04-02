@@ -6,6 +6,7 @@ export type DrawerItem = {
   title: string;
   to: string;
 };
+
 export type HistoryItem = {
   VIN: string;
   results: ResultsObjectType;
@@ -17,13 +18,13 @@ export interface HistoryPayload {
 }
 export interface RootActionContext {
   commit: Commit;
-  state: StoreStateRoot;
+  state: RootState;
 }
 
-export interface StoreStateRoot {
+export interface RootState {
   counter: number;
-  drawerItems: Array<DrawerItem>;
+  drawerItems: DrawerItem[];
   drawer: boolean;
   rightDrawer: boolean;
-  history: Array<HistoryItem>;
+  history: HistoryItem[];
 }

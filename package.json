@@ -65,6 +65,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.1.0",
     "nodemon": "^1.18.9",
+    "nuxt-typed-vuex": "^0.1.17",
     "prettier": "^1.19.1",
     "ts-jest": "^25.2.1",
     "vue-jest": "^4.0.0-0"

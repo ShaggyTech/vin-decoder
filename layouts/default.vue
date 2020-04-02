@@ -1,43 +1,37 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from '@vue/composition-api';
-/* Vuex Types */
-import { Store } from 'vuex';
-import { StoreStateRoot } from '@/types/store';
-/* Vuex Store Provide and Use */
-import { provideStore, useStore } from '@/utils/provide-use-store';
+/* Types */
+import { accessorType } from '@/store';
 
 const setupRefs = () => ({
   right: ref<boolean>(true),
   title: ref<string>('ShaggyTech.com - VIN Decoder')
 });
 
-const mapState = (store: Store<StoreStateRoot>) => ({
-  drawerItems: computed(() => [...store.state.drawerItems]),
+const mapState = (store: typeof accessorType) => ({
+  drawerItems: computed(() => [...store.drawerItems]),
   drawer: computed({
-    get: () => store.state.drawer,
-    set: (drawer: boolean) => store.dispatch('setDrawer', drawer)
+    get: () => store.drawer,
+    set: (drawer: boolean) => store.setDrawer(drawer)
   }),
   rightDrawer: computed({
-    get: () => store.state.rightDrawer,
-    set: (rightDrawer: boolean) => store.dispatch('setRightDrawer', rightDrawer)
+    get: () => store.rightDrawer,
+    set: (rightDrawer: boolean) => store.setRightDrawer(rightDrawer)
   })
 });
 
-const mapActions = (store: Store<StoreStateRoot>) => ({
+const mapActions = (store: typeof accessorType) => ({
   toggleDrawer: (drawer: boolean) => {
-    return store.dispatch('setDrawer', !drawer);
+    return store.setDrawer(!drawer);
   },
   toggleRightDrawer: (rightDrawer: boolean) => {
-    return store.dispatch('setRightDrawer', !rightDrawer);
+    return store.setRightDrawer(!rightDrawer);
   }
 });
 
 export default defineComponent({
-  setup(_, { root: { $store } }) {
-    provideStore($store);
-    const store = useStore();
-
-    return { ...setupRefs(), ...mapState(store), ...mapActions(store) };
+  setup(_, { root: { $accessor } }) {
+    return { ...setupRefs(), ...mapState($accessor), ...mapActions($accessor) };
   }
 });
 </script>

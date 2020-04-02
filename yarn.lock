@@ -7383,6 +7383,14 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
+nuxt-typed-vuex@^0.1.17:
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/nuxt-typed-vuex/-/nuxt-typed-vuex-0.1.17.tgz#a87f1683fd8bfa2c47e820fad1bc326cfa7e4ce8"
+  integrity sha512-A9MNyhg+EjOeU00vW8jEsC0WIIkMQGvakTY00FXwOS/qnylbNGbiD2FwuTjTsRDqaTcjgPNhuB7Z/Nla/RvVXQ==
+  dependencies:
+    normalize-path "^3.0.0"
+    typed-vuex "0.1.17"
+
 nuxt@^2.0.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.11.0.tgz#654664fe1a95af2014fd55c38ba2c732bfa5edc5"
@@ -10291,6 +10299,11 @@ type-is@~1.6.17, type-is@~1.6.18:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.24"
+
+typed-vuex@0.1.17:
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/typed-vuex/-/typed-vuex-0.1.17.tgz#9b49332fad2020414d9c36da9846dbeeb1c7bf7f"
+  integrity sha512-1I99KzXg2k8zPnDkhJfdjv74pEx2OnB2CkSQQaOB98XqLlskRLjS7H4XvwguTii60WOBiZZdtkRz9QRviw8I7Q==
 
 typedarray-to-buffer@^3.1.5:
   version "3.1.5"

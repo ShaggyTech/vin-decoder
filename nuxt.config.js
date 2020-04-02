@@ -38,7 +38,8 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+    'nuxt-typed-vuex'
   ],
   /*
    ** Nuxt.js modules
@@ -89,7 +90,11 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    transpile: ['vee-validate/dist/rules', 'vuetify/lib/util/colors']
+    transpile: [
+      'vee-validate/dist/rules',
+      'vuetify/lib/util/colors',
+      '/typed-vuex/'
+    ]
     /*
      ** You can extend webpack config here
      */

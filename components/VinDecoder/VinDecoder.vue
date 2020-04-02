@@ -3,17 +3,15 @@
 import { defineComponent, computed, ref, Ref } from '@vue/composition-api';
 /* Vee-Validate */
 import { ValidationObserver } from 'vee-validate';
-/* Vuex Types */
-import { Store } from 'vuex';
-import { StoreStateRoot, HistoryItem } from '@/types/store';
-/* Vuex Store Provide and Use */
-import { useStore } from '@/utils/provide-use-store';
+/* Types */
+import { Validator } from '@/types';
+import { accessorType } from '@/store';
+import { HistoryItem } from '@/store/history';
+
 /* Components */
 import BaseInputWithValidation from '@/components/base/BaseInputWithValidation.vue';
 import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
 import VinHistory from '@/components/VinDecoder/VinHistory/VinHistory.vue';
-/* App Types */
-import { Validator } from '@/types';
 
 type Refs = {
   vin: Ref<string | null>;
@@ -39,13 +37,13 @@ const setupRefs = (): Refs => ({
   showAlert: ref(false)
 });
 
-const setupHistory = (store: Store<StoreStateRoot>) => ({
+const setupHistory = (store: typeof accessorType) => ({
   /* History Setup */
-  history: computed(() => [...store.state.history]),
+  history: computed(() => [...store.history.history]),
 
   /* Used to add an item to the store 'history' array */
   addHistoryItem: (item: HistoryItem): void => {
-    store.dispatch('addHistoryItem', item);
+    store.history.addHistoryItem(item);
   },
 
   /* Returns the index if the given history item exists, or -1 if it does not exist */
@@ -53,7 +51,7 @@ const setupHistory = (store: Store<StoreStateRoot>) => ({
     const isExistingItem = (historyItem: HistoryItem) => {
       return vinValue === historyItem.VIN;
     };
-    return store.state.history.findIndex(isExistingItem);
+    return store.history.history.findIndex(isExistingItem);
   }
 });
 
@@ -137,11 +135,9 @@ export default defineComponent({
     VinResults
   },
 
-  setup() {
+  setup(_, { root: { $accessor } }) {
     const refs = { ...setupRefs() };
-
-    const store = useStore();
-    const historySetup = setupHistory(store);
+    const historySetup = setupHistory($accessor);
 
     return {
       ...setupVinDecoder({
