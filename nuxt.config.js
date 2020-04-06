@@ -2,9 +2,9 @@
 
 module.exports = {
   mode: 'universal',
-  /*
-   ** Headers of the page
-   */
+  router: {
+    // middleware: 'local-storage'
+  },
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
@@ -19,21 +19,9 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
   css: [],
-  /*
-   ** Plugins to load before mounting the App
-   */
   plugins: ['@/plugins/composition-api', '@/plugins/vee-validate'],
-  /*
-   ** Nuxt.js dev-modules
-   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
@@ -41,9 +29,6 @@ module.exports = {
     '@nuxt/typescript-build',
     'nuxt-typed-vuex'
   ],
-  /*
-   ** Nuxt.js modules
-   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
@@ -93,7 +78,8 @@ module.exports = {
     transpile: [
       'vee-validate/dist/rules',
       'vuetify/lib/util/colors',
-      '/typed-vuex/'
+      '/typed-vuex/',
+      'vuex-persist'
     ]
     /*
      ** You can extend webpack config here

@@ -1,5 +1,6 @@
 <script lang="ts">
-import { defineComponent, computed } from '@vue/composition-api';
+import { defineComponent } from '@vue/composition-api';
+import { historySetup } from '@/compositions/history';
 /* Components */
 import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
 
@@ -8,8 +9,7 @@ export default defineComponent({
   components: { VinResults },
 
   setup(_, { root: { $accessor } }) {
-    const history = computed(() => [...$accessor.history.history]);
-    const clearHistory = () => $accessor.history.clearHistory();
+    const { history, clearHistory } = historySetup($accessor);
 
     return {
       history,
@@ -26,9 +26,9 @@ export default defineComponent({
       <v-spacer />
       <v-btn
         v-if="history.length > 0"
+        x-small
         class="mx-2 my-2"
         color="deep-orange darken-4"
-        :disabled="history.length < 1"
         @click.prevent="clearHistory"
       >
         Clear History

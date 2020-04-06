@@ -1,4 +1,16 @@
-import { accessorType } from '~/store';
+import { TypedVuexStore } from '~/store';
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    $accessor: TypedVuexStore;
+  }
+}
+
+declare module '@nuxt/types' {
+  interface NuxtAppOptions {
+    $accessor: TypedVuexStore;
+  }
+}
 
 export interface User {
   firstName: string;
@@ -17,16 +29,4 @@ export interface Validator {
   customMessages?: {
     [propName: string]: string;
   };
-}
-
-declare module 'vue/types/vue' {
-  interface Vue {
-    $accessor: typeof accessorType;
-  }
-}
-
-declare module '@nuxt/types' {
-  interface NuxtAppOptions {
-    $accessor: typeof accessorType;
-  }
 }

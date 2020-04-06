@@ -1,5 +1,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from '@vue/composition-api';
+/* History Setup */
+import { syncHistoryOnMounted } from '@/compositions/history';
 /* Types */
 import { accessorType } from '@/store';
 
@@ -31,7 +33,13 @@ const mapActions = (store: typeof accessorType) => ({
 
 export default defineComponent({
   setup(_, { root: { $accessor } }) {
-    return { ...setupRefs(), ...mapState($accessor), ...mapActions($accessor) };
+    syncHistoryOnMounted($accessor);
+
+    return {
+      ...setupRefs(),
+      ...mapState($accessor),
+      ...mapActions($accessor)
+    };
   }
 });
 </script>

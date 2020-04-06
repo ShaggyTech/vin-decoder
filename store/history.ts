@@ -1,8 +1,5 @@
 /* Types */
-// import { MutationTree, ActionTree } from 'vuex';
-
 import { mutationTree, actionTree } from 'nuxt-typed-vuex';
-
 import { ResultsObjectType } from '@/types';
 
 export type HistoryItem = {
@@ -15,8 +12,6 @@ export interface HistoryPayload {
   item?: HistoryItem;
 }
 
-// export const namespaced: boolean = true;
-
 export const state = () => ({
   history: [] as HistoryItem[]
 });
@@ -24,24 +19,29 @@ export const state = () => ({
 export type HistoryState = ReturnType<typeof state>;
 
 export const mutations = mutationTree(state, {
-  MODIFY_HISTORY(state, payload: HistoryPayload) {
-    if (payload?.item && payload?.action) {
-      if (payload.action === 'insert') {
-        const isExistingItem = (historyItem: HistoryItem) => {
-          return payload.item?.VIN === historyItem.VIN;
-        };
-        const itemIndex = state.history.findIndex(isExistingItem);
+  INITIALIZE_HISTORY_STORE(state, localStorageState) {
+    Object.assign(state, localStorageState);
+  },
+  CLEAR_HISTORY(state) {
+    state.history = [];
+  },
+  ADD_HISTORY_ITEM(state, item: HistoryItem) {
+    if (item) {
+      const isExistingItem = (item_: HistoryItem) => {
+        return item_.VIN === item.VIN;
+      };
+      const itemIndex = state.history.findIndex(isExistingItem);
 
-        if (itemIndex < 0) {
-          state.history.unshift(payload.item);
-        }
-      } else if (payload.action === 'delete') {
-        state.history = state.history.filter((item: HistoryItem) => {
-          return item.VIN !== payload.item?.VIN;
-        });
+      if (itemIndex < 0) {
+        state.history.unshift(item);
       }
-    } else if (payload?.action === 'clear') {
-      state.history = [];
+    }
+  },
+  DELETE_HISTORY_ITEM(state, item: HistoryItem) {
+    if (item) {
+      state.history = state.history.filter((item_: HistoryItem) => {
+        return item_.VIN !== item.VIN;
+      });
     }
   }
 });
@@ -49,14 +49,14 @@ export const mutations = mutationTree(state, {
 export const actions = actionTree(
   { state, mutations },
   {
-    clearHistory({ commit }): void {
-      commit('MODIFY_HISTORY', { action: 'clear' });
+    clearHistory({ commit }) {
+      commit('CLEAR_HISTORY');
     },
-    addHistoryItem({ commit }, payload: HistoryItem): void {
-      commit('MODIFY_HISTORY', { action: 'insert', item: payload });
+    addHistoryItem({ commit }, payload: HistoryItem) {
+      commit('ADD_HISTORY_ITEM', payload);
     },
-    deleteHistoryItem({ commit }, payload: HistoryItem): void {
-      commit('MODIFY_HISTORY', { action: 'delete', item: payload });
+    deleteHistoryItem({ commit }, payload: HistoryItem) {
+      commit('DELETE_HISTORY_ITEM', payload);
     }
   }
 );

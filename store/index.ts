@@ -1,19 +1,21 @@
 /* Types */
-// import { MutationTree, ActionTree, GetterTree } from 'vuex';
-
 import {
   getAccessorType,
   getterTree,
   mutationTree,
   actionTree
 } from 'typed-vuex';
-
-// Import all your submodules
+/* Vuex Plugins */
+import { syncLocalStorage } from './plugins/syncLocalStorage';
+// Import all your store submodules
 import * as history from '~/store/history';
+
+/* Plugins */
+export const plugins = [syncLocalStorage];
 
 export const namespaced: boolean = true;
 
-export const state = () => ({
+const getDefaultState = () => ({
   counter: 0,
   drawer: false,
   drawerItems: [
@@ -30,6 +32,8 @@ export const state = () => ({
   ],
   rightDrawer: false
 });
+
+export const state = () => ({ ...getDefaultState() });
 
 export type RootState = ReturnType<typeof state>;
 
@@ -52,13 +56,13 @@ export const mutations = mutationTree(state, {
 export const actions = actionTree(
   { state, getters, mutations },
   {
-    increment({ state, commit }): void {
+    increment({ state, commit }) {
       commit('SET_COUNTER', state.counter + 1);
     },
-    setDrawer({ commit }, drawer: boolean): void {
+    setDrawer({ commit }, drawer: boolean) {
       commit('SET_DRAWER', drawer);
     },
-    setRightDrawer({ commit }, rightDrawer: boolean): void {
+    setRightDrawer({ commit }, rightDrawer: boolean) {
       commit('SET_RIGHT_DRAWER', rightDrawer);
     }
   }
@@ -75,85 +79,4 @@ export const accessorType = getAccessorType({
   }
 });
 
-// export default {
-//   namespaced: true as true,
-
-//   state: () => ({
-//     counter: 0,
-//     drawer: false,
-//     drawerItems: [
-//       {
-//         icon: 'mdi-apps',
-//         title: 'Welcome',
-//         to: '/'
-//       },
-//       {
-//         icon: 'mdi-chart-bubble',
-//         title: 'Inspire',
-//         to: '/inspire'
-//       }
-//     ],
-//     rightDrawer: false,
-//     history: []
-//   }),
-
-//   mutations: {
-//     SET_COUNTER(state: RootState, newCount: number) {
-//       state.counter = newCount;
-//     },
-//     SET_DRAWER(state: RootState, drawer: boolean) {
-//       state.drawer = drawer;
-//     },
-//     SET_RIGHT_DRAWER(state: RootState, rightDrawer: boolean) {
-//       state.rightDrawer = rightDrawer;
-//     },
-//     MODIFY_HISTORY(state: RootState, payload: HistoryPayload) {
-//       if (payload?.item && payload?.action) {
-//         if (payload.action === 'insert') {
-//           const isExistingItem = (historyItem: HistoryItem) => {
-//             return payload.item?.VIN === historyItem.VIN;
-//           };
-//           const itemIndex = state.history.findIndex(isExistingItem);
-
-//           if (itemIndex < 0) {
-//             state.history.unshift(payload.item);
-//           }
-//         } else if (payload.action === 'delete') {
-//           state.history = state.history.filter((item: HistoryItem) => {
-//             return item.VIN !== payload.item.VIN;
-//           });
-//         }
-//       } else if (payload?.action === 'clear') {
-//         state.history = [];
-//       }
-//     }
-//   },
-
-//   actions: {
-//     increment({ state, commit }: RootActionContext): void {
-//       commit('SET_COUNTER', state.counter + 1);
-//     },
-//     setDrawer({ commit }: RootActionContext, drawer: boolean): void {
-//       commit('SET_DRAWER', drawer);
-//     },
-//     setRightDrawer({ commit }: RootActionContext, rightDrawer: boolean): void {
-//       commit('SET_RIGHT_DRAWER', rightDrawer);
-//     },
-//     clearHistory({ commit }: RootActionContext): void {
-//       commit('MODIFY_HISTORY', { action: 'clear' });
-//     },
-//     addHistoryItem({ commit }: RootActionContext, payload: HistoryItem): void {
-//       commit('MODIFY_HISTORY', { action: 'insert', item: payload });
-//     },
-//     deleteHistoryItem(
-//       { commit }: RootActionContext,
-//       payload: HistoryItem
-//     ): void {
-//       commit('MODIFY_HISTORY', { action: 'delete', item: payload });
-//     }
-//   },
-
-//   getters: {
-//     message: (state: RootState) => `The count is: ${state.counter}!`
-//   }
-// };
+export type TypedVuexStore = typeof accessorType;
