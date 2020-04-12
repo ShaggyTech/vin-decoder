@@ -12,7 +12,9 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "test": "jest -c ./test/config/jest.config.js",
-    "test-watch": "jest -c ./test/config/jest.config.js --watch --onlyChanged"
+    "test-watch": "jest -c ./test/config/jest.config.js --watch --onlyChanged",
+    "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate"
   },
   "repository": {
     "type": "git",

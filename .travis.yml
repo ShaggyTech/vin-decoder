@@ -10,7 +10,7 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
 install:
   - yarn
-  - yarn generate
+  - yarn generate:gh-pages
 script:
   - echo "Skipping tests"
 deploy:
