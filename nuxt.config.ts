@@ -1,13 +1,15 @@
-// const colors = require('vuetify/es5/util/colors').default;
+import { Configuration } from '@nuxt/types';
+import { name } from './package.json';
 
-const { name } = require('./package.json');
+const isDev = process.env.NODE_ENV !== 'production';
 const routerBase =
   process.env.DEPLOY_ENV === 'GH_PAGES'
     ? { router: { base: `/${name}/` } }
     : {};
 
-module.exports = {
+const config: Configuration = {
   mode: 'universal',
+  dev: isDev,
   ...routerBase,
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
@@ -91,3 +93,5 @@ module.exports = {
     // extend(config, ctx) {}
   }
 };
+
+export default config;
