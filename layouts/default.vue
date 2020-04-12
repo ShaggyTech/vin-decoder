@@ -3,14 +3,14 @@ import { defineComponent, ref, computed } from '@vue/composition-api';
 /* History Setup */
 import { syncHistoryOnMounted } from '@/compositions/history';
 /* Types */
-import { accessorType } from '@/store';
+import { TypedVuexStore } from '@/store';
 
 const setupRefs = () => ({
   right: ref<boolean>(true),
   title: ref<string>('ShaggyTech.com - VIN Decoder')
 });
 
-const mapState = (store: typeof accessorType) => ({
+const mapState = (store: TypedVuexStore) => ({
   drawerItems: computed(() => [...store.drawerItems]),
   drawer: computed({
     get: () => store.drawer,
@@ -22,7 +22,7 @@ const mapState = (store: typeof accessorType) => ({
   })
 });
 
-const mapActions = (store: typeof accessorType) => ({
+const mapActions = (store: TypedVuexStore) => ({
   toggleDrawer: (drawer: boolean) => {
     return store.setDrawer(!drawer);
   },
