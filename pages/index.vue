@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 /* Components */
-import VinDecoder from '~/components/VinDecoder/index.vue';
+import VinDecoder from '~/components/VinDecoder/VinDecoder.vue';
 
 export default defineComponent({
   components: {

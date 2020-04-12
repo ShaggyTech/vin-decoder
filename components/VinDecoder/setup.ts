@@ -1,10 +1,18 @@
 /* Composition API */
 import { ref, Ref } from '@vue/composition-api';
 /* Compositions */
-import { historySetup, getHistoryItemIndex } from '~/compositions/history';
+import { getHistoryItemIndex } from '~/compositions/history';
 /* Types */
 import { Validator } from '@/types';
 import { TypedVuexStore } from '@/store';
+
+type Refs = {
+  alertMessage: Ref<string | null>;
+  loading: Ref<boolean>;
+  rawResults: Ref<object | null>;
+  validator: Ref<Validator>;
+  vin: Ref<string | null>;
+};
 
 /* config for VIN input field's validation-provider */
 const validator: Validator = {
@@ -17,31 +25,22 @@ const validator: Validator = {
   }
 };
 
-type Refs = {
-  vin: Ref<string | null>;
-  rawResults: Ref<object | null>;
-  loading: Ref<boolean>;
-  alertMessage: Ref<string | null>;
-  showAlert: Ref<boolean>;
-  validator: Ref<Validator>;
-};
+const setupRefs = (): Refs => ({
+  alertMessage: ref(null),
+  loading: ref(false),
+  rawResults: ref(null),
+  validator: ref(validator),
+  vin: ref(null)
+});
 
-const handleError = (err: any, refs: Refs) => {
+const handleError = (err: any, refs: Refs): Error => {
   refs.rawResults.value = null;
-  refs.alertMessage.value = `Oops! It seems an error occurred when fetching data from the API. - ${err}`;
-  refs.showAlert.value = true;
+  refs.alertMessage.value =
+    'Oops! It seems an error occurred when fetching data from the API';
   refs.loading.value = false;
+
   return err;
 };
-
-const setupRefs = (): Refs => ({
-  vin: ref(null),
-  rawResults: ref(null),
-  loading: ref(false),
-  alertMessage: ref(null),
-  showAlert: ref(false),
-  validator: ref(validator)
-});
 
 const fetchResults = async (vinValue: string, refs: Refs) => {
   /* Fetch the results and handle any errors */
@@ -50,61 +49,59 @@ const fetchResults = async (vinValue: string, refs: Refs) => {
   );
   const Decoder = new DecodeVinValuesExtended();
 
-  const { Results } = await Decoder.DecodeVinValuesExtended(
-    vinValue
-  ).catch((err: Error) => handleError(err, refs));
+  const response = await Decoder.DecodeVinValuesExtended(vinValue).catch(
+    (err: Error): Error => handleError(err, refs)
+  );
 
-  return Results;
+  if (
+    !(response instanceof Error) &&
+    response?.FetchResponse.ok &&
+    response.Count > 0
+  ) {
+    return response.Results;
+  } else {
+    return null;
+  }
 };
 
 export const initializeComponent = (store: TypedVuexStore) => {
   const refs = { ...setupRefs() };
 
-  const historyMixin: ReturnType<typeof historySetup> = {
-    ...historySetup(store)
-  };
-
   /* Component Method called when a valid VIN is submitted */
-  const getResults = async (vinValue: string) => {
-    refs.showAlert.value = false;
+  const getResults = async (vinValue: string | null): Promise<void> => {
+    if (typeof vinValue !== 'string') {
+      return;
+    }
+
+    refs.alertMessage.value = null;
     refs.loading.value = true;
 
     /* Reduce API calls by returning previously decoded results from the history */
     const historyArray = store.history.history;
     const historyIndex = getHistoryItemIndex(vinValue, historyArray);
+
     if (historyIndex >= 0) {
-      refs.rawResults.value = { ...historyArray[historyIndex].results };
       refs.loading.value = false;
+      refs.rawResults.value = { ...historyArray[historyIndex].results };
       return;
     }
 
     /* Fetch the results using the nhtsa-api-wrapper */
-    const Results = await fetchResults(vinValue, refs).catch((err: Error) =>
-      handleError(err, refs)
-    );
+    const results = await fetchResults(vinValue, refs);
 
-    /* Add the results to the Vuex store history array as well as rawResults ref */
-    if (Results?.[0]) {
-      refs.showAlert.value = false;
-
-      historyMixin.addHistoryItem({
-        VIN: Results[0]?.VIN,
-        results: { ...Results[0] }
-      });
-      refs.rawResults.value = { ...Results[0] };
-
+    if (results && results[0]) {
       refs.loading.value = false;
-    } else {
-      const err = new Error(
-        `Undefined -or- invalid results returned from the NHTSA API, got results of ${Results}`
-      );
-      handleError(err, refs);
+      refs.rawResults.value = { ...results[0] };
+
+      store.history.addHistoryItem({
+        VIN: results[0].VIN,
+        results: { ...results[0] }
+      });
     }
   };
 
   return {
     ...refs,
-    ...historyMixin,
     getResults
   };
 };

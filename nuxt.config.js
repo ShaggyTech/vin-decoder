@@ -1,10 +1,13 @@
 // const colors = require('vuetify/es5/util/colors').default;
 
+// import { name } from './package.json';
+// const routerBase =
+//   process.env.DEPLOY_ENV === 'GH_PAGES'
+//     ? { router: { base: name } }
+//     : {};
+
 module.exports = {
   mode: 'universal',
-  router: {
-    // middleware: 'local-storage'
-  },
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
