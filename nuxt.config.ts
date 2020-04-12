@@ -84,8 +84,7 @@ const config: Configuration = {
     transpile: [
       'vee-validate/dist/rules',
       'vuetify/lib/util/colors',
-      '/typed-vuex/',
-      'vuex-persist'
+      '/typed-vuex/'
     ]
     /*
      ** You can extend webpack config here

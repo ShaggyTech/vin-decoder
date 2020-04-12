@@ -48,8 +48,7 @@
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "nuxt": "^2.0.0",
-    "vee-validate": "^3.2.5",
-    "vuex-persist": "^2.2.0"
+    "vee-validate": "^3.2.5"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.6.0",
