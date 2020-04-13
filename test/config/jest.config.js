@@ -15,12 +15,17 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
   rootDir: '../../',
   setupFiles: ['<rootDir>/test/config/jest.setup.js'],
+  snapshotSerializers: ['jest-serializer-vue'],
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
   transform: {
-    '^.+\\.js$': 'babel-jest',
-    '^.+\\.ts?$': 'ts-jest',
-    '.*\\.(vue)$': 'vue-jest'
+    '^.+\\.js?$': require.resolve('babel-jest'),
+    '^.+\\.ts?$': require.resolve('ts-jest'),
+    '.*\\.(vue)$': require.resolve('vue-jest'),
+    'vee-validate/dist/rules': require.resolve('babel-jest')
   },
+  transformIgnorePatterns: [
+    '<rootDir>/node_modules/(?!vee-validate/dist/rules)'
+  ],
   watchPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/.nuxt/',
