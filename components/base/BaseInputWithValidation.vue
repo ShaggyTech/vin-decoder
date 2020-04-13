@@ -44,6 +44,7 @@ export default defineComponent({
   <validation-provider v-slot="{ errors, validated }" v-bind="validator">
     <v-checkbox
       v-if="$attrs.type === 'checkbox'"
+      :id="id"
       :key="id"
       v-model="value"
       v-bind="$attrs"
@@ -53,6 +54,7 @@ export default defineComponent({
     />
     <v-slider
       v-else-if="$attrs.type === 'slider'"
+      :id="id"
       :key="id + 'slider'"
       v-model="value"
       v-bind="{ ...$attrs, type: 'text' }"
@@ -62,6 +64,7 @@ export default defineComponent({
     />
     <v-textarea
       v-else-if="$attrs.type === 'textarea'"
+      :id="id"
       :key="id"
       v-model="value"
       v-bind="{ ...$attrs, type: 'text' }"
@@ -71,6 +74,7 @@ export default defineComponent({
     />
     <v-select
       v-else-if="$attrs.type === 'select'"
+      :id="id"
       :key="id"
       v-model="value"
       v-bind="{ ...$attrs, type: 'text' }"
@@ -80,6 +84,7 @@ export default defineComponent({
     />
     <v-switch
       v-else-if="$attrs.type === 'switch'"
+      :id="id"
       :key="id"
       v-model="value"
       v-bind="{ ...$attrs, type: 'text' }"
@@ -90,6 +95,7 @@ export default defineComponent({
     <!-- Default -->
     <v-text-field
       v-else
+      :id="id"
       :key="id"
       v-model="value"
       v-bind="$attrs"
