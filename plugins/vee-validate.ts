@@ -9,29 +9,25 @@ import { required, alpha_num as alphaNum } from 'vee-validate/dist/rules';
 // Offline VIN Validation
 import { isValidVin } from '@shaggytools/nhtsa-api-wrapper';
 
-/**
- *
- * Custom Rules
- *
- */
-extend('vin', {
-  message: 'That is not a valid VIN.',
-  validate: value => {
-    return isValidVin(value);
-  }
-});
+export const rules = () => {
+  /* Custom Rules */
+  extend('vin', {
+    message: 'That is not a valid VIN.',
+    validate: value => {
+      return isValidVin(value);
+    }
+  });
 
-/**
- *
- * Vee-Validate Rules
- *
- */
-extend('required', {
-  ...required,
-  message: 'A {_field_} is required.'
-});
+  /* Vee-Validate Rules */
+  extend('required', {
+    ...required,
+    message: 'A {_field_} is required.'
+  });
 
-extend('alpha_num', {
-  ...alphaNum,
-  message: 'A {_field_} may only contain alphabetic or numeric characters.'
-});
+  extend('alpha_num', {
+    ...alphaNum,
+    message: 'A {_field_} may only contain alphabetic or numeric characters.'
+  });
+};
+
+rules();
