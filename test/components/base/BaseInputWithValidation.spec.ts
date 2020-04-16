@@ -38,6 +38,17 @@ describe('BaseInputWithValidation Component Tests', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
+  test('validation-provider binds validator prop and does not inherit $attrs', async () => {
+    wrapper.setProps({ validator, id: 'InputId' });
+    await wrapper.vm.$nextTick();
+
+    const providerEl = wrapper.find('#validator');
+    expect(providerEl.props()).toEqual({ validator });
+
+    const inputEl = wrapper.find('#InputId');
+    expect(inputEl.attributes().id).toEqual('InputId');
+  });
+
   test('it watches for input changes and emits "input" event with newest value', async () => {
     expect(wrapper.emitted().input?.[1]).toEqual(undefined);
     wrapper.find('#TestInput').setValue('testing');
@@ -47,6 +58,10 @@ describe('BaseInputWithValidation Component Tests', () => {
 
   test('shows success on validation success', async () => {
     wrapper.setProps({ validator });
+
+    const providerEl = wrapper.find('#validator');
+    expect(providerEl.props('validator')).toEqual(validator);
+
     expect(wrapper.find('.success--text').exists()).toBe(false);
     wrapper.find('#TestInput').setValue('test value');
     // flush the pending validation.

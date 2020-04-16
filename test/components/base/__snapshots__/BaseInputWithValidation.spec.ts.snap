@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BaseInputWithValidation Component Tests is a Vue instance 1`] = `
-<span>
+<span
+  id="validator"
+>
   <div
     class="v-input theme--light v-text-field"
   >
