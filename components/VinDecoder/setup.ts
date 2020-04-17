@@ -33,53 +33,46 @@ const setupRefs = (): Refs => ({
   vin: ref(null)
 });
 
-const handleError = (err: any, refs: Refs): Error => {
-  refs.rawResults.value = null;
-  refs.alertMessage.value =
+const handleError = (err: Error, refs: Refs): void => {
+  const errMsg =
     'Oops! It seems an error occurred when fetching data from the API';
+  refs.rawResults.value = null;
+  refs.alertMessage.value = errMsg;
   refs.loading.value = false;
-
-  return err;
+  // eslint-disable-next-line no-console
+  console.error(`${errMsg}`, err);
 };
 
-const fetchResults = async (vinValue: string, refs: Refs) => {
+const fetchResults = async (vinValue: string) => {
   /* Fetch the results and handle any errors */
   const { DecodeVinValuesExtended } = await import(
     '@shaggytools/nhtsa-api-wrapper'
   );
   const Decoder = new DecodeVinValuesExtended();
 
-  const response = await Decoder.DecodeVinValuesExtended(vinValue).catch(
-    (err: Error): Error => handleError(err, refs)
+  return Decoder.DecodeVinValuesExtended(vinValue).catch(
+    (err: Error): Error => err
   );
-
-  if (
-    !(response instanceof Error) &&
-    response?.FetchResponse.ok &&
-    response.Count > 0
-  ) {
-    return response.Results;
-  } else {
-    return null;
-  }
 };
 
 export const initializeComponent = (store: TypedVuexStore) => {
+  /* All refs necessary for this component */
   const refs = { ...setupRefs() };
 
-  /* Component Method called when a valid VIN is submitted */
+  /* Method called when a valid VIN is submitted */
   const getResults = async (vinValue: string | null): Promise<void> => {
+    /* Runtime type check */
     if (typeof vinValue !== 'string') {
       return;
     }
 
-    refs.alertMessage.value = null;
+    /* Preparation */
     refs.loading.value = true;
+    refs.alertMessage.value = null;
 
     /* Reduce API calls by returning previously decoded results from the history */
     const historyArray = store.history.history;
     const historyIndex = getHistoryItemIndex(vinValue, historyArray);
-
     if (historyIndex >= 0) {
       refs.loading.value = false;
       refs.rawResults.value = { ...historyArray[historyIndex].results };
@@ -87,17 +80,23 @@ export const initializeComponent = (store: TypedVuexStore) => {
     }
 
     /* Fetch the results using the nhtsa-api-wrapper */
-    const results = await fetchResults(vinValue, refs);
+    const response = await fetchResults(vinValue);
 
-    if (results && results[0]) {
-      refs.loading.value = false;
-      refs.rawResults.value = { ...results[0] };
-
-      store.history.addHistoryItem({
-        VIN: results[0].VIN,
-        results: { ...results[0] }
-      });
+    /* Handle any errors */
+    if (response instanceof Error || !response?.Results?.[0]) {
+      return handleError(response as Error, refs);
     }
+
+    /* Extract and distribute the results */
+    const results = response.Results[0];
+    refs.rawResults.value = { ...results };
+    store.history.addHistoryItem({
+      VIN: results.VIN,
+      results: { ...results }
+    });
+
+    /* Cleanup */
+    refs.loading.value = false;
   };
 
   return {

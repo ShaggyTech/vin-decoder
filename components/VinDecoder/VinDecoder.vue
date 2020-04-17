@@ -30,7 +30,7 @@ export default defineComponent({
 <template>
   <validation-observer v-slot="{ invalid }" slim>
     <v-card elevation="8" max-width="600" class="mx-auto">
-      <v-alert :value="alertMessage" type="error" dense>{{
+      <v-alert :value="alertMessage !== null" type="error" dense>{{
         alertMessage
       }}</v-alert>
       <v-card-title class="headline">
