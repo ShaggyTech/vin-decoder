@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import Vue from 'vue';
 import VueCompositionApi from '@vue/composition-api';
 

@@ -1,16 +1,21 @@
 <script lang="ts">
-import { defineComponent, ref, computed } from '@vue/composition-api';
+import {
+  defineComponent,
+  ref,
+  computed,
+  onErrorCaptured
+} from '@vue/composition-api';
 /* History Setup */
 import { syncHistoryOnMounted } from '@/compositions/history';
 /* Types */
-import { accessorType } from '@/store';
+import { TypedVuexStore } from '@/store';
 
 const setupRefs = () => ({
   right: ref<boolean>(true),
   title: ref<string>('ShaggyTech.com - VIN Decoder')
 });
 
-const mapState = (store: typeof accessorType) => ({
+const mapState = (store: TypedVuexStore) => ({
   drawerItems: computed(() => [...store.drawerItems]),
   drawer: computed({
     get: () => store.drawer,
@@ -22,7 +27,7 @@ const mapState = (store: typeof accessorType) => ({
   })
 });
 
-const mapActions = (store: typeof accessorType) => ({
+const mapActions = (store: TypedVuexStore) => ({
   toggleDrawer: (drawer: boolean) => {
     return store.setDrawer(!drawer);
   },
@@ -34,6 +39,14 @@ const mapActions = (store: typeof accessorType) => ({
 export default defineComponent({
   setup(_, { root: { $accessor } }) {
     syncHistoryOnMounted($accessor);
+
+    onErrorCaptured((err: Error, _vm: object, info: string) => {
+      // eslint-disable-next-line no-console
+      console.log('Parent: ' + err.toString());
+      // eslint-disable-next-line no-console
+      console.log('info: ' + info);
+      return false;
+    });
 
     return {
       ...setupRefs(),
