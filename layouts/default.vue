@@ -1,5 +1,10 @@
 <script lang="ts">
-import { defineComponent, ref, computed } from '@vue/composition-api';
+import {
+  defineComponent,
+  ref,
+  computed,
+  onErrorCaptured
+} from '@vue/composition-api';
 /* History Setup */
 import { syncHistoryOnMounted } from '@/compositions/history';
 /* Types */
@@ -34,6 +39,14 @@ const mapActions = (store: TypedVuexStore) => ({
 export default defineComponent({
   setup(_, { root: { $accessor } }) {
     syncHistoryOnMounted($accessor);
+
+    onErrorCaptured((err: Error, _vm: object, info: string) => {
+      // eslint-disable-next-line no-console
+      console.log('Parent: ' + err.toString());
+      // eslint-disable-next-line no-console
+      console.log('info: ' + info);
+      return false;
+    });
 
     return {
       ...setupRefs(),
