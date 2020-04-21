@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VinHistory Component Tests component is invisible if history is empty 1`] = `<!---->`;
+
+exports[`VinHistory Component Tests component is visible if history contains items 1`] = `
+<div
+  class="history-card mx-auto my-4 v-card v-sheet theme--light"
+  style="max-width: 600px;"
+>
+  <div
+    class="v-card__title history-card__title headline"
+  >
+    
+    Search History
+    
+    <div
+      class="spacer"
+    />
+     
+    <button
+      class="btn__clear-history mx-2 my-2 v-btn v-btn--contained theme--light v-size--x-small deep-orange darken-4"
+      type="button"
+    >
+      <span
+        class="v-btn__content"
+      >
+        
+      Clear History
+    
+      </span>
+    </button>
+  </div>
+   
+  <div
+    accordian=""
+    class="v-item-group theme--light v-expansion-panels v-expansion-panels--flat v-expansion-panels--hover v-expansion-panels--focusable v-expansion-panels--tile"
+  >
+    <div
+      aria-expanded="false"
+      class="v-expansion-panel"
+    >
+      <button
+        class="v-expansion-panel-header title primary darken-4"
+        type="button"
+      >
+        
+        TESTVIN
+      
+        <div
+          class="v-expansion-panel-header__icon"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate material-icons theme--light"
+          >
+            $expand
+          </i>
+        </div>
+      </button>
+       
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VinHistory Component Tests history can be cleared and component is invisible after clearing 1`] = `<!---->`;
