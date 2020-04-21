@@ -20,14 +20,18 @@ export default defineComponent({
 </script>
 
 <template>
-  <v-card v-if="history.length > 0" max-width="600" class="mx-auto my-4">
-    <v-card-title class="headline">
+  <v-card
+    v-if="history.length > 0"
+    class="history-card mx-auto my-4"
+    max-width="600"
+  >
+    <v-card-title class="history-card__title headline">
       Search History
       <v-spacer />
       <v-btn
         v-if="history.length > 0"
         x-small
-        class="mx-2 my-2"
+        class="btn__clear-history mx-2 my-2"
         color="deep-orange darken-4"
         @click.prevent="clearHistory"
       >
