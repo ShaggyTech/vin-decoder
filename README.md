@@ -1,6 +1,10 @@
 # vin-decoder
 
-> A Nuxt app to decode Vehicle Identification Numbers (VINs) using the National Highway Traffic Safety Administration API.
+> A Nuxt Proggressive Web App (PWA) to decode Vehicle Identification Numbers (VINs) using the National Highway Traffic Safety Administration API. Implemented using the Vue Composition API and TypeScript.
+
+## Live Version
+
+### [https://www.shaggytech.com/vin-decoder](https://www.shaggytech.com/vin-decoder)
 
 ## Build Setup
 
@@ -19,4 +23,12 @@ $ yarn start
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## Testing
+
+``` bash
+# Run all tests
+$ yarn test
+
+# Watch for changes and continuously run tests
+$ yarn test:watch
+```
