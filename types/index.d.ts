@@ -17,7 +17,7 @@ export interface User {
   lastName: string;
 }
 
-export type ResultsObjectType = { [propName: string]: string };
+export type ResultsObjectType = { [propName: string]: any };
 
 export interface Validator {
   rules: {
