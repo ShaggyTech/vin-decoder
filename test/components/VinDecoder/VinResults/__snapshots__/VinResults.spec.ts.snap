@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VinResults Component Tests component is hidden if rawResults prop is empty 1`] = `
+<v-slide-y-transition-stub
+  hideonleave="true"
+  origin="top center 0"
+>
+  <!---->
+</v-slide-y-transition-stub>
+`;
+
+exports[`VinResults Component Tests given rawResults, component renders the correct title and subtitle 1`] = `
+<v-slide-y-transition-stub
+  hideonleave="true"
+  origin="top center 0"
+>
+  <v-card-stub
+    class="results-card"
+    loaderheight="4"
+    maxwidth="600"
+    raised="true"
+    tag="div"
+  >
+    <v-card-title-stub
+      class="mx-auto px-2 title"
+    >
+      <v-divider-stub />
+       
+      <span
+        class="results-card__title mx-auto px-4"
+      >
+        
+        2020 Volkswagen Jetta
+        
+      
+      </span>
+       
+      <v-divider-stub />
+    </v-card-title-stub>
+     
+    <v-card-subtitle-stub
+      class="results-card__subtitle mx-auto px-2 title text-center"
+    >
+      
+      TESTVIN
+      
+      <v-divider-stub />
+    </v-card-subtitle-stub>
+     
+    <v-card-text-stub>
+      <v-simple-table-stub
+        class="results-card__table"
+        fixedheader="true"
+        height="300"
+        max-width="600"
+      />
+    </v-card-text-stub>
+  </v-card-stub>
+</v-slide-y-transition-stub>
+`;
+
+exports[`VinResults Component Tests if loading prop is true, a skeleton loader is shown in place of the results card 1`] = `
+<v-slide-y-transition-stub
+  hideonleave="true"
+  origin="top center 0"
+>
+  <v-skeleton-loader-stub
+    class="results-loader"
+    maxwidth="600"
+    type="card-heading, text@7"
+    types="[object Object]"
+  />
+</v-slide-y-transition-stub>
+`;

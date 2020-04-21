@@ -61,6 +61,7 @@ export default defineComponent({
   >
     <v-skeleton-loader
       v-if="loading"
+      class="results-loader"
       :max-width="maxWidth"
       type="card-heading, text@7"
     >
@@ -68,23 +69,27 @@ export default defineComponent({
     <v-card
       v-else-if="results && rawResults"
       v-bind="$attrs"
+      class="results-card"
       :max-width="maxWidth"
       raised
     >
       <v-card-title class="mx-auto px-2 title">
         <v-divider></v-divider>
-        <span class="mx-auto px-4">
+        <span class="results-card__title mx-auto px-4">
           {{ results.ModelYear }} {{ results.Make }} {{ results.Model }}
           {{ results.Series }}
         </span>
         <v-divider></v-divider>
       </v-card-title>
-      <v-card-subtitle class="mx-auto px-2 title text-center">
+      <v-card-subtitle
+        class="results-card__subtitle mx-auto px-2 title text-center"
+      >
         {{ results.VIN }}
         <v-divider></v-divider>
       </v-card-subtitle>
       <v-card-text>
         <v-simple-table
+          class="results-card__table"
           fixed-header
           :height="tableHeight"
           :max-width="maxWidth"
