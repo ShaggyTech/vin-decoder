@@ -5,7 +5,6 @@ import { defineComponent } from '@vue/composition-api';
 import { ValidationObserver } from 'vee-validate';
 import BaseInputWithValidation from '@/components/base/BaseInputWithValidation.vue';
 import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
-import VinHistory from '@/components/VinDecoder/VinHistory/VinHistory.vue';
 
 /* Component Setup */
 import { initializeComponent } from '@/components/VinDecoder/setup';
@@ -15,7 +14,6 @@ export default defineComponent({
   components: {
     BaseInputWithValidation,
     ValidationObserver,
-    VinHistory,
     VinResults
   },
 
@@ -28,12 +26,17 @@ export default defineComponent({
 </script>
 
 <template>
-  <validation-observer v-slot="{ invalid }" slim>
-    <v-card elevation="8" max-width="600" class="mx-auto">
-      <v-alert :value="alertMessage !== null" type="error" dense>{{
-        alertMessage
-      }}</v-alert>
-      <v-card-title class="headline">
+  <validation-observer v-slot="{ invalid }">
+    <v-card elevation="8" max-width="600" class="decoder-card mx-auto">
+      <v-alert
+        :value="alertMessage !== null"
+        type="error"
+        class="decoder-card__alert"
+        dense
+      >
+        {{ alertMessage }}
+      </v-alert>
+      <v-card-title class="decoder-card__title headline">
         VIN Decoder
       </v-card-title>
       <v-card-text>
@@ -43,6 +46,7 @@ export default defineComponent({
         <base-input-with-validation
           id="VinDecoderInput"
           v-model="vin"
+          class="decoder-card__input"
           :validator="validator"
           counter="17"
           clearable
@@ -53,7 +57,7 @@ export default defineComponent({
       </v-card-text>
       <v-card-actions>
         <v-btn
-          class="mx-auto my-4"
+          class="btn__get-results mx-auto my-4"
           color="success"
           :disabled="!vin || invalid"
           block
@@ -69,7 +73,5 @@ export default defineComponent({
         color="primary darken-4"
       />
     </v-card>
-
-    <vin-history />
   </validation-observer>
 </template>

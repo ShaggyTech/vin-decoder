@@ -2,10 +2,12 @@
 import { defineComponent } from '@vue/composition-api';
 /* Components */
 import VinDecoder from '~/components/VinDecoder/VinDecoder.vue';
+import VinHistory from '@/components/VinDecoder/VinHistory/VinHistory.vue';
 
 export default defineComponent({
   components: {
-    VinDecoder
+    VinDecoder,
+    VinHistory
   }
 });
 </script>
@@ -14,6 +16,7 @@ export default defineComponent({
   <v-layout column justify-center align-center>
     <v-content>
       <vin-decoder />
+      <vin-history />
     </v-content>
   </v-layout>
 </template>
