@@ -6,7 +6,7 @@ import { getHistoryItemIndex } from '~/compositions/history';
 import { Validator } from '@/types';
 import { TypedVuexStore } from '@/store';
 
-type Refs = {
+export type Refs = {
   alertMessage: Ref<string | null>;
   loading: Ref<boolean>;
   rawResults: Ref<object | null>;
@@ -15,7 +15,7 @@ type Refs = {
 };
 
 /* config for VIN input field's validation-provider */
-const validator: Validator = {
+export const validator: Validator = {
   rules: { required: true, vin: true },
   immediate: false,
   vid: 'vin-input-validator',
@@ -25,7 +25,7 @@ const validator: Validator = {
   }
 };
 
-const setupRefs = (): Refs => ({
+export const setupRefs = (): Refs => ({
   alertMessage: ref(null),
   loading: ref(false),
   rawResults: ref(null),
@@ -33,7 +33,7 @@ const setupRefs = (): Refs => ({
   vin: ref(null)
 });
 
-const handleError = (err: Error, refs: Refs): void => {
+export const handleError = (err: Error, refs: Refs): void => {
   const errMsg =
     'Oops! It seems an error occurred when fetching data from the API';
   refs.rawResults.value = null;
@@ -43,7 +43,7 @@ const handleError = (err: Error, refs: Refs): void => {
   console.error(`${errMsg}`, err);
 };
 
-const fetchResults = async (vinValue: string) => {
+export const fetchResults = async (vinValue: string) => {
   /* Fetch the results and handle any errors */
   const { DecodeVinValuesExtended } = await import(
     '@shaggytools/nhtsa-api-wrapper'
