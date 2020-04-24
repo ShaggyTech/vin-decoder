@@ -26,7 +26,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <validation-observer v-slot="{ invalid }">
+  <validation-observer v-slot="{ invalid }" slim>
     <v-card elevation="8" max-width="600" class="decoder-card mx-auto">
       <v-alert
         :value="alertMessage !== null"
@@ -55,7 +55,7 @@ export default defineComponent({
           @input="rawResults = null"
         />
       </v-card-text>
-      <v-card-actions>
+      <v-card-actions class="decoder-card__actions">
         <v-btn
           class="btn__get-results mx-auto my-4"
           color="success"
@@ -67,6 +67,7 @@ export default defineComponent({
         </v-btn>
       </v-card-actions>
       <vin-results
+        class="decoder-card__results"
         :raw-results.sync="rawResults"
         :loading.sync="loading"
         max-width="600"
