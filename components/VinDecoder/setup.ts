@@ -1,5 +1,8 @@
 /* Composition API */
 import { ref, Ref } from '@vue/composition-api';
+/* Utilities */
+import { fetchDecodeVinResults } from '@/utils/fetchDecodeVinResults';
+import { handleError } from '@/utils/handleError';
 /* Compositions */
 import { getHistoryItemIndex } from '~/compositions/history';
 /* Types */
@@ -33,28 +36,6 @@ export const setupRefs = (): Refs => ({
   vin: ref(null)
 });
 
-export const handleError = (err: Error, refs: Refs): void => {
-  const errMsg =
-    'Oops! It seems an error occurred when fetching data from the API';
-  refs.rawResults.value = null;
-  refs.alertMessage.value = errMsg;
-  refs.loading.value = false;
-  // eslint-disable-next-line no-console
-  console.error(`${errMsg}`, err);
-};
-
-export const fetchResults = async (vinValue: string) => {
-  /* Fetch the results and handle any errors */
-  const { DecodeVinValuesExtended } = await import(
-    '@shaggytools/nhtsa-api-wrapper'
-  );
-  const Decoder = new DecodeVinValuesExtended();
-
-  return Decoder.DecodeVinValuesExtended(vinValue).catch(
-    (err: Error): Error => err
-  );
-};
-
 export const initializeComponent = (store: TypedVuexStore) => {
   /* All refs necessary for this component */
   const refs = { ...setupRefs() };
@@ -80,11 +61,18 @@ export const initializeComponent = (store: TypedVuexStore) => {
     }
 
     /* Fetch the results using the nhtsa-api-wrapper */
-    const response = await fetchResults(vinValue);
+    const response = await fetchDecodeVinResults(vinValue);
 
     /* Handle any errors */
     if (response instanceof Error || !response?.Results?.[0]) {
-      return handleError(response as Error, refs);
+      const errMsg =
+        'Oops! It seems an error occurred when fetching data from the API';
+
+      refs.rawResults.value = null;
+      refs.alertMessage.value = errMsg;
+      refs.loading.value = false;
+
+      return handleError(response as Error, errMsg);
     }
 
     /* Extract and distribute the results */
