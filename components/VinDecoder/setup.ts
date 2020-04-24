@@ -15,7 +15,7 @@ export type Refs = {
 };
 
 /* config for VIN input field's validation-provider */
-export const validator: Validator = {
+export const VALIDATOR: Validator = {
   rules: { required: true, vin: true },
   immediate: false,
   vid: 'vin-input-validator',
@@ -29,7 +29,7 @@ export const setupRefs = (): Refs => ({
   alertMessage: ref(null),
   loading: ref(false),
   rawResults: ref(null),
-  validator: ref(validator),
+  validator: ref(VALIDATOR),
   vin: ref(null)
 });
 
