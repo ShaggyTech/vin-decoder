@@ -69,10 +69,10 @@ describe('VinDecoder Component Tests', () => {
   test('vin Ref syncs with input value', async () => {
     const wrapper = factory();
 
-    wrapper.find('#VinDecoderInput').setValue('testing value');
+    wrapper.find('#VinDecoderInput').setValue(VALID_VIN);
 
     await wrapper.vm.$nextTick();
-    expect(wrapper.vm.$data.vin).toBe('testing value');
+    expect(wrapper.vm.$data.vin).toBe(VALID_VIN);
   });
 
   test('submission button is clickable with valid VIN input', async () => {
