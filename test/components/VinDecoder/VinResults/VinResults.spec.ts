@@ -55,7 +55,7 @@ describe('VinResults Component Tests', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-  test('given rawResults, nullish or non-applicable values are not inlcuded in the results object ref', async () => {
+  test('given rawResults, nullish or non-applicable values are filtered out of the results object ref', async () => {
     const wrapper = factory({
       sync: false,
       propsData: {
