@@ -4,7 +4,7 @@ import { ref, Ref } from '@vue/composition-api';
 import { fetchDecodeVinResults } from '@/utils/fetchDecodeVinResults';
 import { handleError } from '@/utils/handleError';
 /* Compositions */
-import { getHistoryItemIndex } from '~/compositions/history';
+import { getHistoryItemIndex } from '~/compositions/useHistoryStore';
 /* Types */
 import { DecodeVinValuesExtendedResults, Validator } from '@/types';
 import { TypedVuexStore } from '@/store';
