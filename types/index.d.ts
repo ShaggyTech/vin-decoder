@@ -1,3 +1,4 @@
+import { ActionTypes } from '@shaggytools/nhtsa-api-wrapper';
 import { TypedVuexStore } from '~/store';
 
 declare module 'vue/types/vue' {
@@ -18,6 +19,9 @@ export interface User {
 }
 
 export type ResultsObjectType = { [propName: string]: any };
+
+export type DecodeVinValuesExtendedResponse = ActionTypes.DecodeVinValuesExtendedResponse;
+export type DecodeVinValuesExtendedResults = ActionTypes.DecodeVinValuesExtendedResults;
 
 export interface Validator {
   rules: {
