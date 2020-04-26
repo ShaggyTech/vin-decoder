@@ -6,7 +6,7 @@ import { handleError } from '@/utils/handleError';
 /* Compositions */
 import { getHistoryItemIndex } from '~/compositions/history';
 /* Types */
-import { Validator } from '@/types';
+import { DecodeVinValuesExtendedResults, Validator } from '@/types';
 import { TypedVuexStore } from '@/store';
 
 export type Refs = {
@@ -61,10 +61,12 @@ export const initializeComponent = (store: TypedVuexStore) => {
     }
 
     /* Fetch the results using the nhtsa-api-wrapper */
-    const response = await fetchDecodeVinResults(vinValue);
+    const results: DecodeVinValuesExtendedResults = await fetchDecodeVinResults(
+      vinValue
+    ).catch(err => err);
 
     /* Handle any errors */
-    if (response instanceof Error || !response?.Results?.[0]) {
+    if (results instanceof Error) {
       const errMsg =
         'Oops! It seems an error occurred when fetching data from the API';
 
@@ -72,11 +74,10 @@ export const initializeComponent = (store: TypedVuexStore) => {
       refs.alertMessage.value = errMsg;
       refs.loading.value = false;
 
-      return handleError(response as Error, errMsg);
+      return handleError(results as Error, errMsg);
     }
 
     /* Extract and distribute the results */
-    const results = response.Results[0];
     refs.rawResults.value = { ...results };
     store.history.addHistoryItem({
       VIN: results.VIN,
