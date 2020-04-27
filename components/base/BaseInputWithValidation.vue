@@ -42,49 +42,7 @@ export default defineComponent({
     v-slot="{ errors, validated }"
     v-bind="validator"
   >
-    <v-checkbox
-      v-if="$attrs.type === 'checkbox'"
-      v-model="value"
-      v-bind="$attrs"
-      :success="validated"
-      :error-messages="errors"
-      v-on="$listeners"
-    />
-    <v-slider
-      v-else-if="$attrs.type === 'slider'"
-      v-model="value"
-      v-bind="{ ...$attrs, type: 'text' }"
-      :success="validated"
-      :error-messages="errors"
-      v-on="$listeners"
-    />
-    <v-textarea
-      v-else-if="$attrs.type === 'textarea'"
-      v-model="value"
-      v-bind="{ ...$attrs, type: 'text' }"
-      :success="validated"
-      :error-messages="errors"
-      v-on="$listeners"
-    />
-    <v-select
-      v-else-if="$attrs.type === 'select'"
-      v-model="value"
-      v-bind="{ ...$attrs, type: 'text' }"
-      :success="validator.rules && validated"
-      :error-messages="errors"
-      v-on="$listeners"
-    />
-    <v-switch
-      v-else-if="$attrs.type === 'switch'"
-      v-model="value"
-      v-bind="{ ...$attrs, type: 'text' }"
-      :success="validator.rules && validated"
-      :error-messages="errors"
-      v-on="$listeners"
-    />
-    <!-- Default -->
     <v-text-field
-      v-else
       v-model="value"
       v-bind="$attrs"
       :success="validated"

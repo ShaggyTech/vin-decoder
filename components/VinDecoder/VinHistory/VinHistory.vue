@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { historySetup } from '@/compositions/history';
+import { historySetup } from '@/compositions/useHistoryStore';
 /* Components */
 import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
 

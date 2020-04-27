@@ -6,7 +6,7 @@ import {
   onErrorCaptured
 } from '@vue/composition-api';
 /* History Setup */
-import { syncHistoryOnMounted } from '@/compositions/history';
+import { syncHistoryOnMounted } from '@/compositions/useHistoryStore';
 /* Types */
 import { TypedVuexStore } from '@/store';
 
