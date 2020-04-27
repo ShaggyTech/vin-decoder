@@ -1,8 +1,6 @@
-// import flushPromises from 'flush-promises';
-
 import { shallowMount } from '@vue/test-utils';
 
-import { mockRawResults } from '../../../__mocks__/mockDecodeVinValuesExtendedResults';
+import { mockRawResults } from '@/test/__mocks__/mockDecodeVinValuesExtendedResults';
 import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
 
 const factory = (options: object) => {
