@@ -24,7 +24,7 @@ const fetchDecodeVinResults = async (
 
     return Results[0];
   } catch (err) {
-    return err;
+    return Promise.reject(err);
   }
 };
 
