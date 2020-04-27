@@ -41,9 +41,11 @@ export const initializeComponent = (store: TypedVuexStore) => {
   const refs = { ...setupRefs() };
 
   /* Method called when a valid VIN is submitted */
-  const getResults = async (vinValue: string | null): Promise<void> => {
+  const getResults = async (
+    vinValue: string | null
+  ): Promise<DecodeVinValuesExtendedResults | void> => {
     /* Runtime type check */
-    if (typeof vinValue !== 'string') {
+    if (!vinValue || typeof vinValue !== 'string') {
       return;
     }
 
@@ -57,7 +59,9 @@ export const initializeComponent = (store: TypedVuexStore) => {
     if (historyIndex >= 0) {
       refs.loading.value = false;
       refs.rawResults.value = { ...historyArray[historyIndex].results };
-      return;
+      return {
+        ...historyArray[historyIndex].results
+      };
     }
 
     /* Fetch the results using the nhtsa-api-wrapper */
@@ -86,6 +90,7 @@ export const initializeComponent = (store: TypedVuexStore) => {
 
     /* Cleanup */
     refs.loading.value = false;
+    return results;
   };
 
   return {
