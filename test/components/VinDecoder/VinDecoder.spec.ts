@@ -19,56 +19,46 @@ const factory = (options: { [propName: string]: any } = {}) => {
 };
 
 describe('VinDecoder Component Tests', () => {
+  let wrapper: ReturnType<typeof factory>;
+
+  beforeEach(() => (wrapper = factory()));
+
   test('base component state, matches snapshot', () => {
-    const wrapper = factory();
     expect(wrapper.element).toMatchSnapshot();
   });
 
   test('base component state, submission button is disabled', () => {
-    const wrapper = factory();
     expect(wrapper.find('.btn__get-results').attributes().disabled).toEqual(
       'disabled'
     );
   });
 
-  test('alertMessage Ref exists and has default value of `null`', async () => {
-    const wrapper = factory();
-    await wrapper.vm.$nextTick();
+  test('alertMessage Ref exists and has default value of `null`', () => {
     expect(wrapper.vm.$data.alertMessage).toBeDefined();
     expect(wrapper.vm.$data.alertMessage).toBe(null);
   });
 
-  test('loading Ref exists and has default value of `false`', async () => {
-    const wrapper = factory();
-    await wrapper.vm.$nextTick();
+  test('loading Ref exists and has default value of `false`', () => {
     expect(wrapper.vm.$data.loading).toBeDefined();
     expect(wrapper.vm.$data.loading).toBe(false);
   });
 
-  test('rawResults Ref exists and has default value of `null`', async () => {
-    const wrapper = factory();
-    await wrapper.vm.$nextTick();
+  test('rawResults Ref exists and has default value of `null`', () => {
     expect(wrapper.vm.$data.rawResults).toBeDefined();
     expect(wrapper.vm.$data.rawResults).toBe(null);
   });
 
-  test('validator Ref exists and has default value equal to `VALIDATOR` constant', async () => {
-    const wrapper = factory();
-    await wrapper.vm.$nextTick();
+  test('validator Ref exists and has default value equal to `VALIDATOR` constant', () => {
     expect(wrapper.vm.$data.validator).toBeDefined();
     expect(wrapper.vm.$data.validator).toEqual(VALIDATOR);
   });
 
-  test('vin Ref exists and has default value of `null`', async () => {
-    const wrapper = factory();
-    await wrapper.vm.$nextTick();
+  test('vin Ref exists and has default value of `null`', () => {
     expect(wrapper.vm.$data.vin).toBeDefined();
     expect(wrapper.vm.$data.vin).toBe(null);
   });
 
   test('vin Ref syncs with input value', async () => {
-    const wrapper = factory();
-
     wrapper.find('#VinDecoderInput').setValue(VALID_VIN);
 
     await wrapper.vm.$nextTick();
@@ -76,8 +66,6 @@ describe('VinDecoder Component Tests', () => {
   });
 
   test('submission button is clickable with valid VIN input', async () => {
-    const wrapper = factory();
-
     wrapper.find('#VinDecoderInput').setValue(VALID_VIN);
 
     await wrapper.vm.$nextTick();
@@ -88,8 +76,6 @@ describe('VinDecoder Component Tests', () => {
   });
 
   test('an alert is shown if there is an error (while getting results)', async () => {
-    const wrapper = factory();
-
     const alertElement = wrapper.find('.decoder-card__alert');
     const alertMessageText = 'Oops! Something went wrong.';
 
