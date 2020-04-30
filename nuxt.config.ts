@@ -52,30 +52,7 @@ const config: Configuration = {
    ** https://github.com/nuxt-community/vuetify-module
    */
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: true,
-      themes: {
-        dark: {
-          primary: '#21CFF3',
-          accent: '#FF4081',
-          secondary: '#FFE18D',
-          success: '#4CAF50',
-          info: '#2196F3',
-          warning: '#FB8C00',
-          error: '#FF5252'
-        },
-        light: {
-          primary: '#1976D2',
-          accent: '#e91e63',
-          secondary: '#30b1dc',
-          success: '#4CAF50',
-          info: '#2196F3',
-          warning: '#FB8C00',
-          error: '#FF5252'
-        }
-      }
-    }
+    optionsPath: '@/plugins/vuetify.ts'
   },
   /*
    ** Build configuration

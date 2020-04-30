@@ -1,57 +1,32 @@
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  computed,
-  onErrorCaptured
-} from '@vue/composition-api';
+import { defineComponent, ref, onErrorCaptured } from '@vue/composition-api';
+/* Root store setup */
+import { mapRootState, mapRootActions } from '@/compositions/useRootStore';
 /* History Setup */
-import { syncHistoryOnMounted } from '@/compositions/useHistoryStore';
-/* Types */
-import { TypedVuexStore } from '@/store';
+import { syncHistoryOnMounted } from '@/compositions/useLocalStorage';
 
 const setupRefs = () => ({
   right: ref<boolean>(true),
   title: ref<string>('ShaggyTech.com - VIN Decoder')
 });
 
-const mapState = (store: TypedVuexStore) => ({
-  drawerItems: computed(() => [...store.drawerItems]),
-  drawer: computed({
-    get: () => store.drawer,
-    set: (drawer: boolean) => store.setDrawer(drawer)
-  }),
-  rightDrawer: computed({
-    get: () => store.rightDrawer,
-    set: (rightDrawer: boolean) => store.setRightDrawer(rightDrawer)
-  })
-});
-
-const mapActions = (store: TypedVuexStore) => ({
-  toggleDrawer: (drawer: boolean) => {
-    return store.setDrawer(!drawer);
-  },
-  toggleRightDrawer: (rightDrawer: boolean) => {
-    return store.setRightDrawer(!rightDrawer);
-  }
-});
-
 export default defineComponent({
   setup(_, { root: { $accessor } }) {
     syncHistoryOnMounted($accessor);
 
-    onErrorCaptured((err: Error, _vm: object, info: string) => {
+    /* istanbul ignore next */
+    onErrorCaptured((err: Error, _vm: object, info: string): boolean => {
       // eslint-disable-next-line no-console
-      console.log('Parent: ' + err.toString());
+      console.error('Oops! An error occurred: ' + err.toString());
       // eslint-disable-next-line no-console
-      console.log('info: ' + info);
+      console.error('info: ' + info);
       return false;
     });
 
     return {
       ...setupRefs(),
-      ...mapState($accessor),
-      ...mapActions($accessor)
+      ...mapRootState($accessor),
+      ...mapRootActions($accessor)
     };
   }
 });

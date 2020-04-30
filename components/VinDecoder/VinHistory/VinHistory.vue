@@ -1,6 +1,9 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { historySetup } from '@/compositions/useHistoryStore';
+import {
+  mapHistoryState,
+  mapHistoryActions
+} from '@/compositions/useHistoryStore';
 /* Components */
 import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
 
@@ -9,7 +12,10 @@ export default defineComponent({
   components: { VinResults },
 
   setup(_, { root: { $accessor } }) {
-    const { history, clearHistory } = historySetup($accessor);
+    /* Computed history store properties */
+    const { history } = mapHistoryState($accessor);
+    /* Methods to interact with history store module */
+    const { clearHistory } = mapHistoryActions($accessor);
 
     return {
       history,

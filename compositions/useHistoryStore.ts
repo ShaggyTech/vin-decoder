@@ -1,44 +1,17 @@
 /* Composition API */
-import { onMounted, computed } from '@vue/composition-api';
+import { computed } from '@vue/composition-api';
 /* Types */
 import { TypedVuexStore } from '@/store';
 import { HistoryItem } from '@/store/history';
 
-const getLocalStorageHistory = () => {
-  let storage: boolean | string = false;
-  try {
-    storage = localStorage.getItem('history') || false;
-    if (storage) {
-      storage = JSON.parse(storage) || false;
-    }
-    // eslint-disable-next-line no-empty
-  } catch (e) {}
-
-  return storage || {};
-};
-
-/* Returns the index if the given history item exists, or -1 if it does not exist */
-export const getHistoryItemIndex = (
-  vinValue: string,
-  history: HistoryItem[]
-): number => {
-  const isExistingItem = (historyItem: HistoryItem) => {
-    return vinValue === historyItem.VIN;
-  };
-  return history.findIndex(isExistingItem);
-};
-
-export const syncHistoryOnMounted = (store: TypedVuexStore): void => {
-  onMounted(() => {
-    const localHistory = getLocalStorageHistory();
-    store.history.INITIALIZE_HISTORY_STORE(localHistory);
-  });
-};
-
-export const historySetup = (store: TypedVuexStore) => ({
+/* Component compition refs */
+export const mapHistoryState = (store: TypedVuexStore) => ({
   /* History Array */
-  history: computed(() => [...store.history.history]),
+  history: computed(() => [...store.history.history])
+});
 
+/* Component methods mapped to history store actions */
+export const mapHistoryActions = (store: TypedVuexStore) => ({
   addHistoryItem: (item: HistoryItem): void => {
     store.history.addHistoryItem(item);
   },

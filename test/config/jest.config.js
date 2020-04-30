@@ -9,6 +9,7 @@ module.exports = {
     '<rootDir>/store/**/*.(ts|js)',
     '<rootDir>/utils/**/*.(ts|js)'
   ],
+  coveragePathIgnorePatterns: ['<rootDir>/store/plugins/'],
   coverageDirectory: '<rootDir>/coverage',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
