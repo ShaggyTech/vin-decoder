@@ -7,7 +7,7 @@ import {
 import { mockRawResults } from '@/test/__mocks__/mockDecodeVinValuesExtendedResults';
 /* Types */
 import { HistoryItem } from '@/store/history';
-import { TypedVuexStore } from '~/store';
+import { TypedVuexStore } from '@/store';
 import { DecodeVinValuesExtendedResults } from '@/types';
 
 const MOCK_ITEM: HistoryItem = {

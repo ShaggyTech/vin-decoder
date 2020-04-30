@@ -1,5 +1,5 @@
 import { ActionTypes } from '@shaggytools/nhtsa-api-wrapper';
-import { TypedVuexStore } from '~/store';
+import { TypedVuexStore } from '@/store';
 
 declare module 'vue/types/vue' {
   interface Vue {

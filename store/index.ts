@@ -6,9 +6,9 @@ import {
   actionTree
 } from 'typed-vuex';
 /* Vuex Plugins */
-import { syncLocalStorage } from './plugins/syncLocalStorage';
+import { syncLocalStorage } from '@/store/plugins/syncLocalStorage';
 // Import all your store submodules
-import * as history from '~/store/history';
+import * as history from '@/store/history';
 
 /* Plugins */
 export const plugins = [syncLocalStorage];
