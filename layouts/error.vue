@@ -1,3 +1,41 @@
+<script lang="ts">
+import { defineComponent, ref, PropType } from '@vue/composition-api';
+
+const getRefs = () => ({
+  pageNotFound: ref<string>('Oops! That page was not found.'),
+  otherError: ref<string>('An error occurred')
+});
+
+export default defineComponent({
+  layout: 'default',
+  props: {
+    error: {
+      type: Object as PropType<any>,
+      default: null
+    }
+  },
+  /* istanbul ignore next */
+  head() {
+    const statusCode = (this as any).$props.error?.statusCode;
+    const { pageNotFound, otherError } = getRefs();
+    const title: string =
+      statusCode === 404 ? pageNotFound.value : otherError.value;
+
+    return {
+      title
+    };
+  },
+  setup() {
+    const { pageNotFound, otherError } = getRefs();
+
+    return {
+      pageNotFound,
+      otherError
+    };
+  }
+});
+</script>
+
 <template>
   <v-app dark>
     <h1 v-if="error.statusCode === 404">
@@ -7,35 +45,10 @@
       {{ otherError }}
     </h1>
     <NuxtLink to="/">
-      Home page
+      To Home Page
     </NuxtLink>
   </v-app>
 </template>
-
-<script>
-export default {
-  layout: 'empty',
-  props: {
-    error: {
-      type: Object,
-      default: null
-    }
-  },
-  data() {
-    return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
-    };
-  },
-  head() {
-    const title =
-      this.error.statusCode === 404 ? this.pageNotFound : this.otherError;
-    return {
-      title
-    };
-  }
-};
-</script>
 
 <style scoped>
 h1 {

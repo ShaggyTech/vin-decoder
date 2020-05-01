@@ -1,7 +1,7 @@
 import { isRef } from '@vue/composition-api';
 import { mapRootState, mapRootActions } from '@/compositions/useRootStore';
 /* Types */
-import { TypedVuexStore } from '~/store';
+import { TypedVuexStore } from '@/store';
 
 const mockDrawerItems = [
   {

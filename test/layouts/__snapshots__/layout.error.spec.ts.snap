@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layouts - error component matches snapshot 1`] = `
+<div
+  class="v-application v-application--is-ltr theme--dark"
+  data-app="true"
+  id="app"
+>
+  <div
+    class="v-application--wrap"
+  >
+    <h1>
+      
+    An error occurred
+  
+    </h1>
+     
+    <nuxtlink-stub
+      to="/"
+    >
+      
+    To Home Page
+  
+    </nuxtlink-stub>
+  </div>
+</div>
+`;

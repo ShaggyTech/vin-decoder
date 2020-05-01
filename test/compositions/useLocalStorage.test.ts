@@ -4,7 +4,7 @@ import { syncHistoryOnMounted } from '@/compositions/useLocalStorage';
 import { mockRawResults } from '@/test/__mocks__/mockDecodeVinValuesExtendedResults';
 /* Types */
 import { DecodeVinValuesExtendedResults } from '@/types';
-import { TypedVuexStore } from '~/store';
+import { TypedVuexStore } from '@/store';
 import { HistoryItem } from '@/store/history';
 
 const MOCK_ITEM: HistoryItem = {

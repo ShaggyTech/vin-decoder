@@ -1,4 +1,4 @@
-import { mockRawResults } from '../__mocks__/mockDecodeVinValuesExtendedResults';
+import { mockRawResults } from '@/test/__mocks__/mockDecodeVinValuesExtendedResults';
 import { fetchDecodeVinResults } from '@/utils/fetchDecodeVinResults';
 import { DecodeVinValuesExtendedResults } from '@/types';
 
