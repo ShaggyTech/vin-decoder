@@ -1,10 +1,10 @@
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  PropType,
-  getCurrentInstance
-} from '@vue/composition-api';
+import { defineComponent, ref, PropType } from '@vue/composition-api';
+
+const getRefs = () => ({
+  pageNotFound: ref<string>('Oops! That page was not found.'),
+  otherError: ref<string>('An error occurred')
+});
 
 export default defineComponent({
   layout: 'default',
@@ -14,19 +14,19 @@ export default defineComponent({
       default: null
     }
   },
+  /* istanbul ignore next */
   head() {
-    const data = getCurrentInstance()?.$data;
-    console.log('DATA', { instanceData: data });
+    const statusCode = (this as any).$props.error?.statusCode;
+    const { pageNotFound, otherError } = getRefs();
     const title: string =
-      data?.error.statusCode === 404 ? data?.pageNotFound : data?.otherError;
+      statusCode === 404 ? pageNotFound.value : otherError.value;
 
     return {
       title
     };
   },
   setup() {
-    const pageNotFound = ref<string>('Oops! That page was not found.');
-    const otherError = ref<string>('An error occurred');
+    const { pageNotFound, otherError } = getRefs();
 
     return {
       pageNotFound,
@@ -45,7 +45,7 @@ export default defineComponent({
       {{ otherError }}
     </h1>
     <NuxtLink to="/">
-      Home page
+      To Home Page
     </NuxtLink>
   </v-app>
 </template>
