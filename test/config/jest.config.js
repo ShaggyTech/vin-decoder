@@ -28,7 +28,11 @@ module.exports = {
     'vee-validate/dist/rules': require.resolve('babel-jest')
   },
   transformIgnorePatterns: [
-    '<rootDir>/node_modules/(?!vee-validate/dist/rules)'
+    '<rootDir>/node_modules/(?!(' +
+      'vee-validate/dist/rules' +
+      '|nuxt-typed-vuex/lib' +
+      '|typed-vuex/lib' +
+      '))'
   ],
   watchPathIgnorePatterns: [
     '<rootDir>/node_modules/',
