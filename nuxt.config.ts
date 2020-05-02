@@ -47,6 +47,12 @@ const config: Configuration = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  // Runtime type checking when running nuxt build
+  typescript: {
+    typeCheck: {
+      eslint: true
+    }
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
