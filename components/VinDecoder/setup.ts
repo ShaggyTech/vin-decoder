@@ -67,7 +67,7 @@ export const initializeComponent = (store: TypedVuexStore) => {
     /* Fetch the results using the nhtsa-api-wrapper */
     const results: DecodeVinValuesExtendedResults = await fetchDecodeVinResults(
       vinValue
-    ).catch(err => err);
+    ).catch((err) => err);
 
     /* Handle any errors */
     if (results instanceof Error) {

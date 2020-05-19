@@ -43,7 +43,7 @@ describe('VinResults Component Tests', () => {
     const titleItems = { Make, Model, ModelYear };
 
     const titleText = wrapper.find('.results-card__title').text();
-    Object.keys(titleItems).forEach(key =>
+    Object.keys(titleItems).forEach((key) =>
       expect(titleText).toContain(titleItems[key])
     );
 

@@ -21,7 +21,7 @@ const useMockStore = (history: Array<any>): unknown => {
   return {
     history: {
       history: (() => history_)(),
-      addHistoryItem: jest.fn().mockImplementation(item => {
+      addHistoryItem: jest.fn().mockImplementation((item) => {
         history_.unshift(item);
       })
     }

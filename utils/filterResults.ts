@@ -8,7 +8,7 @@ import { ResultsObjectType } from '@/types';
 const filterResults = (results: ResultsObjectType = {}): ResultsObjectType => {
   // eslint-disable-next-line prefer-const
   let filteredResults = {};
-  Object.keys(results).forEach(prop => {
+  Object.keys(results).forEach((prop) => {
     if (results[prop] && results[prop] !== 'Not Applicable') {
       filteredResults[prop] = results[prop];
     }
