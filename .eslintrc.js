@@ -13,17 +13,15 @@ module.exports = {
     'plugin:nuxt/recommended',
     '@nuxtjs/eslint-config-typescript'
   ],
-  plugins: [
-    'prettier'
-  ],
+  plugins: ['prettier'],
   // add your custom rules here
   rules: {
     /*****************
      * ESLint Rules
      ****************/
-    'semi': 0,
+    semi: 0,
     'space-before-function-paren': 0,
-    'arrow-parens': 0,
+    'arrow-parens': ['error', 'always'],
     /*****************
      * Vue Rules
      ****************/
@@ -34,6 +32,6 @@ module.exports = {
     /*****************
      * Nuxt Rules
      ****************/
-    'nuxt/no-cjs-in-config': 0,
+    'nuxt/no-cjs-in-config': 0
   }
-}
+};
