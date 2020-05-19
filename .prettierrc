@@ -1,4 +1,6 @@
 {
   "singleQuote": true,
-  "endOfLine":"auto"
+  "endOfLine":"auto",
+  "trailingComma": "none",
+  "arrowParens": "always"
 }

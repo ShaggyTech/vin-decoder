@@ -12,7 +12,7 @@ const config: Configuration = {
   dev: isDev,
   ...routerBase,
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
+    titleTemplate: '%s - ',
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
@@ -47,6 +47,12 @@ const config: Configuration = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  // Runtime type checking when running nuxt build
+  typescript: {
+    typeCheck: {
+      eslint: true
+    }
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

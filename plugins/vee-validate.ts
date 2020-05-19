@@ -13,7 +13,7 @@ export const rules = () => {
   /* Custom Rules */
   extend('vin', {
     message: 'That is not a valid VIN.',
-    validate: value => {
+    validate: (value) => {
       return isValidVin(value);
     }
   });

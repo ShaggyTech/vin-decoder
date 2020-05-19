@@ -38,7 +38,7 @@ export const state = () => ({ ...getDefaultState() });
 export type RootState = ReturnType<typeof state>;
 
 export const getters = getterTree(state, {
-  message: state => `The count is: ${state.counter}!`
+  message: (state) => `The count is: ${state.counter}!`
 });
 
 export const mutations = mutationTree(state, {

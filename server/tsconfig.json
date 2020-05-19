@@ -2,6 +2,9 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "nuxt-edge": ["../types/nuxt-shim"]
+    }
   }
 }
