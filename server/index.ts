@@ -2,11 +2,12 @@ export { NuxtServer } from './NuxtServer';
 
 export const PORT = 3000;
 
-export const FOLDER_NAMES = `
+export const WATCH_FOLDERS = `
   assets
   |components
   |compositions
   |layouts
+  |middleware
   |pages
   |plugins
   |server
@@ -15,5 +16,6 @@ export const FOLDER_NAMES = `
   |types
   |utils
 `;
-export const FILE_EXTENSIONS = 'js,ts,jsx,vue';
-export const WATCH_GLOB = `./+(${FOLDER_NAMES})/**/*.{${FILE_EXTENSIONS}}`;
+export const WATCH_EXTENSIONS = 'js,ts,jsx,vue';
+
+export const WATCH_GLOB = `./+(${WATCH_FOLDERS})/**/*.{${WATCH_EXTENSIONS}}`;
