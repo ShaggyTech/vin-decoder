@@ -22,16 +22,18 @@ export class NuxtServer {
     this.started = false;
   }
 
+  // If you prefer to use Nodemon or another custom watch script:
+  // In your custom script, after instantiating a new NuxtServer,
+  // you can call this.buildNuxt() to rebuild the app every time watched files are changed.
   async buildNuxt() {
     await this.nuxt.ready();
-
     const builder = new Builder(this.nuxt);
     await builder.build();
   }
 
   async start() {
-    // Build once in production and every time in dev mode if this.start() is called
-    if (!this.started || config.dev) {
+    // If dev mode, build a fresh app
+    if (config.dev) {
       await this.buildNuxt();
     }
 
