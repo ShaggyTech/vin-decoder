@@ -3,17 +3,18 @@ import consola from 'consola';
 import { NuxtServer, WATCH_GLOB } from '.';
 
 const server = new NuxtServer();
+const watcher = chokidar.watch([WATCH_GLOB], {
+  ignoreInitial: true
+});
+
+const startMessage = `Starting Nuxt HMR dev server on http://${server.host}:${server.port}`;
 
 consola.start({
-  message: `Starting Nuxt HMR dev server on http://${server.host}:${server.port}`,
+  message: startMessage,
   badge: true
 });
 server.start();
 
-chokidar
-  .watch([WATCH_GLOB], {
-    ignoreInitial: true
-  })
-  .on('change', () => {
-    server.buildNuxt();
-  });
+watcher.on('change', () => {
+  server.buildNuxt();
+});

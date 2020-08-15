@@ -73,7 +73,6 @@
     "flush-promises": "latest",
     "jest": "latest",
     "jest-serializer-vue": "latest",
-    "latest": "^0.2.0",
     "prettier": "latest",
     "ts-jest": "latest",
     "vue-jest": "latest"

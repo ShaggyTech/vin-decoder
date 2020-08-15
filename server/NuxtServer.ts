@@ -1,15 +1,14 @@
-import express from 'express';
+import express, { Express } from 'express';
 import consola from 'consola';
-
 import { Nuxt, Builder } from 'nuxt-edge';
 
 import config from '../nuxt.config';
 import { PORT } from './';
 
 export class NuxtServer {
-  app: any;
-  host: any;
-  nuxt: any;
+  app: Express;
+  host: string;
+  nuxt: typeof Nuxt;
   port: number;
   started: boolean;
 
@@ -24,14 +23,13 @@ export class NuxtServer {
   }
 
   async buildNuxt() {
-    // await this.nuxt.ready();
+    await this.nuxt.ready();
+
     const builder = new Builder(this.nuxt);
     await builder.build();
   }
 
   async start() {
-    await this.nuxt.ready();
-
     // Build once in production and every time in dev mode if this.start() is called
     if (!this.started || config.dev) {
       await this.buildNuxt();
