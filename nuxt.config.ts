@@ -9,6 +9,8 @@ const routerBase =
 
 const config: Configuration = {
   mode: 'universal',
+  target: 'server',
+  telemetry: false,
   dev: isDev,
   ...routerBase,
 
@@ -32,7 +34,7 @@ const config: Configuration = {
   },
   loading: { color: '#fff' },
   css: [],
-  plugins: ['@/plugins/composition-api.ts', '@/plugins/vee-validate.ts'],
+  plugins: ['~/plugins/composition-api.ts', '~/plugins/vee-validate.ts'],
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
@@ -43,11 +45,13 @@ const config: Configuration = {
   // Runtime type checking when running nuxt build
   typescript: {
     typeCheck: {
-      eslint: true
+      eslint: {
+        files: './**/*.{ts,js,vue}'
+      }
     }
   },
   vuetify: {
-    optionsPath: '@/plugins/vuetify.ts'
+    optionsPath: '~/plugins/vuetify.ts'
   },
   build: {
     transpile: [
