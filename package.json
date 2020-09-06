@@ -53,6 +53,7 @@
     "vee-validate": "latest"
   },
   "devDependencies": {
+    "@nuxt/types": "npm:@nuxt/types-edge",
     "@nuxt/typescript-build": "latest",
     "@nuxt/vue-app": "latest",
     "@nuxtjs/eslint-config": "latest",
