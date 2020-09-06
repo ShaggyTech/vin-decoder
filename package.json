@@ -42,7 +42,6 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "latest",
     "@nuxtjs/axios": "latest",
-    "@nuxtjs/dotenv": "latest",
     "@nuxtjs/pwa": "latest",
     "@shaggytools/nhtsa-api-wrapper": "latest",
     "@vue/composition-api": "latest",

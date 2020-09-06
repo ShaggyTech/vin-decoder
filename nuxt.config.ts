@@ -11,6 +11,11 @@ const config: Configuration = {
   mode: 'universal',
   dev: isDev,
   ...routerBase,
+
+  // https://nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
+  publicRuntimeConfig: {},
+  privateRuntimeConfig: {},
+
   head: {
     titleTemplate: '%s - ',
     title: process.env.npm_package_name || '',
@@ -29,50 +34,27 @@ const config: Configuration = {
   css: [],
   plugins: ['@/plugins/composition-api.ts', '@/plugins/vee-validate.ts'],
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
     '@nuxt/typescript-build',
     'nuxt-typed-vuex'
   ],
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
-  ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
-  axios: {},
+  modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
   // Runtime type checking when running nuxt build
   typescript: {
     typeCheck: {
       eslint: true
     }
   },
-  /*
-   ** vuetify module configuration
-   ** https://github.com/nuxt-community/vuetify-module
-   */
   vuetify: {
     optionsPath: '@/plugins/vuetify.ts'
   },
-  /*
-   ** Build configuration
-   */
   build: {
     transpile: [
       'vee-validate/dist/rules',
       'vuetify/lib/util/colors',
       '/typed-vuex/'
     ]
-    /*
-     ** You can extend webpack config here
-     */
-    // extend(config, ctx) {}
   }
 };
 
