@@ -65,7 +65,7 @@
     "babel-eslint": "latest",
     "babel-jest": "latest",
     "chokidar": "latest",
-    "consola": "^2.12.1",
+    "consola": "2.12.1",
     "eslint": "latest",
     "eslint-config-prettier": "latest",
     "eslint-plugin-nuxt": "latest",
