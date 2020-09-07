@@ -1,10 +1,10 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 
 import { mockRawResults } from '@/test/__mocks__/mockDecodeVinValuesExtendedResults';
 import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
 
 const factory = (options: object) => {
-  return shallowMount(VinResults, {
+  return mount(VinResults, {
     ...options
   });
 };
@@ -31,7 +31,7 @@ describe('VinResults Component Tests', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-  test('given rawResults, component renders the correct title and subtitle', () => {
+  test('given rawResults, component renders the correct title and subtitle', async () => {
     const wrapper = factory({
       sync: false,
       propsData: {
@@ -39,6 +39,7 @@ describe('VinResults Component Tests', () => {
       }
     });
 
+    await wrapper.vm.$nextTick();
     const { Make, Model, ModelYear, VIN } = mockRawResults;
     const titleItems = { Make, Model, ModelYear };
 
@@ -61,12 +62,37 @@ describe('VinResults Component Tests', () => {
       }
     });
 
+    await wrapper.vm.$nextTick();
+
     const { Make, Model, ModelYear, VIN } = mockRawResults;
     const validResults = { Make, Model, ModelYear, VIN };
 
-    await wrapper.vm.$nextTick();
-
     const resultsRef = wrapper.vm.$data.results;
     expect(resultsRef).toEqual(validResults);
+  });
+
+  test('watcher updates filtered results when rawResults changes', async () => {
+    const wrapper = factory({
+      sync: false
+    });
+
+    await wrapper.vm.$nextTick();
+
+    const { Make, Model, ModelYear, VIN } = mockRawResults;
+    const validResults = { Make, Model, ModelYear, VIN };
+
+    // start with empty rawResults
+    let resultsRef = wrapper.vm.$data.results;
+    expect(resultsRef).toEqual(null);
+
+    // add rawResults
+    await wrapper.setProps({ rawResults: mockRawResults });
+    resultsRef = wrapper.vm.$data.results;
+    expect(resultsRef).toEqual(validResults);
+
+    // remove rawResults
+    await wrapper.setProps({ rawResults: null });
+    resultsRef = wrapper.vm.$data.results;
+    expect(resultsRef).toEqual(null);
   });
 });

@@ -1,6 +1,12 @@
 <script lang="ts">
 /* Composition API */
-import { defineComponent, ref, watch, PropType } from '@vue/composition-api';
+import {
+  defineComponent,
+  ref,
+  watch,
+  PropType,
+  onMounted
+} from '@vue/composition-api';
 /* Utility Methods */
 import { filterResults } from '@/utils/filterResults';
 /* Types */
@@ -40,6 +46,10 @@ export default defineComponent({
   setup(props) {
     const results = ref<ResultsObjectType | null>(null);
 
+    onMounted(() => {
+      results.value = props.rawResults ? filterResults(props.rawResults) : null;
+    });
+
     watch(
       () => props.rawResults,
       (newRawResults: ResultsObjectType | null): void => {
@@ -73,9 +83,9 @@ export default defineComponent({
       :max-width="maxWidth"
       raised
     >
-      <v-card-title class="mx-auto px-2 title">
+      <v-card-title class="results-card__title mx-auto px-2 title">
         <v-divider></v-divider>
-        <span class="results-card__title mx-auto px-4">
+        <span class="mx-auto px-4">
           {{ results.ModelYear }} {{ results.Make }} {{ results.Model }}
           {{ results.Series }}
         </span>
