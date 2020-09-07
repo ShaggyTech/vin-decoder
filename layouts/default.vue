@@ -61,11 +61,9 @@ export default defineComponent({
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content class="grey lighten-1">
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-content>
+    <v-main class="grey lighten-1">
+      <nuxt />
+    </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
         <v-list-item @click.native="right = !right">
