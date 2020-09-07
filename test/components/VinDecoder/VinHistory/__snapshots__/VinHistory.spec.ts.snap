@@ -46,19 +46,27 @@ exports[`VinHistory Component Tests component is visible if history contains ite
         
         TESTVIN
       
-        <div
-          class="v-expansion-panel-header__icon"
+        <transition-stub
+          name="fade-transition"
         >
-          <i
-            aria-hidden="true"
-            class="v-icon notranslate material-icons theme--light"
+          <div
+            class="v-expansion-panel-header__icon"
           >
-            $expand
-          </i>
-        </div>
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate material-icons theme--light"
+            >
+              $expand
+            </i>
+          </div>
+        </transition-stub>
       </button>
        
-      <!---->
+      <transition-stub
+        name="expand-transition"
+      >
+        <!---->
+      </transition-stub>
     </div>
   </div>
 </div>
