@@ -2,149 +2,145 @@
 
 exports[`Pages: Home component matches snapshot 1`] = `
 <div
-  class="layout column justify-center align-center"
+  class="container column justify-center align-center"
 >
-  <main
-    class="v-content"
-    style="padding: 0px 0px 0px 0px;"
+  <div
+    class="decoder-card mx-auto v-card v-sheet theme--light elevation-8"
+    style="max-width: 600px;"
   >
     <div
-      class="v-content__wrap"
+      class="v-alert decoder-card__alert v-sheet theme--dark v-alert--dense error"
+      role="alert"
+      style="display: none;"
     >
       <div
-        class="decoder-card mx-auto v-card v-sheet theme--light elevation-8"
-        style="max-width: 600px;"
+        class="v-alert__wrapper"
       >
+        <i
+          aria-hidden="true"
+          class="v-icon notranslate v-alert__icon mdi mdi-alert theme--dark"
+        />
         <div
-          class="v-alert decoder-card__alert v-sheet theme--dark v-alert--dense error"
-          role="alert"
-          style="display: none;"
-        >
-          <div
-            class="v-alert__wrapper"
-          >
-            <i
-              aria-hidden="true"
-              class="v-icon notranslate v-alert__icon mdi mdi-alert theme--dark"
-            />
-            <div
-              class="v-alert__content"
-            >
-              
-      
-    
-            </div>
-          </div>
-        </div>
-         
-        <div
-          class="v-card__title decoder-card__title headline"
+          class="v-alert__content"
         >
           
-      VIN Decoder
+      
     
         </div>
-         
-        <div
-          class="v-card__text"
-        >
-          <p>
-            
-        Enter your VIN to decode useful information about your vehicle.
+      </div>
+    </div>
+     
+    <div
+      class="v-card__title decoder-card__title headline"
+    >
       
-          </p>
-           
-          <span
-            class="decoder-card__input"
-            id="validator"
+      VIN Decoder
+    
+    </div>
+     
+    <div
+      class="v-card__text"
+    >
+      <p>
+        Enter your VIN to decode useful information about your vehicle.
+      </p>
+       
+      <span
+        class="decoder-card__input"
+        id="validator"
+      >
+        <div
+          class="v-input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+        >
+          <div
+            class="v-input__control"
           >
             <div
-              class="v-input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+              class="v-input__slot"
             >
+              <fieldset
+                aria-hidden="true"
+              >
+                <legend
+                  style="width: 0px;"
+                >
+                  <span>
+                    ​
+                  </span>
+                </legend>
+              </fieldset>
               <div
-                class="v-input__control"
+                class="v-text-field__slot"
+              >
+                <input
+                  id="VinDecoderInput"
+                  type="text"
+                />
+              </div>
+              <div
+                class="v-input__append-inner"
               >
                 <div
-                  class="v-input__slot"
+                  class="v-input__icon v-input__icon--clear"
                 >
-                  <fieldset
-                    aria-hidden="true"
-                  >
-                    <legend
-                      style="width: 0px;"
-                    >
-                      <span>
-                        ​
-                      </span>
-                    </legend>
-                  </fieldset>
-                  <div
-                    class="v-text-field__slot"
-                  >
-                    <input
-                      id="VinDecoderInput"
-                      type="text"
-                    />
-                  </div>
-                  <div
-                    class="v-input__append-inner"
-                  >
-                    <div
-                      class="v-input__icon v-input__icon--clear"
-                    >
-                      <button
-                        aria-label="clear icon"
-                        class="v-icon notranslate v-icon--disabled v-icon--link mdi mdi-close theme--light"
-                        disabled="disabled"
-                        type="button"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="v-text-field__details"
-                >
-                  <div
-                    class="v-messages theme--light"
-                  >
-                    <div
-                      class="v-messages__wrapper"
-                    />
-                  </div>
-                  <div
-                    class="v-counter theme--light"
-                  >
-                    0 / 17
-                  </div>
+                  <button
+                    aria-label="clear icon"
+                    class="v-icon notranslate v-icon--disabled v-icon--link mdi mdi-close theme--light"
+                    disabled="disabled"
+                    type="button"
+                  />
                 </div>
               </div>
             </div>
-          </span>
-        </div>
-         
-        <div
-          class="v-card__actions decoder-card__actions"
-        >
-          <button
-            class="btn__get-results mx-auto my-4 v-btn v-btn--block v-btn--contained v-btn--disabled theme--light v-size--default"
-            disabled="disabled"
-            type="button"
-          >
-            <span
-              class="v-btn__content"
+            <div
+              class="v-text-field__details"
             >
-              
+              <div
+                class="v-messages theme--light"
+              >
+                <transition-group-stub
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+              <div
+                class="v-counter theme--light"
+              >
+                0 / 17
+              </div>
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+     
+    <div
+      class="v-card__actions decoder-card__actions"
+    >
+      <button
+        class="btn__get-results mx-auto my-4 v-btn v-btn--block v-btn--contained v-btn--disabled theme--light v-size--default"
+        disabled="disabled"
+        type="button"
+      >
+        <span
+          class="v-btn__content"
+        >
+          
         Decode VIN
       
-            </span>
-          </button>
-        </div>
-         
-        <!---->
-      </div>
-       
-      <!---->
+        </span>
+      </button>
     </div>
-  </main>
+     
+    <transition-stub
+      class="decoder-card__results"
+      name="slide-y-transition"
+    >
+      <!---->
+    </transition-stub>
+  </div>
+   
+  <!---->
 </div>
 `;

@@ -41,9 +41,7 @@ exports[`VinDecoder Component Tests base component state, matches snapshot 1`] =
     class="v-card__text"
   >
     <p>
-      
-        Enter your VIN to decode useful information about your vehicle.
-      
+      Enter your VIN to decode useful information about your vehicle.
     </p>
      
     <span
@@ -101,8 +99,10 @@ exports[`VinDecoder Component Tests base component state, matches snapshot 1`] =
             <div
               class="v-messages theme--light"
             >
-              <div
+              <transition-group-stub
                 class="v-messages__wrapper"
+                name="message-transition"
+                tag="div"
               />
             </div>
             <div

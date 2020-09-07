@@ -28,8 +28,10 @@ exports[`BaseInputWithValidation Component Tests is a Vue instance 1`] = `
         <div
           class="v-messages theme--light"
         >
-          <div
+          <transition-group-stub
             class="v-messages__wrapper"
+            name="message-transition"
+            tag="div"
           />
         </div>
       </div>
