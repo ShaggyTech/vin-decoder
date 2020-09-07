@@ -1,4 +1,3 @@
-/* Types */
 import {
   getAccessorType,
   getterTree,
