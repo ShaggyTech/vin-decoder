@@ -1,33 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VinResults Component Tests component is hidden if rawResults prop is empty 1`] = `
-<v-slide-y-transition-stub
-  hideonleave="true"
-  origin="top center 0"
+<transition-stub
+  name="slide-y-transition"
 >
   <!---->
-</v-slide-y-transition-stub>
+</transition-stub>
 `;
 
 exports[`VinResults Component Tests given rawResults, component renders the correct title and subtitle 1`] = `
-<v-slide-y-transition-stub
-  hideonleave="true"
-  origin="top center 0"
+<transition-stub
+  name="slide-y-transition"
 >
-  <v-card-stub
-    class="results-card"
-    loaderheight="4"
-    maxwidth="600"
-    raised="true"
-    tag="div"
+  <div
+    class="results-card v-card v-card--raised v-sheet theme--light"
+    style="max-width: 600px;"
   >
-    <v-card-title-stub
-      class="mx-auto px-2 title"
+    <div
+      class="v-card__title results-card__title mx-auto px-2 title"
     >
-      <v-divider-stub />
+      <hr
+        aria-orientation="horizontal"
+        class="v-divider theme--light"
+        role="separator"
+      />
        
       <span
-        class="results-card__title mx-auto px-4"
+        class="mx-auto px-4"
       >
         
         2020 Volkswagen Jetta
@@ -35,40 +34,139 @@ exports[`VinResults Component Tests given rawResults, component renders the corr
       
       </span>
        
-      <v-divider-stub />
-    </v-card-title-stub>
+      <hr
+        aria-orientation="horizontal"
+        class="v-divider theme--light"
+        role="separator"
+      />
+    </div>
      
-    <v-card-subtitle-stub
-      class="results-card__subtitle mx-auto px-2 title text-center"
+    <div
+      class="v-card__subtitle results-card__subtitle mx-auto px-2 title text-center"
     >
       
       TESTVIN
       
-      <v-divider-stub />
-    </v-card-subtitle-stub>
-     
-    <v-card-text-stub>
-      <v-simple-table-stub
-        class="results-card__table"
-        fixedheader="true"
-        height="300"
-        max-width="600"
+      <hr
+        aria-orientation="horizontal"
+        class="v-divider theme--light"
+        role="separator"
       />
-    </v-card-text-stub>
-  </v-card-stub>
-</v-slide-y-transition-stub>
+    </div>
+     
+    <div
+      class="v-card__text"
+    >
+      <div
+        class="v-data-table results-card__table v-data-table--fixed-header theme--light"
+        max-width="600"
+      >
+        <div
+          class="v-data-table__wrapper"
+          style="height: 300px;"
+        >
+          <table>
+            <thead>
+              <tr>
+                <th
+                  class="text-left"
+                >
+                  Name
+                </th>
+                 
+                <th
+                  class="text-left"
+                >
+                  Value
+                </th>
+              </tr>
+            </thead>
+             
+            <tbody>
+              <tr>
+                <td>
+                  Make
+                </td>
+                 
+                <td>
+                  Volkswagen
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Model
+                </td>
+                 
+                <td>
+                  Jetta
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  ModelYear
+                </td>
+                 
+                <td>
+                  2020
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  VIN
+                </td>
+                 
+                <td>
+                  TESTVIN
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</transition-stub>
 `;
 
 exports[`VinResults Component Tests if loading prop is true, a skeleton loader is shown in place of the results card 1`] = `
-<v-slide-y-transition-stub
-  hideonleave="true"
-  origin="top center 0"
+<transition-stub
+  name="slide-y-transition"
 >
-  <v-skeleton-loader-stub
-    class="results-loader"
-    maxwidth="600"
-    type="card-heading, text@7"
-    types="[object Object]"
-  />
-</v-slide-y-transition-stub>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="v-skeleton-loader results-loader v-skeleton-loader--is-loading theme--light"
+    role="alert"
+    style="max-width: 600px;"
+  >
+    <div
+      class="v-skeleton-loader__card-heading v-skeleton-loader__bone"
+    >
+      <div
+        class="v-skeleton-loader__heading v-skeleton-loader__bone"
+      />
+    </div>
+    <div
+      class="v-skeleton-loader__text v-skeleton-loader__bone"
+    />
+    <div
+      class="v-skeleton-loader__text v-skeleton-loader__bone"
+    />
+    <div
+      class="v-skeleton-loader__text v-skeleton-loader__bone"
+    />
+    <div
+      class="v-skeleton-loader__text v-skeleton-loader__bone"
+    />
+    <div
+      class="v-skeleton-loader__text v-skeleton-loader__bone"
+    />
+    <div
+      class="v-skeleton-loader__text v-skeleton-loader__bone"
+    />
+    <div
+      class="v-skeleton-loader__text v-skeleton-loader__bone"
+    />
+  </div>
+</transition-stub>
 `;

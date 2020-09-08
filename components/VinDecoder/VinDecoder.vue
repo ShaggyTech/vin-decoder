@@ -40,9 +40,7 @@ export default defineComponent({
         VIN Decoder
       </v-card-title>
       <v-card-text>
-        <p>
-          Enter your VIN to decode useful information about your vehicle.
-        </p>
+        <p>Enter your VIN to decode useful information about your vehicle.</p>
         <base-input-with-validation
           id="VinDecoderInput"
           v-model="vin"

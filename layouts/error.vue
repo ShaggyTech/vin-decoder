@@ -44,9 +44,7 @@ export default defineComponent({
     <h1 v-else>
       {{ otherError }}
     </h1>
-    <NuxtLink to="/">
-      To Home Page
-    </NuxtLink>
+    <NuxtLink to="/"> To Home Page </NuxtLink>
   </v-app>
 </template>
 

@@ -2,10 +2,10 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/components/**/*.(vue|ts|js)',
-    '<rootDir>/layouts/**/*.(vue|ts|js)',
-    '<rootDir>/pages/**/*.(vue|ts|js)',
     '<rootDir>/compositions/**/*.(ts|js)',
+    '<rootDir>/layouts/**/*.(vue|ts|js)',
     '<rootDir>/middleware/**/*.(ts|js)',
+    '<rootDir>/pages/**/*.(vue|ts|js)',
     '<rootDir>/store/**/*.(ts|js)',
     '<rootDir>/utils/**/*.(ts|js)'
   ],
@@ -18,7 +18,7 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
   rootDir: '../../',
-  setupFiles: ['<rootDir>/test/config/jest.setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/test/config/jest.setup.js'],
   snapshotSerializers: ['jest-serializer-vue'],
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
   transform: {

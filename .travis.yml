@@ -1,23 +1,36 @@
 language: node_js
 node_js:
-  - "13.11.0"
-branches:
-  only:
-  - master
+  - "13.12.0"
 cache: yarn
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
 install:
   - yarn
-  - yarn generate:gh-pages
-script:
-  - echo "Skipping tests"
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GH_TOKEN  # Set in travis-ci.org dashboard, marked secure https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
-  target-branch: gh-pages
-  local-dir: dist
-  on:
-    branch: master
+jobs:
+  include:
+    # all branches
+    - stage: Development - Lint, Test, & Build
+      if: branch != master
+      script:
+        - yarn lint
+        - yarn test
+        - yarn build
+    # master branch only
+    - stage: Production(master) - Lint, Test, Build, Upload coverage, Deploy to gh-pages
+      if: branch = master
+      script:
+        - yarn lint
+        - yarn test
+        - yarn build
+        - npm install -g codecov
+        - bash <(curl -s https://codecov.io/bash)
+      deploy:
+          provider: pages
+          skip-cleanup: true
+          # Set in travis-ci.org dashboard, marked secure https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
+          github-token: $GH_TOKEN
+          target-branch: gh-pages
+          local-dir: dist
+          on:
+            branch: master

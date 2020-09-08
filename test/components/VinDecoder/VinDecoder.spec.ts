@@ -79,12 +79,12 @@ describe('VinDecoder Component Tests', () => {
     const alertElement = wrapper.find('.decoder-card__alert');
     const alertMessageText = 'Oops! Something went wrong.';
 
-    expect(alertElement.isVisible()).toBe(false);
+    expect(alertElement.element).not.toBeVisible();
 
     wrapper.setData({ alertMessage: alertMessageText });
 
     await wrapper.vm.$nextTick();
-    expect(alertElement.isVisible()).toBe(true);
+    expect(alertElement.element).toBeVisible();
     expect(alertElement.text()).toContain(alertMessageText);
   });
 });

@@ -17,7 +17,7 @@ exports[`Layouts - default component matches snapshot 1`] = `
         class="v-navigation-drawer__content"
       >
         <div
-          class="v-list v-sheet v-sheet--tile theme--dark"
+          class="v-list v-sheet theme--dark"
         >
           <router-link-stub
             class="v-list-item v-list-item--link theme--dark"
@@ -75,7 +75,7 @@ exports[`Layouts - default component matches snapshot 1`] = `
     </nav>
      
     <header
-      class="v-sheet v-sheet--tile theme--dark v-toolbar v-app-bar v-app-bar--fixed"
+      class="v-sheet theme--dark v-toolbar v-app-bar v-app-bar--fixed"
       style="height: 64px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"
     >
       <div
@@ -127,17 +127,13 @@ exports[`Layouts - default component matches snapshot 1`] = `
     </header>
      
     <main
-      class="v-content grey lighten-1"
+      class="v-main grey lighten-1"
       style="padding: 64px 0px 0px 0px;"
     >
       <div
-        class="v-content__wrap"
+        class="v-main__wrap"
       >
-        <div
-          class="container"
-        >
-          <nuxt-stub />
-        </div>
+        <nuxt-stub />
       </div>
     </main>
      
@@ -149,7 +145,7 @@ exports[`Layouts - default component matches snapshot 1`] = `
         class="v-navigation-drawer__content"
       >
         <div
-          class="v-list v-sheet v-sheet--tile theme--dark"
+          class="v-list v-sheet theme--dark"
           role="list"
         >
           <div
@@ -180,7 +176,7 @@ exports[`Layouts - default component matches snapshot 1`] = `
     </aside>
      
     <footer
-      class="v-footer text-center v-sheet v-sheet--tile theme--dark v-footer--fixed"
+      class="v-footer text-center v-sheet theme--dark v-footer--fixed"
       style="left: 0px; right: 0px; bottom: 0px;"
     >
       <div

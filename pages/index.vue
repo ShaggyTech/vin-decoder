@@ -13,10 +13,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <v-layout column justify-center align-center>
-    <v-content>
-      <vin-decoder />
-      <vin-history />
-    </v-content>
-  </v-layout>
+  <v-container column justify-center align-center>
+    <vin-decoder />
+    <vin-history />
+  </v-container>
 </template>

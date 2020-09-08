@@ -18,9 +18,7 @@ exports[`Layouts - error component matches snapshot 1`] = `
     <nuxtlink-stub
       to="/"
     >
-      
-    To Home Page
-  
+       To Home Page 
     </nuxtlink-stub>
   </div>
 </div>

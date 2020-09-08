@@ -33,11 +33,6 @@ describe('BaseInputWithValidation Component Tests', () => {
     });
   });
 
-  test('is a Vue instance', () => {
-    expect(wrapper.isVueInstance()).toBeTruthy();
-    expect(wrapper.element).toMatchSnapshot();
-  });
-
   test('validation-provider binds validator prop and does not inherit $attrs', async () => {
     wrapper.setProps({ validator, id: 'InputId' });
     await wrapper.vm.$nextTick();
@@ -53,7 +48,7 @@ describe('BaseInputWithValidation Component Tests', () => {
     expect(wrapper.emitted().input?.[1]).toEqual(undefined);
     wrapper.find('#TestInput').setValue('testing');
     await wrapper.vm.$nextTick();
-    expect(wrapper.emitted().input?.[1]).toEqual(['testing']);
+    expect(wrapper.emitted().input?.[0]).toEqual(['testing']);
   });
 
   test('shows success on validation success', async () => {

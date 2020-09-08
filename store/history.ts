@@ -20,7 +20,7 @@ export type HistoryState = ReturnType<typeof state>;
 
 export const mutations = mutationTree(state, {
   INITIALIZE_HISTORY_STORE(state, localStorageState) {
-    Object.assign(state, localStorageState);
+    state.history = [...localStorageState];
   },
   CLEAR_HISTORY(state) {
     state.history = [];

@@ -7,7 +7,7 @@ const factory = (options: object) => {
   });
 };
 
-const getMocks = (history: Array<any>) => {
+const getMocks = (history: Array<any> = []) => {
   return {
     $accessor: {
       history: {
@@ -26,7 +26,7 @@ describe('VinHistory Component Tests', () => {
   test('component is invisible if history is empty', () => {
     const wrapper = factory({
       sync: false,
-      mocks: { ...getMocks([]) }
+      mocks: { ...getMocks() }
     });
 
     expect(wrapper.vm.$el.textContent).toEqual('');
