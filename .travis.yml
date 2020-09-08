@@ -13,16 +13,18 @@ jobs:
     - stage: Lint, Test, & Build
       script:
         - yarn lint
-        - yarn test-ci
+        - yarn test
         - yarn build
     # master branch only
-    - stage: Deploy to Github Pages
+      # Build and upload test coverage reports after every successful commit to master
+    - stage: Master - upload test coverage to Codecov
       if: branch = master
       script:
-        # Build and upload test coverage reports after every successful commit to master
         - npm install -g codecov
-        - yarn cover --maxWorkers=$(nproc)
         - bash <(curl -s https://codecov.io/bash)
+      # Deploy application to gh-pages branch after every successful commit to master
+    - stage: Master - Deploy to Github Pages
+      if: branch = master
       deploy:
           provider: pages
           skip-cleanup: true

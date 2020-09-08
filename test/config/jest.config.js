@@ -2,10 +2,10 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/components/**/*.(vue|ts|js)',
-    '<rootDir>/layouts/**/*.(vue|ts|js)',
-    '<rootDir>/pages/**/*.(vue|ts|js)',
     '<rootDir>/compositions/**/*.(ts|js)',
+    '<rootDir>/layouts/**/*.(vue|ts|js)',
     '<rootDir>/middleware/**/*.(ts|js)',
+    '<rootDir>/pages/**/*.(vue|ts|js)',
     '<rootDir>/store/**/*.(ts|js)',
     '<rootDir>/utils/**/*.(ts|js)'
   ],
