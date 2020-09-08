@@ -19,6 +19,11 @@ export default defineComponent({
   },
   inheritAttrs: false,
   props: {
+    toUpperCase: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
     /* Options for the ValidationProvider */
     validator: {
       required: false,
@@ -27,11 +32,14 @@ export default defineComponent({
     }
   },
 
-  setup(_, { emit }) {
-    const value: Ref<any> = ref(null);
-    watch(value, (value: any): void => emit('input', value));
+  setup(props, { emit }) {
+    const inputValue: Ref<any> = ref(null);
+    watch(inputValue, (newInput: string): void => {
+      if (props.toUpperCase === true) inputValue.value = newInput.toUpperCase();
+      emit('input', inputValue.value);
+    });
 
-    return { value };
+    return { inputValue };
   }
 });
 </script>
@@ -43,7 +51,7 @@ export default defineComponent({
     v-bind="validator"
   >
     <v-text-field
-      v-model="value"
+      v-model="inputValue"
       v-bind="$attrs"
       :success="validated"
       :error-messages="errors"
