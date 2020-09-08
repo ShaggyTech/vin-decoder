@@ -33,22 +33,30 @@ describe('BaseInputWithValidation Component Tests', () => {
     });
   });
 
-  test('validation-provider binds validator prop and does not inherit $attrs', async () => {
-    wrapper.setProps({ validator, id: 'InputId' });
-    await wrapper.vm.$nextTick();
-
-    const providerEl = wrapper.find('#validator');
-    expect(providerEl.props()).toEqual({ validator });
-
-    const inputEl = wrapper.find('#InputId');
-    expect(inputEl.attributes().id).toEqual('InputId');
-  });
-
   test('it watches for input changes and emits "input" event with newest value', async () => {
     expect(wrapper.emitted().input?.[1]).toEqual(undefined);
     wrapper.find('#TestInput').setValue('testing');
     await wrapper.vm.$nextTick();
     expect(wrapper.emitted().input?.[0]).toEqual(['testing']);
+  });
+
+  test('if props.toUpperCase is set to true, input is transformed to uppercase', async () => {
+    wrapper.setProps({ toUpperCase: true });
+    expect(wrapper.emitted().input?.[1]).toEqual(undefined);
+    wrapper.find('#TestInput').setValue('tes!)#)@"}{ting!.,;');
+    await wrapper.vm.$nextTick();
+    expect(wrapper.emitted().input?.[0]).toEqual(['TES!)#)@"}{TING!.,;']);
+  });
+
+  test('validation-provider binds validator prop and does not inherit $attrs', async () => {
+    wrapper.setProps({ validator, id: 'InputId' });
+    await wrapper.vm.$nextTick();
+
+    const providerEl = wrapper.find('#validator');
+    expect(providerEl.props('validator')).toEqual(validator);
+
+    const inputEl = wrapper.find('#InputId');
+    expect(inputEl.attributes().id).toEqual('InputId');
   });
 
   test('shows success on validation success', async () => {
