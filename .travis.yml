@@ -1,4 +1,6 @@
 language: node_js
+os: linux
+dist: focal
 node_js:
   - "13.12.0"
 cache: yarn
@@ -15,22 +17,23 @@ jobs:
       script:
         - yarn lint
         - yarn test
-        - yarn build
+        - yarn generate
     # master branch only
     - stage: Production(master) - Lint, Test, Build, Upload coverage, Deploy to gh-pages
       if: branch = master
       script:
         - yarn lint
         - yarn test
-        - yarn build
+        - yarn generate:gh-pages
         - npm install -g codecov
         - bash <(curl -s https://codecov.io/bash)
       deploy:
           provider: pages
-          skip-cleanup: true
+          strategy: git
+          skip_cleanup: true
           # Set in travis-ci.org dashboard, marked secure https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
-          github-token: $GH_TOKEN
-          target-branch: gh-pages
-          local-dir: dist
+          token: $GH_TOKEN
+          target_branch: gh-pages
+          local_dir: dist
           on:
             branch: master
