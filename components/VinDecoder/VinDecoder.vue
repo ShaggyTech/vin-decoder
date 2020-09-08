@@ -49,6 +49,7 @@ export default defineComponent({
           counter="17"
           clearable
           outlined
+          to-upper-case
           @click:clear="rawResults = null"
           @input="rawResults = null"
         />
