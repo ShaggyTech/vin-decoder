@@ -10,21 +10,21 @@ install:
 jobs:
   include:
     # all branches
-    - stage: Lint, Test, & Build
+    - stage: Development - Lint, Test, & Build
+      if: branch != master
       script:
         - yarn lint
         - yarn test
         - yarn build
     # master branch only
-      # Build and upload test coverage reports after every successful commit to master
-    - stage: Master - upload test coverage to Codecov
+    - stage: Production(master) - Lint, Test, Build, Upload coverage, Deploy to gh-pages
       if: branch = master
       script:
+        - yarn lint
+        - yarn test
+        - yarn build
         - npm install -g codecov
         - bash <(curl -s https://codecov.io/bash)
-      # Deploy application to gh-pages branch after every successful commit to master
-    - stage: Master - Deploy to Github Pages
-      if: branch = master
       deploy:
           provider: pages
           skip-cleanup: true
