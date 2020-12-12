@@ -62,7 +62,7 @@
     "@nuxtjs/vuetify": "1.11.2",
     "@testing-library/jest-dom": "5.11.4",
     "@testing-library/vue": "5.0.4",
-    "@types/jest": "26.0.13",
+    "@types/jest": "26.0.19",
     "@types/node": "14.6.4",
     "@vue/test-utils": "1.1.1",
     "babel-core": "7.0.0-bridge.0",
