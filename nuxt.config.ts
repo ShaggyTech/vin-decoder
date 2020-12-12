@@ -1,11 +1,19 @@
 import { NuxtConfig } from '@nuxt/types';
-import { description, name } from './package.json';
+import { name as PACKAGE_NAME } from './package.json';
+import { PORT } from './server';
 
-const TITLE = 'Vin Decoder';
 const isDev = process.env.NODE_ENV !== 'production';
+
+const PRODUCTION_HOST_URL = 'shaggytech.com';
+
+const META_TITLE = 'VIN Decoder';
+const META_URL = isDev ? `localhost:${PORT}/` : PRODUCTION_HOST_URL;
+const META_DESCRIPTION =
+  'A web app to decode Vehicle Identification Numbers (VIN) using the NHTSA.dot.gov Vehicles API.';
+
 const routerBase =
   process.env.DEPLOY_ENV === 'GH_PAGES'
-    ? { router: { base: `/${name}/` } }
+    ? { router: { base: `/${PACKAGE_NAME}/` } }
     : {};
 
 const config: NuxtConfig = {
@@ -21,15 +29,18 @@ const config: NuxtConfig = {
 
   head: {
     // titleTemplate: '%s - ',
-    title: TITLE,
+    title: META_TITLE,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: description || ''
-      }
+      { hid: 'description', name: 'description', content: META_DESCRIPTION },
+      { property: 'og:title', content: META_TITLE },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: `/og-image.jpg` },
+      { property: 'og:image:width', content: '237' },
+      { property: 'og:image:height', content: '237' },
+      { property: 'og:url', content: META_URL },
+      { property: 'og:description', content: META_DESCRIPTION }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -50,6 +61,16 @@ const config: NuxtConfig = {
     'nuxt-typed-vuex'
   ],
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
+
+  pwa: {
+    manifest: {
+      name: 'VIN Decoder',
+      short_name: 'Vehicle Information Decoder',
+      lang: 'en',
+      display: 'standalone',
+      theme_color: '#78a0ff'
+    }
+  },
   // Runtime type checking when running nuxt build
   typescript: {
     typeCheck: {
