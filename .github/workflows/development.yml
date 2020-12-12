@@ -39,7 +39,5 @@ jobs:
         yarn lint
         yarn test
         yarn build
-        yarn clean:nuxt
         yarn generate
-        yarn clean:nuxt
         yarn generate:gh-pages
