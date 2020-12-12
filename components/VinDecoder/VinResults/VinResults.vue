@@ -104,7 +104,7 @@ export default defineComponent({
           :height="tableHeight"
           :max-width="maxWidth"
         >
-          <template v-slot:default>
+          <template #default>
             <thead>
               <tr>
                 <th class="text-left">Name</th>

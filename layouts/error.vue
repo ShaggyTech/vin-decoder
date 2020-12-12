@@ -14,6 +14,14 @@ export default defineComponent({
       default: null
     }
   },
+  setup() {
+    const { pageNotFound, otherError } = getRefs();
+
+    return {
+      pageNotFound,
+      otherError
+    };
+  },
   /* istanbul ignore next */
   head() {
     const statusCode = (this as any).$props.error?.statusCode;
@@ -23,14 +31,6 @@ export default defineComponent({
 
     return {
       title
-    };
-  },
-  setup() {
-    const { pageNotFound, otherError } = getRefs();
-
-    return {
-      pageNotFound,
-      otherError
     };
   }
 });
