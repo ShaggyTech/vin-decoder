@@ -1,21 +1,21 @@
 {
   "name": "vin-decoder",
   "version": "0.0.1",
-  "description": "A web app to decode Vehicle Identification Numbers (VINs) using the NHTSA.dot.gov Vehicles API.",
+  "description": "A web app to decode Vehicle Identification Numbers (VIN) using the NHTSA.dot.gov Vehicles API.",
   "author": "Brandon Eichler <github.com/shaggytech>",
   "license": "MIT",
   "private": false,
   "scripts": {
     "dev": "ts-node --project server/tsconfig.json server/server-dev.ts",
-    "build": "nuxt-ts build",
+    "build": "yarn clean:nuxt && nuxt-ts build",
     "start": "cross-env NODE_ENV=production ts-node --project 'server/tsconfig.json' server/server-prod.ts",
-    "generate": "nuxt-ts generate",
+    "generate": "yarn clean:nuxt && nuxt-ts generate",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "test": "jest -c ./test/config/jest.config.js",
     "test:watch": "jest -c ./test/config/jest.config.js --watch --onlyChanged",
     "test:watchAll": "jest -c ./test/config/jest.config.js --watchAll",
-    "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt-ts build",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt-ts generate",
+    "build:gh-pages": "yarn clean:nuxt && DEPLOY_ENV=GH_PAGES nuxt-ts build",
+    "generate:gh-pages": "yarn clean:nuxt && DEPLOY_ENV=GH_PAGES nuxt-ts generate",
     "clean:nuxt": "rimraf dist/* && rimraf .nuxt/*"
   },
   "repository": {
