@@ -60,7 +60,7 @@
     "@nuxtjs/eslint-config-typescript": "3.0.0",
     "@nuxtjs/eslint-module": "2.0.0",
     "@nuxtjs/vuetify": "1.11.2",
-    "@testing-library/jest-dom": "5.11.4",
+    "@testing-library/jest-dom": "5.11.6",
     "@testing-library/vue": "5.6.1",
     "@types/jest": "26.0.19",
     "@types/node": "14.14.13",
