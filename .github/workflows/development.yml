@@ -28,7 +28,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2.3.1
+      uses: actions/checkout@v2.3.4
 
     - name: Lint, Test, Build, Generate
       uses: actions/setup-node@v1
@@ -39,7 +39,5 @@ jobs:
         yarn lint
         yarn test
         yarn build
-        yarn clean:nuxt
         yarn generate
-        yarn clean:nuxt
         yarn generate:gh-pages
