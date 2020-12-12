@@ -9,7 +9,7 @@ on:
       - 'master'
 
 jobs:
-  lint-test-build-deploy:
+  lint-test-build:
 
     runs-on: ubuntu-20.04
 
