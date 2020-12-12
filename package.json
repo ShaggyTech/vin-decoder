@@ -44,7 +44,7 @@
     "@nuxt/typescript-runtime": "2.0.0",
     "@nuxtjs/axios": "5.12.2",
     "@nuxtjs/pwa": "3.3.2",
-    "@shaggytools/nhtsa-api-wrapper": "1.1.5",
+    "@shaggytools/nhtsa-api-wrapper": "1.1.6",
     "@vue/composition-api": "1.0.0-beta.21",
     "cross-env": "7.0.2",
     "express": "4.17.1",
