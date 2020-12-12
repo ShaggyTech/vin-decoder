@@ -49,7 +49,7 @@
     "cross-env": "7.0.2",
     "express": "4.17.1",
     "nuxt-edge": "npm:nuxt-edge",
-    "nuxt-typed-vuex": "0.1.21",
+    "nuxt-typed-vuex": "0.1.22",
     "vee-validate": "3.4.5"
   },
   "devDependencies": {
