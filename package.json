@@ -46,7 +46,7 @@
     "@nuxtjs/pwa": "3.3.2",
     "@shaggytools/nhtsa-api-wrapper": "1.1.5",
     "@vue/composition-api": "1.0.0-beta.21",
-    "cross-env": "7.0.2",
+    "cross-env": "7.0.3",
     "express": "4.17.1",
     "nuxt-edge": "npm:nuxt-edge",
     "nuxt-typed-vuex": "0.1.21",
