@@ -16,7 +16,7 @@
     "test:watchAll": "jest -c ./test/config/jest.config.js --watchAll",
     "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt-ts build",
     "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt-ts generate",
-    "clean-nuxt": "rimraf dist/* && rimraf .nuxt/*"
+    "clean:nuxt": "rimraf dist/* && rimraf .nuxt/*"
   },
   "repository": {
     "type": "git",
