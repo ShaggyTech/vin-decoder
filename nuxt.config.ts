@@ -53,8 +53,9 @@ const config: NuxtConfig = {
   },
   loading: { color: '#fff' },
   css: [],
-  plugins: ['~/plugins/composition-api.ts', '~/plugins/vee-validate.ts'],
+  plugins: ['~/plugins/vee-validate.ts'],
   buildModules: [
+    '@nuxtjs/composition-api',
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
     '@nuxt/typescript-build',
