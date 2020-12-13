@@ -50,7 +50,7 @@
     "express": "4.17.1",
     "nuxt-edge": "npm:nuxt-edge",
     "nuxt-typed-vuex": "0.1.22",
-    "vee-validate": "3.4.5"
+    "vee-validate": "4.0.5"
   },
   "devDependencies": {
     "@babel/core": "7.12.10",
