@@ -85,6 +85,13 @@ exports[`Pages: Home component matches snapshot 1`] = `
               <div
                 class="v-text-field__slot"
               >
+                <label
+                  class="v-label theme--light"
+                  for="VinDecoderInput"
+                  style="left: 0px; position: absolute;"
+                >
+                  VIN Input
+                </label>
                 <input
                   id="VinDecoderInput"
                   type="text"

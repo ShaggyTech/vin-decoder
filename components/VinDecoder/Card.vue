@@ -44,6 +44,7 @@ export default defineComponent({
           :validator="validator"
           counter="17"
           clearable
+          label="VIN Input"
           outlined
           to-upper-case
           @click:clear="rawResults = null"
