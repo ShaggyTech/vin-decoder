@@ -6,14 +6,14 @@ import {
   watch,
   PropType,
   onMounted
-} from '@vue/composition-api';
+} from '@nuxtjs/composition-api';
 /* Utility Methods */
-import { filterResults } from '@/utils/filterResults';
+import { filterResults } from '~/utils';
 /* Types */
-import { ResultsObjectType } from '@/types';
+import { ResultsObjectType } from '~/types';
 
 export default defineComponent({
-  name: 'VinResults',
+  name: 'VinDecoderResults',
   inheritAttrs: false,
   props: {
     rawResults: {

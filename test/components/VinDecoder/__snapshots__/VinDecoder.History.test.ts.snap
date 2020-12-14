@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VinHistory Component Tests component is invisible if history is empty 1`] = `<!---->`;
+exports[`VinDecoderHistory Component Tests component is invisible if history is empty 1`] = `<!---->`;
 
-exports[`VinHistory Component Tests component is visible if history contains items 1`] = `
+exports[`VinDecoderHistory Component Tests component is visible if history contains items 1`] = `
 <div
   class="history-card mx-auto my-4 v-card v-sheet theme--light"
   style="max-width: 600px;"
@@ -72,4 +72,4 @@ exports[`VinHistory Component Tests component is visible if history contains ite
 </div>
 `;
 
-exports[`VinHistory Component Tests history can be cleared and component is invisible after clearing 1`] = `<!---->`;
+exports[`VinDecoderHistory Component Tests history can be cleared and component is invisible after clearing 1`] = `<!---->`;

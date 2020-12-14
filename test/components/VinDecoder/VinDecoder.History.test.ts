@@ -1,13 +1,16 @@
 import { mount } from '@vue/test-utils';
-import VinHistory from '@/components/VinDecoder/VinHistory/VinHistory.vue';
+/* Component */
+import VinDecoderHistory from '~/components/VinDecoder/History.vue';
+/* Types */
+import { HistoryItem } from '~/types';
 
 const factory = (options: object) => {
-  return mount(VinHistory, {
+  return mount(VinDecoderHistory, {
     ...options
   });
 };
 
-const getMocks = (history: Array<any> = []) => {
+const getMocks = (history: HistoryItem[] = []) => {
   return {
     $accessor: {
       history: {
@@ -20,9 +23,11 @@ const getMocks = (history: Array<any> = []) => {
   };
 };
 
-const mockHistory = [{ VIN: 'TESTVIN', results: { Make: 'VW' } }];
+const mockHistory = [
+  { VIN: 'TESTVIN', results: { Make: 'VW' } }
+] as HistoryItem[];
 
-describe('VinHistory Component Tests', () => {
+describe('VinDecoderHistory Component Tests', () => {
   test('component is invisible if history is empty', () => {
     const wrapper = factory({
       sync: false,

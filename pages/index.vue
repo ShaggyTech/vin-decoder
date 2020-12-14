@@ -1,20 +1,14 @@
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-/* Components */
-import VinDecoder from '@/components/VinDecoder/VinDecoder.vue';
-import VinHistory from '@/components/VinDecoder/VinHistory/VinHistory.vue';
+import { defineComponent } from '@nuxtjs/composition-api';
 
 export default defineComponent({
-  components: {
-    VinDecoder,
-    VinHistory
-  }
+  name: 'VinDecoder'
 });
 </script>
 
 <template>
   <v-container column justify-center align-center>
-    <vin-decoder />
-    <vin-history />
+    <vin-decoder-card />
+    <lazy-vin-decoder-history />
   </v-container>
 </template>

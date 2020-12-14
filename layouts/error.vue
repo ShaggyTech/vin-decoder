@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref, PropType } from '@vue/composition-api';
+import { defineComponent, ref, PropType } from '@nuxtjs/composition-api';
 
 const getRefs = () => ({
   pageNotFound: ref<string>('Oops! That page was not found.'),

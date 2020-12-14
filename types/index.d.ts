@@ -1,22 +1,6 @@
 import { ActionTypes } from '@shaggytools/nhtsa-api-wrapper';
-import { TypedVuexStore } from '@/store';
-
-declare module 'vue/types/vue' {
-  interface Vue {
-    $accessor: TypedVuexStore;
-  }
-}
-
-declare module '@nuxt/types' {
-  interface NuxtAppOptions {
-    $accessor: TypedVuexStore;
-  }
-}
-
-export interface User {
-  firstName: string;
-  lastName: string;
-}
+export { RootState, TypedVuexStore } from '~/store';
+export { HistoryItem, HistoryState } from '~/store/history';
 
 export type ResultsObjectType = { [propName: string]: any };
 

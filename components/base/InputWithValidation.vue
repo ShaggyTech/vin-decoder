@@ -6,7 +6,7 @@ import {
   watch,
   PropType,
   Ref
-} from '@vue/composition-api';
+} from '@nuxtjs/composition-api';
 /* Vee-Validate */
 import { ValidationProvider } from 'vee-validate';
 /* Types */

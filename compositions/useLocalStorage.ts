@@ -1,4 +1,4 @@
-import { onMounted } from '@vue/composition-api';
+import { onMounted } from '@nuxtjs/composition-api';
 /* Types */
 import { TypedVuexStore } from '@/store';
 import { HistoryItem } from '@/store/history';

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VinDecoder Component Tests base component state, matches snapshot 1`] = `
+exports[`VinDecoderCard Component Tests base component state, matches snapshot 1`] = `
 <div
   class="decoder-card mx-auto v-card v-sheet theme--light elevation-8"
   style="max-width: 600px;"
@@ -134,12 +134,11 @@ exports[`VinDecoder Component Tests base component state, matches snapshot 1`] =
     </button>
   </div>
    
-  <vin-results-stub
+  <transition-stub
     class="decoder-card__results"
-    color="primary darken-4"
-    maxwidth="600"
-    tableheight="300"
-    transition="slide-y-transition"
-  />
+    name="slide-y-transition"
+  >
+    <!---->
+  </transition-stub>
 </div>
 `;

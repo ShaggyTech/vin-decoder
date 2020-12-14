@@ -1,13 +1,17 @@
 /* Composition API */
-import { ref, Ref } from '@vue/composition-api';
+import { ref, Ref } from '@nuxtjs/composition-api';
 /* Utilities */
-import { fetchDecodeVinResults } from '@/utils/fetchDecodeVinResults';
-import { handleError } from '@/utils/handleError';
-/* Compositions */
-import { getHistoryItemIndex } from '@/utils/getHistoryItemIndex';
+import {
+  fetchDecodeVinResults,
+  getHistoryItemIndex,
+  handleError
+} from '~/utils';
 /* Types */
-import { DecodeVinValuesExtendedResults, Validator } from '@/types';
-import { TypedVuexStore } from '@/store';
+import {
+  DecodeVinValuesExtendedResults,
+  TypedVuexStore,
+  Validator
+} from '~/types';
 
 export type Refs = {
   alertMessage: Ref<string | null>;

@@ -1,4 +1,4 @@
-import { isRef } from '@vue/composition-api';
+import { isRef } from '@nuxtjs/composition-api';
 import { mapRootState, mapRootActions } from '@/compositions/useRootStore';
 /* Types */
 import { TypedVuexStore } from '@/store';
