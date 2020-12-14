@@ -80,7 +80,7 @@ const config: NuxtConfig = {
       }
     ]
   },
-
+  
   pwa: {
     manifest: {
       name: 'VIN Decoder',
