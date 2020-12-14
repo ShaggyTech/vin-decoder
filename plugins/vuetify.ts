@@ -1,4 +1,7 @@
 const vuetifyConfig = {
+  icons: {
+    iconfont: 'mdiSvg'
+  },
   customVariables: ['~/assets/variables.scss'],
   theme: {
     dark: true,

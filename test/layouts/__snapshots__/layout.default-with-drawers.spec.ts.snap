@@ -89,10 +89,23 @@ exports[`Layouts - default component matches snapshot 1`] = `
           <span
             class="v-btn__content"
           >
-            <i
+            <span
               aria-hidden="true"
-              class="v-icon notranslate mdi mdi-menu theme--dark"
-            />
+              class="v-icon notranslate v-icon--svg theme--dark"
+            >
+              <svg
+                aria-hidden="true"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"
+                />
+              </svg>
+            </span>
           </span>
         </button>
          

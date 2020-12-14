@@ -29,7 +29,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <v-app dark>
+  <v-app id="app" dark>
     <v-app-bar fixed app>
       <v-spacer />
       <v-toolbar-title class="text-center" v-text="title" />
@@ -46,3 +46,9 @@ export default defineComponent({
     </v-footer>
   </v-app>
 </template>
+
+<style lang="css" scoped>
+#app {
+  font-family: 'Rubik', sans-serif;
+}
+</style>

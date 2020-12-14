@@ -42,17 +42,12 @@ const config: NuxtConfig = {
       { property: 'og:url', content: META_URL },
       { property: 'og:description', content: META_DESCRIPTION }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'prefetch',
-        as: 'font',
-        href: 'https://fonts.googleapis.com/css?family=Roboto'
-      }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+
   loading: { color: '#fff' },
-  css: [],
+  css: ['~/assets/css/main.scss'],
+
   plugins: ['~/plugins/vee-validate.ts'],
   buildModules: [
     '@nuxtjs/composition-api',
@@ -61,7 +56,7 @@ const config: NuxtConfig = {
     '@nuxt/typescript-build',
     'nuxt-typed-vuex'
   ],
-  modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/pwa', 'nuxt-webfontloader'],
 
   /*
    ** Auto import components
@@ -99,8 +94,16 @@ const config: NuxtConfig = {
     }
   },
   vuetify: {
+    defaultAssets: false,
     optionsPath: '~/plugins/vuetify.ts'
   },
+
+  webfontloader: {
+    google: {
+      families: ['Rubik:400,500,700&display=swap']
+    }
+  },
+
   build: {
     extractCSS: !isDev,
     transpile: [
