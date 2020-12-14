@@ -50,6 +50,7 @@
     "express": "4.17.1",
     "nuxt-edge": "npm:nuxt-edge",
     "nuxt-typed-vuex": "0.1.22",
+    "nuxt-webfontloader": "1.1.0",
     "vee-validate": "3.4.5"
   },
   "devDependencies": {
@@ -61,6 +62,7 @@
     "@nuxtjs/eslint-config-typescript": "5.0.0",
     "@nuxtjs/eslint-module": "3.0.1",
     "@nuxtjs/vuetify": "1.11.2",
+    "@mdi/js": "5.8.55",
     "@testing-library/jest-dom": "5.11.6",
     "@testing-library/vue": "5.6.1",
     "@types/jest": "26.0.19",

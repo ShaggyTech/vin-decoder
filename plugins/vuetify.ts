@@ -1,7 +1,16 @@
-const vuetifyConfig = {
+import { VuetifyPreset } from 'vuetify/types/services/presets';
+
+const vuetifyConfig: Partial<VuetifyPreset> = {
+  icons: {
+    iconfont: 'mdiSvg',
+    values: {}
+  },
   customVariables: ['~/assets/variables.scss'],
   theme: {
+    default: false,
+    options: {},
     dark: true,
+    disable: false,
     themes: {
       dark: {
         primary: '#21CFF3',
