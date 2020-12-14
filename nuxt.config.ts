@@ -29,6 +29,9 @@ const config: NuxtConfig = {
 
   head: {
     // titleTemplate: '%s - ',
+    htmlAttrs: {
+      lang: 'en'
+    },
     title: META_TITLE,
     meta: [
       { charset: 'utf-8' },

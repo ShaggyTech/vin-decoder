@@ -71,6 +71,13 @@ exports[`VinDecoderCard Component Tests base component state, matches snapshot 1
             <div
               class="v-text-field__slot"
             >
+              <label
+                class="v-label theme--light"
+                for="VinDecoderInput"
+                style="right: 0px; position: absolute;"
+              >
+                VIN Input
+              </label>
               <input
                 id="VinDecoderInput"
                 type="text"
