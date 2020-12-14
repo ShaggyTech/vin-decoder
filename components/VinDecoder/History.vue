@@ -1,15 +1,12 @@
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from '@nuxtjs/composition-api';
 import {
   mapHistoryState,
   mapHistoryActions
-} from '@/compositions/useHistoryStore';
-/* Components */
-import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
+} from '~/compositions/useHistoryStore';
 
 export default defineComponent({
-  name: 'VinHistory',
-  components: { VinResults },
+  name: 'VinDecoderHistory',
 
   setup(_, { root: { $accessor } }) {
     /* Computed history store properties */
@@ -50,7 +47,7 @@ export default defineComponent({
           {{ item.VIN }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          <vin-results
+          <lazy-vin-decoder-results
             :raw-results.sync="item.results"
             color="primary darken-4"
             tile

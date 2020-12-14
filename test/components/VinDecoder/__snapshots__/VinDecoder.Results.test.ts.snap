@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VinResults Component Tests component is hidden if rawResults prop is empty 1`] = `
+exports[`VinDecoderResults Component Tests component is hidden if rawResults prop is empty 1`] = `
 <transition-stub
   name="slide-y-transition"
 >
@@ -8,7 +8,7 @@ exports[`VinResults Component Tests component is hidden if rawResults prop is em
 </transition-stub>
 `;
 
-exports[`VinResults Component Tests given rawResults, component renders the correct title and subtitle 1`] = `
+exports[`VinDecoderResults Component Tests given rawResults, component renders the correct title and subtitle 1`] = `
 <transition-stub
   name="slide-y-transition"
 >
@@ -128,7 +128,7 @@ exports[`VinResults Component Tests given rawResults, component renders the corr
 </transition-stub>
 `;
 
-exports[`VinResults Component Tests if loading prop is true, a skeleton loader is shown in place of the results card 1`] = `
+exports[`VinDecoderResults Component Tests if loading prop is true, a skeleton loader is shown in place of the results card 1`] = `
 <transition-stub
   name="slide-y-transition"
 >

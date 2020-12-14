@@ -1,6 +1,8 @@
 import { mount } from '@vue/test-utils';
-import { VALIDATOR, setupRefs } from '@/components/VinDecoder/setup';
-import VinDecoder from '@/components/VinDecoder/VinDecoder.vue';
+/* Component Setup Functions */
+import { VALIDATOR, setupRefs } from '~/components/VinDecoder';
+/* Component */
+import VinDecoderCard from '~/components/VinDecoder/Card.vue';
 
 const VALID_VIN = 'WVWDM7AJ1BW263846';
 
@@ -8,7 +10,7 @@ const refs = { ...setupRefs() };
 const mockGetResults = jest.fn().mockResolvedValue(true);
 
 const factory = (options: { [propName: string]: any } = {}) => {
-  return mount(VinDecoder, {
+  return mount(VinDecoderCard, {
     setup: () => ({
       ...refs,
       getResults: mockGetResults
@@ -18,7 +20,7 @@ const factory = (options: { [propName: string]: any } = {}) => {
   });
 };
 
-describe('VinDecoder Component Tests', () => {
+describe('VinDecoderCard Component Tests', () => {
   let wrapper: ReturnType<typeof factory>;
 
   beforeEach(() => (wrapper = factory()));

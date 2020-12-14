@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref, onErrorCaptured } from '@vue/composition-api';
+import { defineComponent, ref, onErrorCaptured } from '@nuxtjs/composition-api';
 /* Root store setup */
 import { mapRootState, mapRootActions } from '@/compositions/useRootStore';
 /* History Setup */

@@ -63,6 +63,24 @@ const config: NuxtConfig = {
   ],
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
 
+  /*
+   ** Auto import components
+   ** See https://nuxtjs.org/api/configuration-components
+   */
+  components: {
+    dirs: [
+      '~/components',
+      {
+        path: '~/components/base/',
+        prefix: 'Base'
+      },
+      {
+        path: '~/components/VinDecoder/',
+        prefix: 'VinDecoder'
+      }
+    ]
+  },
+
   pwa: {
     manifest: {
       name: 'VIN Decoder',

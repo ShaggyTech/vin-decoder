@@ -1,15 +1,16 @@
 import { mount } from '@vue/test-utils';
-
-import { mockRawResults } from '@/test/__mocks__/mockDecodeVinValuesExtendedResults';
-import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
+/* Component */
+import VinDecoderResults from '~/components/VinDecoder/Results.vue';
+/* Mock API Data */
+import { mockRawResults } from '~/test/__mocks__/mockDecodeVinValuesExtendedResults';
 
 const factory = (options: object) => {
-  return mount(VinResults, {
+  return mount(VinDecoderResults, {
     ...options
   });
 };
 
-describe('VinResults Component Tests', () => {
+describe('VinDecoderResults Component Tests', () => {
   test('component is hidden if rawResults prop is empty', () => {
     const wrapper = factory({
       sync: false

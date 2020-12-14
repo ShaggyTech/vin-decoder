@@ -1,20 +1,16 @@
 <script lang="ts">
 /* Composition API */
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from '@nuxtjs/composition-api';
 /* Components */
 import { ValidationObserver } from 'vee-validate';
-import BaseInputWithValidation from '@/components/base/BaseInputWithValidation.vue';
-import VinResults from '@/components/VinDecoder/VinResults/VinResults.vue';
 
 /* Component Setup */
-import { initializeComponent } from '@/components/VinDecoder/setup';
+import { initializeComponent } from './';
 
 export default defineComponent({
   name: 'VinDecoder',
   components: {
-    BaseInputWithValidation,
-    ValidationObserver,
-    VinResults
+    ValidationObserver
   },
 
   setup(_, { root: { $accessor } }) {
@@ -41,7 +37,7 @@ export default defineComponent({
       </v-card-title>
       <v-card-text>
         <p>Enter your VIN to decode useful information about your vehicle.</p>
-        <base-input-with-validation
+        <BaseInputWithValidation
           id="VinDecoderInput"
           v-model="vin"
           class="decoder-card__input"
@@ -65,7 +61,7 @@ export default defineComponent({
           Decode VIN
         </v-btn>
       </v-card-actions>
-      <vin-results
+      <LazyVinDecoderResults
         class="decoder-card__results"
         :raw-results.sync="rawResults"
         :loading.sync="loading"
