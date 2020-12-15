@@ -1,6 +1,7 @@
 import { NuxtConfig } from '@nuxt/types';
 import { name as PACKAGE_NAME } from './package.json';
 import { PORT } from './server';
+import { componentDirs } from './components';
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -22,6 +23,10 @@ const config: NuxtConfig = {
   telemetry: false,
   dev: isDev,
   ...routerBase,
+  loading: { color: '#fff' },
+  css: ['~/assets/css/main.scss'],
+  /* Auto import components */
+  components: componentDirs,
 
   // https://nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
   publicRuntimeConfig: {},
@@ -48,9 +53,6 @@ const config: NuxtConfig = {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
-  loading: { color: '#fff' },
-  css: ['~/assets/css/main.scss'],
-
   plugins: ['~/plugins/vee-validate.ts'],
   buildModules: [
     '@nuxtjs/composition-api',
@@ -60,24 +62,6 @@ const config: NuxtConfig = {
     'nuxt-typed-vuex'
   ],
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa', 'nuxt-webfontloader'],
-
-  /*
-   ** Auto import components
-   ** See https://nuxtjs.org/api/configuration-components
-   */
-  components: {
-    dirs: [
-      '~/components',
-      {
-        path: '~/components/base/',
-        prefix: 'Base'
-      },
-      {
-        path: '~/components/VinDecoder/',
-        prefix: 'VinDecoder'
-      }
-    ]
-  },
 
   pwa: {
     manifest: {

@@ -14,8 +14,8 @@
     "test": "jest -c ./test/config/jest.config.js",
     "test:watch": "jest -c ./test/config/jest.config.js --watch --onlyChanged",
     "test:watchAll": "jest -c ./test/config/jest.config.js --watchAll",
-    "build:gh-pages": "yarn clean:nuxt && DEPLOY_ENV=GH_PAGES nuxt-ts build",
-    "generate:gh-pages": "yarn clean:nuxt && DEPLOY_ENV=GH_PAGES nuxt-ts generate",
+    "build:gh-pages": "yarn clean:nuxt && cross-env DEPLOY_ENV=GH_PAGES nuxt-ts build",
+    "generate:gh-pages": "yarn clean:nuxt && cross-env DEPLOY_ENV=GH_PAGES nuxt-ts generate",
     "clean:nuxt": "rimraf dist/* && rimraf .nuxt/*"
   },
   "repository": {
@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "@nuxt/typescript-runtime": "2.0.0",
-    "@nuxtjs/axios": "5.12.3",
+    "@nuxtjs/axios": "5.12.4",
     "@nuxtjs/pwa": "3.3.2",
     "@nuxtjs/composition-api": "0.17.0",
     "@shaggytools/nhtsa-api-wrapper": "1.1.6",
@@ -67,7 +67,7 @@
     "@testing-library/vue": "5.6.1",
     "@types/jest": "26.0.19",
     "@types/node": "14.14.13",
-    "@vue/test-utils": "1.1.1",
+    "@vue/test-utils": "1.1.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "26.6.3",
     "chokidar": "3.4.3",

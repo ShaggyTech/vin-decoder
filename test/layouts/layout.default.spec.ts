@@ -11,7 +11,7 @@ jest.mock('@/compositions/useLocalStorage', () => ({
 
 const factory = (options: { [propName: string]: any } = {}) => {
   return mount(defaultLayout, {
-    stubs: ['nuxt', 'router-link'],
+    stubs: ['nuxt', 'router-link', 'AppTitleCard'],
     localVue,
     ...options
   });

@@ -21,11 +21,11 @@ exports[`Layouts - default component matches snapshot 1`] = `
           class="spacer"
         />
          
-        <div
-          class="v-toolbar__title text-center"
-        >
-          ShaggyTech.com - VIN Decoder
-        </div>
+        <apptitlecard-stub
+          class="display-1"
+          header="[object Object]"
+          subheader="[object Object]"
+        />
          
         <div
           class="spacer"

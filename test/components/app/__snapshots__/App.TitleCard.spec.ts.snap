@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppTitleCard Component Tests Props "header" and "subheader" 1`] = `
+<div
+  class="v-toolbar__title"
+>
+  <nuxt-link-stub
+    to="/"
+  >
+    <span
+      class="some-class"
+      id="header"
+      innertext="Heading"
+    >
+      Heading
+    </span>
+     
+    <span
+      class="some-other-class"
+      id="subheader"
+      innertext="Sub Heading"
+    >
+      Sub Heading
+    </span>
+  </nuxt-link-stub>
+</div>
+`;
+
+exports[`AppTitleCard Component Tests base component state, matches snapshot 1`] = `
+<div
+  class="v-toolbar__title"
+>
+  <nuxt-link-stub
+    to="/"
+  >
+    <span
+      class=""
+      id="header"
+      innertext=""
+    >
+      
+    </span>
+     
+    <span
+      class=""
+      id="subheader"
+      innertext=""
+    >
+      
+    </span>
+  </nuxt-link-stub>
+</div>
+`;

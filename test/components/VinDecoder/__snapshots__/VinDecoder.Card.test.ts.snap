@@ -76,7 +76,7 @@ exports[`VinDecoderCard Component Tests base component state, matches snapshot 1
                 for="VinDecoderInput"
                 style="right: 0px; position: absolute;"
               >
-                VIN Input
+                Vehicle Identification Number (VIN)
               </label>
               <input
                 id="VinDecoderInput"
