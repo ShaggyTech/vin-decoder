@@ -3,7 +3,7 @@ import { defineComponent, PropType } from '@vue/composition-api';
 
 export default defineComponent({
   name: 'AppTitleCard',
-  inheritAttrs: false,
+  // inheritAttrs: false,
   props: {
     header: {
       required: false,
@@ -21,19 +21,19 @@ export default defineComponent({
         class: ''
       })
     }
-  },
-  setup(_, { root: { $attrs } }) {
-    const { ...attrs } = $attrs;
-
-    return {
-      attrs
-    };
   }
+  // setup(_, { root: { $attrs } }) {
+  //   const { ...attrs } = $attrs;
+
+  //   return {
+  //     attrs
+  //   };
+  // }
 });
 </script>
 
 <template>
-  <v-toolbar-title v-bind="attrs">
+  <v-toolbar-title>
     <nuxt-link to="/">
       <span id="header" v-bind="header">{{ header.innerText }}</span>
       <span id="subheader" v-bind="subHeader">{{ subHeader.innerText }}</span>
