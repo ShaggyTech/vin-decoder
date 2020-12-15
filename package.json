@@ -14,8 +14,8 @@
     "test": "jest -c ./test/config/jest.config.js",
     "test:watch": "jest -c ./test/config/jest.config.js --watch --onlyChanged",
     "test:watchAll": "jest -c ./test/config/jest.config.js --watchAll",
-    "build:gh-pages": "yarn clean:nuxt && DEPLOY_ENV=GH_PAGES nuxt-ts build",
-    "generate:gh-pages": "yarn clean:nuxt && DEPLOY_ENV=GH_PAGES nuxt-ts generate",
+    "build:gh-pages": "yarn clean:nuxt && cross-env DEPLOY_ENV=GH_PAGES nuxt-ts build",
+    "generate:gh-pages": "yarn clean:nuxt && cross-env DEPLOY_ENV=GH_PAGES nuxt-ts generate",
     "clean:nuxt": "rimraf dist/* && rimraf .nuxt/*"
   },
   "repository": {
