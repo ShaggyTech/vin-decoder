@@ -89,6 +89,11 @@ describe('mutations', () => {
 });
 
 describe('actions', () => {
+  const mockPayload = {
+    VIN: 'TESTVIN',
+    results: mockRawResults
+  };
+
   test('clearHistory', () => {
     const context = {
       state: mockState,
@@ -105,11 +110,6 @@ describe('actions', () => {
       commit: jest.fn()
     };
 
-    const mockPayload = {
-      VIN: 'TESTVIN',
-      results: mockRawResults
-    };
-
     (addHistoryItem as Function)(context, mockPayload);
     expect(context.commit).toHaveBeenCalledWith(
       'ADD_HISTORY_ITEM',
@@ -121,11 +121,6 @@ describe('actions', () => {
     const context = {
       state: mockState,
       commit: jest.fn()
-    };
-
-    const mockPayload = {
-      VIN: 'TESTVIN',
-      results: mockRawResults
     };
 
     (deleteHistoryItem as Function)(context, mockPayload);
