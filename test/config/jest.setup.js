@@ -14,6 +14,11 @@ VTUConfig.stubs['nuxt-link'] = true;
 VTUConfig.stubs['router-link'] = true;
 
 const components = [
+  /* App */
+  {
+    name: 'AppTitleCard',
+    path: '../../components/app/TitleCard.vue'
+  },
   /* Base */
   {
     name: 'BaseInputWithValidation',
