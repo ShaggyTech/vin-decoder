@@ -1,7 +1,7 @@
 import { isRef } from '@nuxtjs/composition-api';
 import {
   mapHistoryState,
-  mapHistoryActions
+  mapHistoryActions,
 } from '@/compositions/useHistoryStore';
 /* Mocks */
 import { mockRawResults } from '@/test/__mocks__/mockDecodeVinValuesExtendedResults';
@@ -12,7 +12,7 @@ import { DecodeVinValuesExtendedResults } from '@/types';
 
 const MOCK_ITEM: HistoryItem = {
   VIN: 'TESTVIN',
-  results: mockRawResults as DecodeVinValuesExtendedResults
+  results: mockRawResults as DecodeVinValuesExtendedResults,
 };
 
 const useMockStore = (history: HistoryItem[]): object => ({
@@ -21,8 +21,8 @@ const useMockStore = (history: HistoryItem[]): object => ({
     addHistoryItem: jest.fn(),
     deleteHistoryItem: jest.fn(),
     clearHistory: jest.fn(),
-    INITIALIZE_HISTORY_STORE: jest.fn()
-  }
+    INITIALIZE_HISTORY_STORE: jest.fn(),
+  },
 });
 
 describe('useHistoryStore composition functions', () => {
@@ -59,7 +59,7 @@ describe('useHistoryStore composition functions', () => {
       const {
         addHistoryItem,
         deleteHistoryItem,
-        clearHistory
+        clearHistory,
       } = mapHistoryActions(store);
 
       expect(addHistoryItem).toBeDefined();

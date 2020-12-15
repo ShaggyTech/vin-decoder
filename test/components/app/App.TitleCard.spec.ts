@@ -6,7 +6,7 @@ import AppTitleCard from '@/components/app/TitleCard.vue';
 
 const factory = (options: { [propName: string]: any } = {}) => {
   return mount(AppTitleCard, {
-    ...options
+    ...options,
   });
 };
 
@@ -15,7 +15,7 @@ describe('AppTitleCard Component Tests', () => {
 
   test('base component state, matches snapshot', () => {
     const wrapper = factory({
-      sync: false
+      sync: false,
     });
     expect(wrapper.element).toMatchSnapshot();
   });
@@ -25,13 +25,13 @@ describe('AppTitleCard Component Tests', () => {
       propsData: {
         header: {
           innerText: 'Heading',
-          class: 'some-class'
+          class: 'some-class',
         },
         subHeader: {
           innerText: 'Sub Heading',
-          class: 'some-other-class'
-        }
-      }
+          class: 'some-other-class',
+        },
+      },
     });
     // console.log(wrapper.vm);
     // expect(wrapper.vm.$el).toEqual('display-1');

@@ -35,7 +35,7 @@ const config: NuxtConfig = {
   head: {
     // titleTemplate: '%s - ',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     title: META_TITLE,
     meta: [
@@ -48,9 +48,9 @@ const config: NuxtConfig = {
       { property: 'og:image:width', content: '237' },
       { property: 'og:image:height', content: '237' },
       { property: 'og:url', content: META_URL },
-      { property: 'og:description', content: META_DESCRIPTION }
+      { property: 'og:description', content: META_DESCRIPTION },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   plugins: ['~/plugins/vee-validate.ts'],
@@ -59,7 +59,7 @@ const config: NuxtConfig = {
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
     '@nuxt/typescript-build',
-    'nuxt-typed-vuex'
+    'nuxt-typed-vuex',
   ],
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa', 'nuxt-webfontloader'],
 
@@ -69,26 +69,26 @@ const config: NuxtConfig = {
       short_name: 'Vehicle Information Decoder',
       lang: 'en',
       display: 'standalone',
-      theme_color: '#78a0ff'
-    }
+      theme_color: '#78a0ff',
+    },
   },
   // Runtime type checking when running nuxt build
   typescript: {
     typeCheck: {
       eslint: {
-        files: './**/*.{ts,js,vue}'
-      }
-    }
+        files: './**/*.{ts,js,vue}',
+      },
+    },
   },
   vuetify: {
     defaultAssets: false,
-    optionsPath: '~/plugins/vuetify.ts'
+    optionsPath: '~/plugins/vuetify.ts',
   },
 
   webfontloader: {
     google: {
-      families: ['Rubik:400,500,700&display=swap']
-    }
+      families: ['Rubik:400,500,700&display=swap'],
+    },
   },
 
   build: {
@@ -96,9 +96,9 @@ const config: NuxtConfig = {
     transpile: [
       'vee-validate/dist/rules',
       'vuetify/lib/util/colors',
-      '/typed-vuex/'
-    ]
-  }
+      '/typed-vuex/',
+    ],
+  },
 };
 
 export default config;

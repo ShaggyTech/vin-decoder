@@ -3,7 +3,7 @@ import {
   defineComponent,
   ref,
   reactive,
-  onErrorCaptured
+  onErrorCaptured,
 } from '@nuxtjs/composition-api';
 /* History Setup */
 import { syncHistoryOnMounted } from '@/compositions/useLocalStorage';
@@ -14,13 +14,13 @@ const setupRefs = () => ({
     class: 'display-1',
     header: {
       innerText: 'VIN',
-      class: 'primary_red__--text font-weight-black'
+      class: 'primary_red__--text font-weight-black',
     },
     subHeader: {
       innerText: 'Decoder',
-      class: 'white__--text'
-    }
-  })
+      class: 'white__--text',
+    },
+  }),
 });
 
 export default defineComponent({
@@ -37,9 +37,9 @@ export default defineComponent({
     });
 
     return {
-      ...setupRefs()
+      ...setupRefs(),
     };
-  }
+  },
 });
 </script>
 

@@ -15,18 +15,18 @@ export const rules = () => {
     message: 'That is not a valid VIN.',
     validate: (value) => {
       return isValidVin(value);
-    }
+    },
   });
 
   /* Vee-Validate Rules */
   extend('required', {
     ...required,
-    message: 'A {_field_} is required.'
+    message: 'A {_field_} is required.',
   });
 
   extend('alpha_num', {
     ...alphaNum,
-    message: 'A {_field_} may only contain alphabetic or numeric characters.'
+    message: 'A {_field_} may only contain alphabetic or numeric characters.',
   });
 };
 

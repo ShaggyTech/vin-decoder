@@ -6,14 +6,14 @@ import { mockRawResults } from '~/test/__mocks__/mockDecodeVinValuesExtendedResu
 
 const factory = (options: object) => {
   return mount(VinDecoderResults, {
-    ...options
+    ...options,
   });
 };
 
 describe('VinDecoderResults Component Tests', () => {
   test('component is hidden if rawResults prop is empty', () => {
     const wrapper = factory({
-      sync: false
+      sync: false,
     });
 
     expect(wrapper.vm.$el.textContent).toEqual('');
@@ -24,8 +24,8 @@ describe('VinDecoderResults Component Tests', () => {
     const wrapper = factory({
       sync: false,
       propsData: {
-        loading: true
-      }
+        loading: true,
+      },
     });
 
     expect(wrapper.find('.results-loader').exists()).toBe(true);
@@ -36,8 +36,8 @@ describe('VinDecoderResults Component Tests', () => {
     const wrapper = factory({
       sync: false,
       propsData: {
-        rawResults: mockRawResults
-      }
+        rawResults: mockRawResults,
+      },
     });
 
     await wrapper.vm.$nextTick();
@@ -59,8 +59,8 @@ describe('VinDecoderResults Component Tests', () => {
     const wrapper = factory({
       sync: false,
       propsData: {
-        rawResults: mockRawResults
-      }
+        rawResults: mockRawResults,
+      },
     });
 
     await wrapper.vm.$nextTick();
@@ -74,7 +74,7 @@ describe('VinDecoderResults Component Tests', () => {
 
   test('watcher updates filtered results when rawResults changes', async () => {
     const wrapper = factory({
-      sync: false
+      sync: false,
     });
 
     await wrapper.vm.$nextTick();

@@ -2,7 +2,7 @@ import {
   getAccessorType,
   getterTree,
   mutationTree,
-  actionTree
+  actionTree,
 } from 'typed-vuex';
 /* Vuex Plugins */
 import { syncLocalStorage } from '@/store/plugins/syncLocalStorage';
@@ -21,15 +21,15 @@ const getDefaultState = () => ({
     {
       icon: 'mdi-apps',
       title: 'Welcome',
-      to: '/'
+      to: '/',
     },
     {
       icon: 'mdi-chart-bubble',
       title: 'Inspire',
-      to: '/inspire'
-    }
+      to: '/inspire',
+    },
   ],
-  rightDrawer: false
+  rightDrawer: false,
 });
 
 export const state = () => ({ ...getDefaultState() });
@@ -37,7 +37,7 @@ export const state = () => ({ ...getDefaultState() });
 export type RootState = ReturnType<typeof state>;
 
 export const getters = getterTree(state, {
-  message: (state) => `The count is: ${state.counter}!`
+  message: (state) => `The count is: ${state.counter}!`,
 });
 
 export const mutations = mutationTree(state, {
@@ -49,7 +49,7 @@ export const mutations = mutationTree(state, {
   },
   SET_RIGHT_DRAWER(state, rightDrawer: boolean) {
     state.rightDrawer = rightDrawer;
-  }
+  },
 });
 
 export const actions = actionTree(
@@ -63,7 +63,7 @@ export const actions = actionTree(
     },
     setRightDrawer({ commit }, rightDrawer: boolean) {
       commit('SET_RIGHT_DRAWER', rightDrawer);
-    }
+    },
   }
 );
 
@@ -74,8 +74,8 @@ export const accessorType = getAccessorType({
   mutations,
   actions,
   modules: {
-    history
-  }
+    history,
+  },
 });
 
 export type TypedVuexStore = typeof accessorType;

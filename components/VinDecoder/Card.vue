@@ -10,14 +10,14 @@ import { initializeComponent } from './';
 export default defineComponent({
   name: 'VinDecoder',
   components: {
-    ValidationObserver
+    ValidationObserver,
   },
 
   setup(_, { root: { $accessor } }) {
     return {
-      ...initializeComponent($accessor)
+      ...initializeComponent($accessor),
     };
-  }
+  },
 });
 </script>
 

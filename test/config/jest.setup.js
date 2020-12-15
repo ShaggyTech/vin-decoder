@@ -17,26 +17,26 @@ const components = [
   /* App */
   {
     name: 'AppTitleCard',
-    path: '../../components/app/TitleCard.vue'
+    path: '../../components/app/TitleCard.vue',
   },
   /* Base */
   {
     name: 'BaseInputWithValidation',
-    path: '../../components/base/InputWithValidation.vue'
+    path: '../../components/base/InputWithValidation.vue',
   },
   /* VinDecoder */
   {
     name: 'VinDecoderCard',
-    path: '../../components/VinDecoder/Card.vue'
+    path: '../../components/VinDecoder/Card.vue',
   },
   {
     name: 'VinDecoderHistory',
-    path: '../../components/VinDecoder/History.vue'
+    path: '../../components/VinDecoder/History.vue',
   },
   {
     name: 'VinDecoderResults',
-    path: '../../components/VinDecoder/Results.vue'
-  }
+    path: '../../components/VinDecoder/Results.vue',
+  },
 ];
 
 components.forEach(({ name, path }) => {

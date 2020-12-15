@@ -4,7 +4,7 @@ import {
   Refs,
   VALIDATOR,
   setupRefs,
-  initializeComponent
+  initializeComponent,
 } from '~/components/VinDecoder';
 /* Mock API Data */
 import { mockRawResults } from '~/test/__mocks__/mockDecodeVinValuesExtendedResults';
@@ -16,7 +16,7 @@ import * as moduleHandleError from '~/utils/handleError';
 import {
   DecodeVinValuesExtendedResults,
   HistoryItem,
-  TypedVuexStore
+  TypedVuexStore,
 } from '~/types';
 
 /* Mock history vuex store module */
@@ -28,14 +28,14 @@ const useMockStore = (history: HistoryItem[]): unknown => {
       history: (() => history_)(),
       addHistoryItem: jest.fn().mockImplementation((item) => {
         history_.unshift(item);
-      })
-    }
+      }),
+    },
   };
 };
 
 const mockItem = {
   VIN: 'TESTVIN',
-  results: mockRawResults
+  results: mockRawResults,
 };
 
 describe('Module: Setup composition module for VinDecoder component', () => {
@@ -108,7 +108,7 @@ describe('Module: Setup composition module for VinDecoder component', () => {
         loading,
         rawResults,
         validator,
-        vin
+        vin,
       } = componentSetup([]);
 
       expect(alertMessage).toBeDefined();
@@ -167,7 +167,7 @@ describe('Module: Setup composition module for VinDecoder component', () => {
           getResults,
           rawResults,
           loading,
-          alertMessage
+          alertMessage,
         } = componentSetup([]);
 
         spyGetHistoryItemIndex.mockImplementationOnce(() => -1);
@@ -195,7 +195,7 @@ describe('Module: Setup composition module for VinDecoder component', () => {
           getResults,
           rawResults,
           loading,
-          alertMessage
+          alertMessage,
         } = componentSetup([]);
 
         spyGetHistoryItemIndex.mockImplementationOnce(() => -1);
@@ -227,7 +227,7 @@ describe('Module: Setup composition module for VinDecoder component', () => {
           getResults,
           rawResults,
           loading,
-          alertMessage
+          alertMessage,
         } = componentSetup([]);
 
         spyFetchDecodeVinResults.mockImplementationOnce(() =>
@@ -259,7 +259,7 @@ describe('Module: Setup composition module for VinDecoder component', () => {
           getResults,
           rawResults,
           loading,
-          alertMessage
+          alertMessage,
         } = componentSetup([mockItem]);
 
         spyGetHistoryItemIndex.mockImplementationOnce(() => 0);

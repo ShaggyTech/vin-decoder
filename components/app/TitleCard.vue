@@ -10,18 +10,18 @@ export default defineComponent({
       type: Object as PropType<Record<string, string>>,
       default: () => ({
         innerText: '',
-        class: ''
-      })
+        class: '',
+      }),
     },
     subHeader: {
       required: false,
       type: Object as PropType<Record<string, string>>,
       default: () => ({
         innerText: '',
-        class: ''
-      })
-    }
-  }
+        class: '',
+      }),
+    },
+  },
   // setup(_, { root: { $attrs } }) {
   //   const { ...attrs } = $attrs;
 

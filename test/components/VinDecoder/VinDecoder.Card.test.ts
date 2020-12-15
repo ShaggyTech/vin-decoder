@@ -13,10 +13,10 @@ const factory = (options: { [propName: string]: any } = {}) => {
   return mount(VinDecoderCard, {
     setup: () => ({
       ...refs,
-      getResults: mockGetResults
+      getResults: mockGetResults,
     }),
     stubs: ['vin-results'],
-    ...options
+    ...options,
   });
 };
 

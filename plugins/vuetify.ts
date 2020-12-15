@@ -3,7 +3,7 @@ import { VuetifyPreset } from 'vuetify/types/services/presets';
 const vuetifyConfig: Partial<VuetifyPreset> = {
   icons: {
     iconfont: 'mdiSvg',
-    values: {}
+    values: {},
   },
   customVariables: ['~/assets/variables.scss'],
   theme: {
@@ -94,7 +94,7 @@ const vuetifyConfig: Partial<VuetifyPreset> = {
         text__red: '#CE2727',
         text__red__dark: '#991619',
         text__yellow: '#FFED54',
-        text__green: '#11a85a'
+        text__green: '#11a85a',
       },
       light: {
         primary: '#1976D2',
@@ -103,10 +103,10 @@ const vuetifyConfig: Partial<VuetifyPreset> = {
         success: '#4CAF50',
         info: '#2196F3',
         warning: '#FB8C00',
-        error: '#FF5252'
-      }
-    }
-  }
+        error: '#FF5252',
+      },
+    },
+  },
 };
 
 export default vuetifyConfig;

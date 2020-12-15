@@ -6,14 +6,14 @@ import vuetifyConfig from '@/plugins/vuetify';
 const localVue = createLocalVue();
 
 jest.mock('@/compositions/useLocalStorage', () => ({
-  syncHistoryOnMounted: () => jest.fn()
+  syncHistoryOnMounted: () => jest.fn(),
 }));
 
 const factory = (options: { [propName: string]: any } = {}) => {
   return mount(defaultLayout, {
     stubs: ['nuxt', 'router-link', 'AppTitleCard'],
     localVue,
-    ...options
+    ...options,
   });
 };
 
@@ -24,7 +24,7 @@ describe('Layouts - default', () => {
   beforeEach(() => {
     vuetify = new Vuetify(vuetifyConfig);
     wrapper = factory({
-      vuetify
+      vuetify,
     });
   });
 

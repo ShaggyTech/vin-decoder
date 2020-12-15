@@ -5,7 +5,7 @@ const {
   INITIALIZE_HISTORY_STORE,
   CLEAR_HISTORY,
   ADD_HISTORY_ITEM,
-  DELETE_HISTORY_ITEM
+  DELETE_HISTORY_ITEM,
 } = mutations;
 
 const { clearHistory, addHistoryItem, deleteHistoryItem } = actions;
@@ -17,17 +17,17 @@ const mockHistory = [
     results: {
       Make: 'VOLKSWAGEN',
       Model: 'Golf R',
-      ModelYear: '2013'
-    }
+      ModelYear: '2013',
+    },
   },
   {
     VIN: 'WAUCCGFFXF1027652',
     results: {
       Make: 'AUDI',
       Model: 'A3',
-      ModelYear: '2015'
-    }
-  }
+      ModelYear: '2015',
+    },
+  },
 ];
 beforeEach(() => {
   mockState = { ...state() };
@@ -91,13 +91,13 @@ describe('mutations', () => {
 describe('actions', () => {
   const mockPayload = {
     VIN: 'TESTVIN',
-    results: mockRawResults
+    results: mockRawResults,
   };
 
   test('clearHistory', () => {
     const context = {
       state: mockState,
-      commit: jest.fn()
+      commit: jest.fn(),
     };
 
     (clearHistory as Function)(context);
@@ -107,7 +107,7 @@ describe('actions', () => {
   test('addHistoryItem', () => {
     const context = {
       state: mockState,
-      commit: jest.fn()
+      commit: jest.fn(),
     };
 
     (addHistoryItem as Function)(context, mockPayload);
@@ -120,7 +120,7 @@ describe('actions', () => {
   test('deleteHistoryItem', () => {
     const context = {
       state: mockState,
-      commit: jest.fn()
+      commit: jest.fn(),
     };
 
     (deleteHistoryItem as Function)(context, mockPayload);

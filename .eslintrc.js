@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   extends: [
     'eslint:recommended',
@@ -10,7 +10,7 @@ module.exports = {
     'prettier',
     'prettier/vue',
     'plugin:prettier/recommended',
-    'plugin:nuxt/recommended'
+    'plugin:nuxt/recommended',
   ],
   plugins: ['prettier'],
   // add your custom rules here
@@ -31,6 +31,6 @@ module.exports = {
     /*****************
      * Nuxt Rules
      ****************/
-    'nuxt/no-cjs-in-config': 0
-  }
+    'nuxt/no-cjs-in-config': 0,
+  },
 };

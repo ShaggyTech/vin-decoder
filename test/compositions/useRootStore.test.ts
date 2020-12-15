@@ -7,13 +7,13 @@ const mockDrawerItems = [
   {
     icon: 'test-icon-1',
     title: 'Test Page 1',
-    to: '/'
+    to: '/',
   },
   {
     icon: 'test-icon-2',
     title: 'Test Page 2',
-    to: '/testpage2'
-  }
+    to: '/testpage2',
+  },
 ];
 
 const useMockStore = (): object => ({
@@ -21,7 +21,7 @@ const useMockStore = (): object => ({
   drawer: false,
   rightDrawer: false,
   setDrawer: jest.fn(),
-  setRightDrawer: jest.fn()
+  setRightDrawer: jest.fn(),
 });
 
 describe('useRootStore composition functions', () => {

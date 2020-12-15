@@ -7,7 +7,7 @@ import { Validator } from '@/types';
 
 const factory = (options: object) => {
   return mount(BaseInputWithValidation, {
-    ...options
+    ...options,
   });
 };
 
@@ -17,8 +17,8 @@ const validator: Validator = {
   vid: 'test-input-validator',
   name: 'test-input-validator',
   customMessages: {
-    required: 'test input is required'
-  }
+    required: 'test input is required',
+  },
 };
 
 describe('BaseInputWithValidation Component Tests', () => {
@@ -28,8 +28,8 @@ describe('BaseInputWithValidation Component Tests', () => {
     wrapper = factory({
       sync: false,
       propsData: {
-        id: 'TestInput'
-      }
+        id: 'TestInput',
+      },
     });
   });
 

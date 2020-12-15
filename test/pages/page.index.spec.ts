@@ -9,16 +9,16 @@ const getMocks = (history: Array<any>) => {
   return {
     $accessor: {
       history: {
-        history
-      }
-    }
+        history,
+      },
+    },
   };
 };
 
 const factory = (options: object) => {
   return mount(pageIndex, {
     localVue,
-    ...options
+    ...options,
   });
 };
 
@@ -26,7 +26,7 @@ describe('Pages: Home', () => {
   const vuetify = new Vuetify(vuetifyConfig);
   const wrapper = factory({
     vuetify,
-    mocks: { ...getMocks([]) }
+    mocks: { ...getMocks([]) },
   });
 
   test('component matches snapshot', () => {

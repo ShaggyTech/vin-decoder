@@ -6,12 +6,12 @@ export const mapRootState = (store: TypedVuexStore) => ({
   drawerItems: computed(() => [...store.drawerItems]),
   drawer: computed({
     get: () => store.drawer,
-    set: (drawer: boolean) => store.setDrawer(drawer)
+    set: (drawer: boolean) => store.setDrawer(drawer),
   }),
   rightDrawer: computed({
     get: () => store.rightDrawer,
-    set: (rightDrawer: boolean) => store.setRightDrawer(rightDrawer)
-  })
+    set: (rightDrawer: boolean) => store.setRightDrawer(rightDrawer),
+  }),
 });
 
 export const mapRootActions = (store: TypedVuexStore) => ({
@@ -20,5 +20,5 @@ export const mapRootActions = (store: TypedVuexStore) => ({
   },
   toggleRightDrawer: (rightDrawer: boolean) => {
     return store.setRightDrawer(!rightDrawer);
-  }
+  },
 });

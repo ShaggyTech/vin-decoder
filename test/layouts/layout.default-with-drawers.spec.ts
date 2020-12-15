@@ -6,7 +6,7 @@ import vuetifyConfig from '@/plugins/vuetify';
 const localVue = createLocalVue();
 
 jest.mock('@/compositions/useLocalStorage', () => ({
-  syncHistoryOnMounted: () => jest.fn()
+  syncHistoryOnMounted: () => jest.fn(),
 }));
 
 jest.mock('@/compositions/useRootStore', () =>
@@ -17,13 +17,13 @@ const mockDrawerItems = [
   {
     icon: 'test-icon-1',
     title: 'Test Page 1',
-    to: '/'
+    to: '/',
   },
   {
     icon: 'test-icon-2',
     title: 'Test Page 2',
-    to: '/testpage2'
-  }
+    to: '/testpage2',
+  },
 ];
 
 const getMocks = () => {
@@ -52,8 +52,8 @@ const getMocks = () => {
       },
       setRightDrawer(newDrawer: boolean) {
         return (this._rightDrawer = newDrawer);
-      }
-    }
+      },
+    },
   };
 };
 
@@ -61,7 +61,7 @@ const factory = (options: { [propName: string]: any } = {}) => {
   return mount(defaultLayoutWithDrawers, {
     stubs: ['nuxt', 'router-link'],
     localVue,
-    ...options
+    ...options,
   });
 };
 
@@ -73,7 +73,7 @@ describe('Layouts - default', () => {
     vuetify = new Vuetify(vuetifyConfig);
     wrapper = factory({
       mocks: { ...getMocks() },
-      vuetify
+      vuetify,
     });
   });
 
