@@ -1,4 +1,5 @@
-import { state, mutations, HistoryItem } from '~/store/history.ts';
+import { state, mutations, actions, HistoryItem } from '~/store/history.ts';
+import { mockRawResults } from '~/test/__mocks__/mockDecodeVinValuesExtendedResults';
 
 const {
   INITIALIZE_HISTORY_STORE,
@@ -6,6 +7,8 @@ const {
   ADD_HISTORY_ITEM,
   DELETE_HISTORY_ITEM
 } = mutations;
+
+const { clearHistory, addHistoryItem, deleteHistoryItem } = actions;
 
 let mockState = { ...state() };
 const mockHistory = [
@@ -82,5 +85,53 @@ describe('mutations', () => {
     // attempt to delete an item that no longer exists
     DELETE_HISTORY_ITEM(mockState, mockHistory[0] as HistoryItem);
     expect(mockState.history).toEqual([]);
+  });
+});
+
+describe('actions', () => {
+  test('clearHistory', () => {
+    const context = {
+      state: mockState,
+      commit: jest.fn()
+    };
+
+    (clearHistory as Function)(context);
+    expect(context.commit).toHaveBeenCalledWith('CLEAR_HISTORY');
+  });
+
+  test('addHistoryItem', () => {
+    const context = {
+      state: mockState,
+      commit: jest.fn()
+    };
+
+    const mockPayload = {
+      VIN: 'TESTVIN',
+      results: mockRawResults
+    };
+
+    (addHistoryItem as Function)(context, mockPayload);
+    expect(context.commit).toHaveBeenCalledWith(
+      'ADD_HISTORY_ITEM',
+      mockPayload
+    );
+  });
+
+  test('deleteHistoryItem', () => {
+    const context = {
+      state: mockState,
+      commit: jest.fn()
+    };
+
+    const mockPayload = {
+      VIN: 'TESTVIN',
+      results: mockRawResults
+    };
+
+    (deleteHistoryItem as Function)(context, mockPayload);
+    expect(context.commit).toHaveBeenCalledWith(
+      'DELETE_HISTORY_ITEM',
+      mockPayload
+    );
   });
 });

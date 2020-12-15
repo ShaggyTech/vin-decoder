@@ -1,7 +1,8 @@
-import { getters, state, mutations } from '~/store';
+import { getters, state, mutations, actions } from '~/store';
 
 // destructure assign `mutations`
 const { SET_COUNTER, SET_DRAWER, SET_RIGHT_DRAWER } = mutations;
+const { increment, setDrawer, setRightDrawer } = actions;
 let mockState = state();
 
 beforeEach(() => {
@@ -46,5 +47,51 @@ describe('mutations', () => {
     // set rightDrawer closed
     SET_RIGHT_DRAWER(mockState, false);
     expect(mockState.rightDrawer).toEqual(false);
+  });
+});
+
+describe('actions', () => {
+  test('increment', () => {
+    const context = {
+      state: mockState,
+      commit: jest.fn()
+    };
+
+    (increment as Function)(context);
+    expect(context.commit).toHaveBeenCalledWith('SET_COUNTER', 1);
+
+    mockState.counter++;
+    (increment as Function)(context);
+    expect(context.commit).toHaveBeenCalledWith('SET_COUNTER', 2);
+
+    mockState.counter = 22;
+    (increment as Function)(context);
+    expect(context.commit).toHaveBeenCalledWith('SET_COUNTER', 23);
+  });
+
+  test('setDrawer', () => {
+    const context = {
+      state: mockState,
+      commit: jest.fn()
+    };
+
+    (setDrawer as Function)(context, true);
+    expect(context.commit).toHaveBeenCalledWith('SET_DRAWER', true);
+
+    (setDrawer as Function)(context, false);
+    expect(context.commit).toHaveBeenCalledWith('SET_DRAWER', false);
+  });
+
+  test('setRightDrawer', () => {
+    const context = {
+      state: mockState,
+      commit: jest.fn()
+    };
+
+    (setRightDrawer as Function)(context, true);
+    expect(context.commit).toHaveBeenCalledWith('SET_RIGHT_DRAWER', true);
+
+    (setRightDrawer as Function)(context, false);
+    expect(context.commit).toHaveBeenCalledWith('SET_RIGHT_DRAWER', false);
   });
 });

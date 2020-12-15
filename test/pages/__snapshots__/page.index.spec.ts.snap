@@ -90,7 +90,7 @@ exports[`Pages: Home component matches snapshot 1`] = `
                   for="VinDecoderInput"
                   style="left: 0px; position: absolute;"
                 >
-                  VIN Input
+                  Vehicle Identification Number (VIN)
                 </label>
                 <input
                   id="VinDecoderInput"
