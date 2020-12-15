@@ -22,9 +22,27 @@ exports[`Layouts - default component matches snapshot 1`] = `
         />
          
         <div
-          class="v-toolbar__title text-center"
+          class="v-toolbar__title display-1"
         >
-          ShaggyTech.com - VIN Decoder
+          <nuxt-link-stub
+            to="/"
+          >
+            <span
+              class="primary_red__--text font-weight-black"
+              id="header"
+              innertext="VIN"
+            >
+              VIN
+            </span>
+             
+            <span
+              class="white__--text"
+              id="subheader"
+              innertext="Decoder"
+            >
+              Decoder
+            </span>
+          </nuxt-link-stub>
         </div>
          
         <div
