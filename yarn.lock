@@ -2047,10 +2047,10 @@
     ts-node "^9.0.0"
     typescript "~4.0"
 
-"@nuxt/ufo@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@nuxt/ufo/-/ufo-0.1.0.tgz#4943741c4300b73e4f1de09cad684ed4e9235502"
-  integrity sha512-7az26cl4TaNejTFlgwcGRIGPFH6tD8dLh1t+Q+BWIM8UQqqV9o2DH9yKcVlboP+LdocLBUC+OTOiZc0RSZh0bA==
+"@nuxt/ufo@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@nuxt/ufo/-/ufo-0.5.0.tgz#a84d5ce9dedee25b81fbbb4b44fef5ca2987af39"
+  integrity sha512-0My2z3nfJ8KTyz49/kyRBh0naoArsItDgfQP7qf38BfY8HAoiujFIANZyjpnq433UOU0wZqv0djHkydQX56FmQ==
 
 "@nuxt/utils-edge@2.14.5-26655875.a7da6fd5":
   version "2.14.5-26655875.a7da6fd5"
@@ -2081,12 +2081,12 @@
     vue-template-compiler "^2.6.12"
     vuex "^3.5.1"
 
-"@nuxt/vue-app@2.14.11":
-  version "2.14.11"
-  resolved "https://registry.yarnpkg.com/@nuxt/vue-app/-/vue-app-2.14.11.tgz#2dcf663adde17927a19a80aaf7909ae6a4c6b6ed"
-  integrity sha512-1aqrhvCKAt3ftaboDMJaSYZOM6qCd/kPfsW3GD6d/g0UNHvI+r0O19O6QRUQ0mnqil3fMVHlB/IzdvHHOgxCfA==
+"@nuxt/vue-app@2.14.12":
+  version "2.14.12"
+  resolved "https://registry.yarnpkg.com/@nuxt/vue-app/-/vue-app-2.14.12.tgz#1e41d64a8b18277d5db15158ca2a5d7fbcdf23dc"
+  integrity sha512-DwkXh8Djn2wi2qLetupDKpRIFmBDNZKrdT94xFieI5qY32EhLj9d/T80wZoZNZkPVqAKcwq24WktCSVRQ/uiOw==
   dependencies:
-    "@nuxt/ufo" "^0.1.0"
+    "@nuxt/ufo" "^0.5.0"
     node-fetch "^2.6.1"
     unfetch "^4.2.0"
     vue "^2.6.12"
