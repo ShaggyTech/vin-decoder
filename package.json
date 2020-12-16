@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.12.10",
-    "@babel/preset-env": "7.12.10",
+    "@babel/preset-env": "7.12.11",
     "@nuxt/types": "npm:@nuxt/types-edge",
     "@nuxt/typescript-build": "2.0.3",
     "@nuxt/vue-app": "2.14.11",
