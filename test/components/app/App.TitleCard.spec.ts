@@ -35,6 +35,8 @@ describe('AppTitleCard Component Tests', () => {
     });
     // console.log(wrapper.vm);
     // expect(wrapper.vm.$el).toEqual('display-1');
+    const header = wrapper.find('#header');
+    console.log({ classList: header.element.classList });
     expect(wrapper.find('#header').exists()).toBe(true);
     expect(wrapper.element).toMatchSnapshot();
   });
