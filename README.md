@@ -1,10 +1,8 @@
-# vin-decoder
+# [ShaggyTech.com/vin-decoder](https://www.shaggytech.com/vin-decoder)
 
 > A Nuxt Proggressive Web App (PWA) to decode Vehicle Identification Numbers (VINs) using the National Highway Traffic Safety Administration API. Implemented using the Vue Composition API and TypeScript.
 
-## Live Version
-
-### [https://www.shaggytech.com/vin-decoder](https://www.shaggytech.com/vin-decoder)
+[![codecov](https://codecov.io/gh/ShaggyTech/vin-decoder/branch/master/graph/badge.svg?token=sDqrGrhYQ6)](https://codecov.io/gh/ShaggyTech/vin-decoder)
 
 ## Build Setup
 
