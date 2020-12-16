@@ -30,3 +30,8 @@ jobs:
         yarn lint
         yarn test
         yarn generate:gh-pages
+
+    - name: Upload Coverage
+      uses: codecov/codecov-action@v1
+      with:
+        flags: unittests, master # optional
