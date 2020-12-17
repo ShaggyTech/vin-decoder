@@ -9,7 +9,7 @@ import { HistoryItem } from '@/store/history';
 
 const MOCK_ITEM: HistoryItem = {
   VIN: 'TESTVIN',
-  results: mockRawResults as DecodeVinValuesExtendedResults
+  results: mockRawResults as DecodeVinValuesExtendedResults,
 };
 
 const mountComposition = (cb: () => any) => {
@@ -19,7 +19,7 @@ const mountComposition = (cb: () => any) => {
     },
     render(h) {
       return h('div');
-    }
+    },
   });
 };
 
@@ -29,8 +29,8 @@ const useMockStore = (history: HistoryItem[]): object => ({
     addHistoryItem: jest.fn(),
     deleteHistoryItem: jest.fn(),
     clearHistory: jest.fn(),
-    INITIALIZE_HISTORY_STORE: jest.fn()
-  }
+    INITIALIZE_HISTORY_STORE: jest.fn(),
+  },
 });
 
 describe('useLocalStorage composition functions', () => {
@@ -74,7 +74,7 @@ describe('useLocalStorage composition functions', () => {
 
       expect(component).toBeDefined();
       expect(store.history.INITIALIZE_HISTORY_STORE).toHaveBeenCalledWith([
-        MOCK_ITEM
+        MOCK_ITEM,
       ]);
     });
   });

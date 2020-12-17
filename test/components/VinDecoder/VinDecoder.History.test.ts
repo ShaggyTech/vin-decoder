@@ -6,7 +6,7 @@ import { HistoryItem } from '~/types';
 
 const factory = (options: object) => {
   return mount(VinDecoderHistory, {
-    ...options
+    ...options,
   });
 };
 
@@ -17,21 +17,21 @@ const getMocks = (history: HistoryItem[] = []) => {
         history,
         clearHistory() {
           return (this.history = []);
-        }
-      }
-    }
+        },
+      },
+    },
   };
 };
 
 const mockHistory = [
-  { VIN: 'TESTVIN', results: { Make: 'VW' } }
+  { VIN: 'TESTVIN', results: { Make: 'VW' } },
 ] as HistoryItem[];
 
 describe('VinDecoderHistory Component Tests', () => {
   test('component is invisible if history is empty', () => {
     const wrapper = factory({
       sync: false,
-      mocks: { ...getMocks() }
+      mocks: { ...getMocks() },
     });
 
     expect(wrapper.vm.$el.textContent).toEqual('');
@@ -41,7 +41,7 @@ describe('VinDecoderHistory Component Tests', () => {
   test('component is visible if history contains items', () => {
     const wrapper = factory({
       sync: false,
-      mocks: { ...getMocks(mockHistory) }
+      mocks: { ...getMocks(mockHistory) },
     });
 
     expect(wrapper.find('.history-card').exists()).toBe(true);
@@ -51,7 +51,7 @@ describe('VinDecoderHistory Component Tests', () => {
   test('history can be cleared and component is invisible after clearing', async () => {
     const wrapper = factory({
       sync: false,
-      mocks: { ...getMocks(mockHistory) }
+      mocks: { ...getMocks(mockHistory) },
     });
 
     // history exists

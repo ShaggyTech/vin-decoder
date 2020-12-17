@@ -3,17 +3,17 @@ import { filterResults } from '@/utils/filterResults';
 const validResults = {
   Make: 'VW',
   Model: 'Jetta',
-  ModelYear: 2020
+  ModelYear: 2020,
 };
 
 const nullishResults = {
   NullValue: null,
   UndefinedValue: undefined,
-  emptyValue: ''
+  emptyValue: '',
 };
 
 const notApplicableResults = {
-  NotApplicable: 'Not Applicable'
+  NotApplicable: 'Not Applicable',
 };
 
 describe('fitlerResults Utility Method', () => {
@@ -30,7 +30,7 @@ describe('fitlerResults Utility Method', () => {
   test('should remove null, undefined, or empty item values', () => {
     const filtered = filterResults({
       ...validResults,
-      ...nullishResults
+      ...nullishResults,
     });
     expect(filtered).toEqual({ ...validResults });
   });
@@ -38,7 +38,7 @@ describe('fitlerResults Utility Method', () => {
   test('should remove item values equal to "Not Applicable"', () => {
     const filtered = filterResults({
       ...validResults,
-      ...notApplicableResults
+      ...notApplicableResults,
     });
     expect(filtered).toEqual({ ...validResults });
   });

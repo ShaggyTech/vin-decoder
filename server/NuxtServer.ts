@@ -48,7 +48,7 @@ export class NuxtServer {
 
       consola.ready({
         message: `Server listening on http://${this.host}:${this.port}`,
-        badge: true
+        badge: true,
       });
     }
   }

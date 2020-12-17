@@ -7,7 +7,7 @@ import { DecodeVinValuesExtendedResults } from '@/types';
 
 const MOCK_ITEM: HistoryItem = {
   VIN: 'TESTVIN',
-  results: mockRawResults as DecodeVinValuesExtendedResults
+  results: mockRawResults as DecodeVinValuesExtendedResults,
 };
 describe('getHistoryItemIndex helper function', () => {
   const mockHistory = [MOCK_ITEM];

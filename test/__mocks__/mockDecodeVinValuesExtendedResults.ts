@@ -7,5 +7,5 @@ export const mockRawResults: Partial<DecodeVinValuesExtendedResults> = {
   VIN: 'TESTVIN',
   /* all of the below should be filtered out in final results */
   NCSABodyType: '',
-  NCSAMake: 'Not Applicable'
+  NCSAMake: 'Not Applicable',
 };

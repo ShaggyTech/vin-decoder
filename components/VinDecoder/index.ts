@@ -4,13 +4,13 @@ import { ref, Ref } from '@nuxtjs/composition-api';
 import {
   fetchDecodeVinResults,
   getHistoryItemIndex,
-  handleError
+  handleError,
 } from '~/utils';
 /* Types */
 import {
   DecodeVinValuesExtendedResults,
   TypedVuexStore,
-  Validator
+  Validator,
 } from '~/types';
 
 export type Refs = {
@@ -28,8 +28,8 @@ export const VALIDATOR: Validator = {
   vid: 'vin-input-validator',
   name: 'vin-input-validator',
   customMessages: {
-    required: 'Please provide a VIN to decode.'
-  }
+    required: 'Please provide a VIN to decode.',
+  },
 };
 
 export const setupRefs = (): Refs => ({
@@ -37,7 +37,7 @@ export const setupRefs = (): Refs => ({
   loading: ref(false),
   rawResults: ref(null),
   validator: ref(VALIDATOR),
-  vin: ref(null)
+  vin: ref(null),
 });
 
 export const initializeComponent = (store: TypedVuexStore) => {
@@ -64,7 +64,7 @@ export const initializeComponent = (store: TypedVuexStore) => {
       refs.loading.value = false;
       refs.rawResults.value = { ...historyArray[historyIndex].results };
       return {
-        ...historyArray[historyIndex].results
+        ...historyArray[historyIndex].results,
       };
     }
 
@@ -89,7 +89,7 @@ export const initializeComponent = (store: TypedVuexStore) => {
     refs.rawResults.value = { ...results };
     store.history.addHistoryItem({
       VIN: results.VIN,
-      results: { ...results }
+      results: { ...results },
     });
 
     /* Cleanup */
@@ -99,6 +99,6 @@ export const initializeComponent = (store: TypedVuexStore) => {
 
   return {
     ...refs,
-    getResults
+    getResults,
   };
 };

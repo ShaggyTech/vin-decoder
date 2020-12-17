@@ -2,17 +2,18 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   extends: [
     'eslint:recommended',
+    '@nuxtjs',
     '@nuxtjs/eslint-config-typescript',
     'prettier',
     'prettier/vue',
     'plugin:prettier/recommended',
-    'plugin:nuxt/recommended'
+    'plugin:nuxt/recommended',
   ],
-  plugins: ['prettier'],
+  plugins: ['prettier', 'vue'],
   // add your custom rules here
   rules: {
     /*****************
@@ -24,13 +25,13 @@ module.exports = {
     /*****************
      * Vue Rules
      ****************/
-    'vue/html-self-closing': 0,
+    // 'vue/html-self-closing': 0,
     'vue/singleline-html-element-content-newline': 0,
     'vue/multiline-html-element-content-newline': 0,
-    'vue/html-closing-bracket-newline': 0,
+    // 'vue/html-closing-bracket-newline': 0,
     /*****************
      * Nuxt Rules
      ****************/
-    'nuxt/no-cjs-in-config': 0
-  }
+    'nuxt/no-cjs-in-config': 0,
+  },
 };

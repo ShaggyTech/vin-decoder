@@ -54,7 +54,7 @@ describe('actions', () => {
   test('increment', () => {
     const context = {
       state: mockState,
-      commit: jest.fn()
+      commit: jest.fn(),
     };
 
     (increment as Function)(context);
@@ -72,7 +72,7 @@ describe('actions', () => {
   test('setDrawer', () => {
     const context = {
       state: mockState,
-      commit: jest.fn()
+      commit: jest.fn(),
     };
 
     (setDrawer as Function)(context, true);
@@ -85,7 +85,7 @@ describe('actions', () => {
   test('setRightDrawer', () => {
     const context = {
       state: mockState,
-      commit: jest.fn()
+      commit: jest.fn(),
     };
 
     (setRightDrawer as Function)(context, true);

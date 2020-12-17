@@ -3,7 +3,7 @@ import { defineComponent, ref, PropType } from '@nuxtjs/composition-api';
 
 const getRefs = () => ({
   pageNotFound: ref<string>('Oops! That page was not found.'),
-  otherError: ref<string>('An error occurred')
+  otherError: ref<string>('An error occurred'),
 });
 
 export default defineComponent({
@@ -11,15 +11,15 @@ export default defineComponent({
   props: {
     error: {
       type: Object as PropType<any>,
-      default: null
-    }
+      default: null,
+    },
   },
   setup() {
     const { pageNotFound, otherError } = getRefs();
 
     return {
       pageNotFound,
-      otherError
+      otherError,
     };
   },
   /* istanbul ignore next */
@@ -30,9 +30,9 @@ export default defineComponent({
       statusCode === 404 ? pageNotFound.value : otherError.value;
 
     return {
-      title
+      title,
     };
-  }
+  },
 });
 </script>
 

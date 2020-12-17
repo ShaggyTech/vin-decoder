@@ -9,12 +9,12 @@ const factory = (options: { [propName: string]: any }) => {
   return mount(errorLayout, {
     propsData: {
       error: {
-        statusCode: null
-      }
+        statusCode: null,
+      },
     },
     stubs: ['NuxtLink'],
     localVue,
-    ...options
+    ...options,
   });
 };
 
@@ -25,7 +25,7 @@ describe('Layouts - error', () => {
   beforeEach(() => {
     vuetify = new Vuetify(vuetifyConfig);
     wrapper = factory({
-      vuetify
+      vuetify,
     });
   });
 
@@ -55,9 +55,9 @@ describe('Layouts - error', () => {
     const vuetify = new Vuetify(vuetifyConfig);
     const wrapper = factory({
       propsData: {
-        error: { statusCode: 404 }
+        error: { statusCode: 404 },
       },
-      vuetify
+      vuetify,
     });
 
     await wrapper.vm.$nextTick();

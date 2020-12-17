@@ -7,7 +7,7 @@ import { syncHistoryOnMounted } from '@/compositions/useLocalStorage';
 
 const setupRefs = () => ({
   right: ref<boolean>(true),
-  title: ref<string>('ShaggyTech.com - VIN Decoder')
+  title: ref<string>('ShaggyTech.com - VIN Decoder'),
 });
 
 export default defineComponent({
@@ -26,9 +26,9 @@ export default defineComponent({
     return {
       ...setupRefs(),
       ...mapRootState($accessor),
-      ...mapRootActions($accessor)
+      ...mapRootActions($accessor),
     };
-  }
+  },
 });
 </script>
 

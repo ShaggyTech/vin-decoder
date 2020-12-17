@@ -5,7 +5,7 @@ import {
   ref,
   watch,
   PropType,
-  Ref
+  Ref,
 } from '@nuxtjs/composition-api';
 /* Vee-Validate */
 import { ValidationProvider } from 'vee-validate';
@@ -15,21 +15,21 @@ import { Validator } from '@/types';
 export default defineComponent({
   name: 'BaseInputWithValidation',
   components: {
-    ValidationProvider
+    ValidationProvider,
   },
   inheritAttrs: false,
   props: {
     toUpperCase: {
       required: false,
       type: Boolean,
-      default: false
+      default: false,
     },
     /* Options for the ValidationProvider */
     validator: {
       required: false,
       type: Object as PropType<Validator>,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
 
   setup(props, { emit }) {
@@ -42,7 +42,7 @@ export default defineComponent({
     });
 
     return { inputValue };
-  }
+  },
 });
 </script>
 

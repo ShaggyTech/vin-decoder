@@ -13,7 +13,7 @@ export interface HistoryPayload {
 }
 
 export const state = () => ({
-  history: [] as HistoryItem[]
+  history: [] as HistoryItem[],
 });
 
 export type HistoryState = ReturnType<typeof state>;
@@ -43,7 +43,7 @@ export const mutations = mutationTree(state, {
         return item_.VIN !== item.VIN;
       });
     }
-  }
+  },
 });
 
 export const actions = actionTree(
@@ -57,6 +57,6 @@ export const actions = actionTree(
     },
     deleteHistoryItem({ commit }, payload: HistoryItem) {
       commit('DELETE_HISTORY_ITEM', payload);
-    }
+    },
   }
 );

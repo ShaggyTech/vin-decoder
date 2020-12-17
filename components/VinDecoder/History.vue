@@ -2,7 +2,7 @@
 import { defineComponent } from '@nuxtjs/composition-api';
 import {
   mapHistoryState,
-  mapHistoryActions
+  mapHistoryActions,
 } from '~/compositions/useHistoryStore';
 
 export default defineComponent({
@@ -16,9 +16,9 @@ export default defineComponent({
 
     return {
       history,
-      clearHistory
+      clearHistory,
     };
-  }
+  },
 });
 </script>
 

@@ -3,17 +3,17 @@ const componentDirs = {
     '~/components',
     {
       path: '~/components/app/',
-      prefix: 'App'
+      prefix: 'App',
     },
     {
       path: '~/components/base/',
-      prefix: 'Base'
+      prefix: 'Base',
     },
     {
       path: '~/components/VinDecoder/',
-      prefix: 'VinDecoder'
-    }
-  ]
+      prefix: 'VinDecoder',
+    },
+  ],
 };
 
 export { componentDirs };

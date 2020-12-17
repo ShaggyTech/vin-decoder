@@ -5,7 +5,7 @@ import {
   ref,
   watch,
   PropType,
-  onMounted
+  onMounted,
 } from '@nuxtjs/composition-api';
 /* Utility Methods */
 import { filterResults } from '~/utils';
@@ -19,28 +19,28 @@ export default defineComponent({
     rawResults: {
       required: false,
       type: Object as PropType<ResultsObjectType | null>,
-      default: null
+      default: null,
     },
     loading: {
       required: false,
       type: Boolean as PropType<boolean>,
-      default: false
+      default: false,
     },
     transition: {
       required: false,
       type: String as PropType<string>,
-      default: 'slide-y-transition'
+      default: 'slide-y-transition',
     },
     tableHeight: {
       required: false,
       type: [Number, String] as PropType<number | string>,
-      default: 300
+      default: 300,
     },
     maxWidth: {
       required: false,
       type: [Number, String] as PropType<number | string>,
-      default: 600
-    }
+      default: 600,
+    },
   },
 
   setup(props) {
@@ -58,9 +58,9 @@ export default defineComponent({
     );
 
     return {
-      results
+      results,
     };
-  }
+  },
 });
 </script>
 

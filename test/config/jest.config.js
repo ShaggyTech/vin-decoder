@@ -7,7 +7,7 @@ module.exports = {
     '<rootDir>/middleware/**/*.(ts|js)',
     '<rootDir>/pages/**/*.(vue|ts|js)',
     '<rootDir>/store/**/*.(ts|js)',
-    '<rootDir>/utils/**/*.(ts|js)'
+    '<rootDir>/utils/**/*.(ts|js)',
   ],
   coveragePathIgnorePatterns: ['<rootDir>/store/plugins/'],
   coverageDirectory: '<rootDir>/coverage',
@@ -15,7 +15,7 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
     '^vue$': 'vue/dist/vue.common.js',
-    '@nuxtjs/composition-api': '@nuxtjs/composition-api/lib/entrypoint.js'
+    '@nuxtjs/composition-api': '@nuxtjs/composition-api/lib/entrypoint.js',
   },
   moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
   rootDir: '../../',
@@ -26,20 +26,20 @@ module.exports = {
     '^.+\\.js?$': require.resolve('babel-jest'),
     '^.+\\.ts?$': require.resolve('ts-jest'),
     '.*\\.(vue)$': require.resolve('vue-jest'),
-    'vee-validate/dist/rules': require.resolve('babel-jest')
+    'vee-validate/dist/rules': require.resolve('babel-jest'),
   },
   transformIgnorePatterns: [
     '<rootDir>/node_modules/(?!(' +
       'vee-validate/dist/rules' +
       '|nuxt-typed-vuex/lib' +
       '|typed-vuex/lib' +
-      '))'
+      '))',
   ],
   watchPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/.nuxt/',
     '<rootDir>/coverage/',
     '<rootDir>/docs/',
-    '<rootDir>/bin/'
-  ]
+    '<rootDir>/bin/',
+  ],
 };
