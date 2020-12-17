@@ -22,21 +22,14 @@ export default defineComponent({
       }),
     },
   },
-  // setup(_, { root: { $attrs } }) {
-  //   const { ...attrs } = $attrs;
-
-  //   return {
-  //     attrs
-  //   };
-  // }
 });
 </script>
 
 <template>
   <v-toolbar-title>
     <nuxt-link to="/">
-      <span id="header" v-bind="header">{{ header.innerText }}</span>
-      <span id="subheader" v-bind="subHeader">{{ subHeader.innerText }}</span>
+      <span id="Header" v-bind="header">{{ header.innerText }}</span>
+      <span id="SubHeader" v-bind="subHeader">{{ subHeader.innerText }}</span>
     </nuxt-link>
   </v-toolbar-title>
 </template>
