@@ -9,6 +9,6 @@ export default defineComponent({
 <template>
   <v-container column justify-center align-center>
     <vin-decoder-card />
-    <LazyVinDecoderHistory />
+    <VinDecoderHistory />
   </v-container>
 </template>
