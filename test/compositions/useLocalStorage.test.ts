@@ -39,7 +39,7 @@ describe('useLocalStorage composition functions', () => {
 
     beforeEach(() => {
       localStorage.clear();
-      store = useMockStore([]) as TypedVuexStore;
+      store = { ...useMockStore([]) } as TypedVuexStore;
     });
 
     test('is correctly exported as a function', () => {
@@ -67,12 +67,14 @@ describe('useLocalStorage composition functions', () => {
     });
 
     test('if localStorage.history exists and is populated, it should be used to intialize the history store', () => {
+      const historyString = JSON.stringify([MOCK_ITEM]);
       const component = mountComposition(() => {
-        localStorage.setItem('history', JSON.stringify([MOCK_ITEM]));
+        localStorage.setItem('history', historyString);
         syncHistoryOnMounted(store);
       });
 
       expect(component).toBeDefined();
+
       expect(store.history.INITIALIZE_HISTORY_STORE).toHaveBeenCalledWith([
         MOCK_ITEM,
       ]);

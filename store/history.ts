@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 /* Types */
 import { mutationTree, actionTree } from 'nuxt-typed-vuex';
 import { DecodeVinValuesExtendedResults } from '@/types';
@@ -20,10 +22,10 @@ export type HistoryState = ReturnType<typeof state>;
 
 export const mutations = mutationTree(state, {
   INITIALIZE_HISTORY_STORE(state, localStorageState) {
-    state.history = [...localStorageState];
+    Vue.set(state, 'history', [...localStorageState]);
   },
   CLEAR_HISTORY(state) {
-    state.history = [];
+    Vue.set(state, 'history', []);
   },
   ADD_HISTORY_ITEM(state, item: HistoryItem) {
     if (item) {
@@ -39,9 +41,10 @@ export const mutations = mutationTree(state, {
   },
   DELETE_HISTORY_ITEM(state, item: HistoryItem) {
     if (item) {
-      state.history = state.history.filter((item_: HistoryItem) => {
+      const newHistory = state.history.filter((item_: HistoryItem) => {
         return item_.VIN !== item.VIN;
       });
+      Vue.set(state, 'history', [...newHistory]);
     }
   },
 });
