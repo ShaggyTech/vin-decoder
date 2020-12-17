@@ -19,6 +19,7 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
   rootDir: '../../',
+  setupFiles: ['jest-localstorage-mock'],
   setupFilesAfterEnv: ['<rootDir>/test/config/jest.setup.js'],
   snapshotSerializers: ['jest-serializer-vue'],
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
