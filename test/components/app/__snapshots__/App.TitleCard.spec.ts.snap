@@ -9,18 +9,18 @@ exports[`AppTitleCard Component Tests Props "header" and "subheader" 1`] = `
   >
     <span
       class="some-class"
-      id="header"
-      innertext="Heading"
+      id="Header"
+      innertext="This is a heading"
     >
-      Heading
+      This is a heading
     </span>
      
     <span
       class="some-other-class"
-      id="subheader"
-      innertext="Sub Heading"
+      id="SubHeader"
+      innertext="This is a sub-heading"
     >
-      Sub Heading
+      This is a sub-heading
     </span>
   </nuxt-link-stub>
 </div>
@@ -35,7 +35,7 @@ exports[`AppTitleCard Component Tests base component state, matches snapshot 1`]
   >
     <span
       class=""
-      id="header"
+      id="Header"
       innertext=""
     >
       
@@ -43,7 +43,7 @@ exports[`AppTitleCard Component Tests base component state, matches snapshot 1`]
      
     <span
       class=""
-      id="subheader"
+      id="SubHeader"
       innertext=""
     >
       
