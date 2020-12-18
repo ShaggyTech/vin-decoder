@@ -5,6 +5,8 @@ import {
   reactive,
   onErrorCaptured,
 } from '@nuxtjs/composition-api';
+/* Icons */
+import { mdiGithub } from '@mdi/js';
 /* History Setup */
 import { syncHistoryOnMounted } from '@/compositions/useLocalStorage';
 
@@ -25,6 +27,8 @@ const setupRefs = () => ({
 
 export default defineComponent({
   setup(_, { root: { $accessor } }) {
+    const icons = { mdiGithub };
+    const sourceCodeURL = 'https://github.com/ShaggyTech/vin-decoder';
     syncHistoryOnMounted($accessor);
 
     /* istanbul ignore next */
@@ -38,6 +42,8 @@ export default defineComponent({
 
     return {
       ...setupRefs(),
+      icons,
+      sourceCodeURL,
     };
   },
 });
@@ -54,10 +60,18 @@ export default defineComponent({
       <nuxt />
     </v-main>
     <v-footer app class="text-center">
-      <v-col class="text-center" cols="12">
-        Made with &#10084; by Brandon Eichler - &copy;
-        {{ new Date().getFullYear() }}
-      </v-col>
+      <v-row justify="center">
+        <v-btn icon elevation="1" :href="sourceCodeURL" target="_blank">
+          <v-icon size="32px" color="secondary lighten-2">
+            {{ icons.mdiGithub }}
+          </v-icon>
+        </v-btn>
+
+        <v-col class="py-1 text-center subtitle-2" cols="12">
+          Made with <strong>Vue.js</strong> and <strong>Nuxt.js</strong> by
+          <strong>Brandon Eichler</strong> - {{ new Date().getFullYear() }}
+        </v-col>
+      </v-row>
     </v-footer>
   </v-app>
 </template>
@@ -69,10 +83,6 @@ export default defineComponent({
   box-sizing: border-box;
   margin: 0;
 }
-/* body {
-  background-color: '#FFFFF';
-  filter: invert(1) hue-rotate(210deg);
-} */
 a {
   text-decoration: none !important;
 }
