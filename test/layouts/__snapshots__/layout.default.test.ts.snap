@@ -61,7 +61,7 @@ exports[`Layouts - default component matches snapshot 1`] = `
           >
             <span
               aria-hidden="true"
-              class="v-icon notranslate v-icon--svg theme--dark primary--text text--darken-2"
+              class="v-icon notranslate v-icon--svg theme--dark secondary--text text--lighten-2"
               style="font-size: 32px; height: 32px; width: 32px;"
             >
               <svg
