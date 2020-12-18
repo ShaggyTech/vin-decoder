@@ -61,7 +61,13 @@ export default defineComponent({
     </v-main>
     <v-footer app class="text-center">
       <v-row justify="center">
-        <v-btn icon elevation="1" :href="sourceCodeURL" target="_blank">
+        <v-btn
+          icon
+          elevation="1"
+          :href="sourceCodeURL"
+          target="_blank"
+          rel="noopener"
+        >
           <v-icon size="32px" color="secondary lighten-2">
             {{ icons.mdiGithub }}
           </v-icon>
