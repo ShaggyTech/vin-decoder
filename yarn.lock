@@ -2252,10 +2252,10 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
-"@shaggytools/nhtsa-api-wrapper@1.1.6":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@shaggytools/nhtsa-api-wrapper/-/nhtsa-api-wrapper-1.1.6.tgz#0888ae47995b2529a06b3c1c1c79967697e5d5a9"
-  integrity sha512-ozxdYNtemTTkTqqc6N183EL3UVroTlhNiOp6Q5QKaCvdyfYQfgzQHa3sQOcwls8K4LEloSyMtA8ScdklqOBeqg==
+"@shaggytools/nhtsa-api-wrapper@1.1.11":
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/@shaggytools/nhtsa-api-wrapper/-/nhtsa-api-wrapper-1.1.11.tgz#fb456e72f64128ec355a1c83fca79059992a0ba3"
+  integrity sha512-Y6LZvDWIIy0OWlVxUNM+ubbMldXr5DzOcDiBMFoCjFhmgQoxNp30UiXkNhnnjhptumHqBc1Z5UZI7ZIYojVlkw==
   dependencies:
     cross-fetch "^3.0.6"
 
