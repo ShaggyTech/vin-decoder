@@ -27,6 +27,7 @@ const routerBase =
 const config: NuxtConfig = {
   mode: 'universal',
   target: 'server',
+  buildDir: '.nuxt',
   telemetry: false,
   dev: isDev,
   ...routerBase,
