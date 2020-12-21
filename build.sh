@@ -4,28 +4,28 @@
 # called from ./deploy.sh to deploy new changes
 
 # Fetch new files
-# git fetch --all
-# git checkout --force "origin/master"
+git fetch --all
+git checkout --force "origin/master"
 
 # Rename the build directory
-mkdir -p next_build
-sed -i "s/buildDir: '.nuxt'/buildDir: 'next_build'/" nuxt.config.ts
+mkdir -p dist_next
+sed -i "s/generate: { dir: 'dist' },/generate: { dir: 'dist_next' },/" nuxt.config.ts
 
 # Update dependencies
 echo "Updating Yarn dependencies..."
 yarn
 
 # Build the app
-echo "Generating new nuxt app from master branch into ./next_build ..."
+echo "Generating new nuxt app from master branch into ./dist_next ..."
 yarn generate &
 pid=$!
 wait $pid
-echo "New build has been output to ./next_build/"
+echo "New build has been output to ./dist_next/"
 echo "New nuxt app built!"
 
 # Revert the rename
-sed -i "s/buildDir: 'next_build'/buildDir: '.nuxt'/" nuxt.config.ts
+sed -i "s/generate: { dir: 'dist_next' },/generate: { dir: 'dist' },/" nuxt.config.ts
 
 # Replace the existing directory with the new build
 echo "Replacing files in .nuxt with new build..."
-rm -rf .nuxt && mv next_build .nuxt
+rm -rf dist && mv dist_next dist
