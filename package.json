@@ -9,7 +9,7 @@
     "dev": "ts-node --project server/tsconfig.json server/server-dev.ts",
     "build": "yarn clean:nuxt && nuxt-ts build",
     "start": "cross-env NODE_ENV=production ts-node --project 'server/tsconfig.json' server/server-prod.ts",
-    "generate": "yarn clean:nuxt && nuxt-ts generate",
+    "generate": "nuxt-ts generate",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "test": "jest -c ./test/config/jest.config.js",
     "test:watch": "jest -c ./test/config/jest.config.js --watch --onlyChanged",

@@ -4,6 +4,13 @@ import { PORT } from './server';
 import { componentDirs } from './components';
 
 const isDev = process.env.NODE_ENV !== 'production';
+const typeCheck = isDev
+  ? {
+      eslint: {
+        files: './**/*.{ts,js,vue}',
+      },
+    }
+  : false;
 
 const PRODUCTION_HOST_URL = 'shaggytech.com';
 
@@ -74,11 +81,7 @@ const config: NuxtConfig = {
   },
   // Runtime type checking when running nuxt build
   typescript: {
-    typeCheck: {
-      eslint: {
-        files: './**/*.{ts,js,vue}',
-      },
-    },
+    typeCheck,
   },
   vuetify: {
     defaultAssets: false,
