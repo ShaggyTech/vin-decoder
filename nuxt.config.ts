@@ -28,6 +28,7 @@ const config: NuxtConfig = {
   mode: 'universal',
   target: 'server',
   buildDir: '.nuxt',
+  generate: { dir: 'dist' },
   telemetry: false,
   dev: isDev,
   ...routerBase,
