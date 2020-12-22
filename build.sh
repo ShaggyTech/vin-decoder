@@ -17,9 +17,8 @@ yarn
 
 # Build the app
 echo "Generating new nuxt app from master branch into ./dist_next ..."
-yarn generate &
-pid=$!
-wait $pid
+yarn generate
+wait
 echo "New build has been output to ./dist_next/"
 echo "New nuxt app built!"
 

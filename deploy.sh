@@ -4,8 +4,7 @@
 
 # Build the new app
 echo "Preparing to deploy a new production build..."
-./build.sh &
-pid=$!
+./build.sh & pid=$!
 wait $pid
 
 # Reload the app
