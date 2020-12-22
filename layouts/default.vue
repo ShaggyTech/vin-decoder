@@ -15,7 +15,7 @@ const setupRefs = () => ({
   title: reactive({
     class: 'display-1',
     header: {
-      innerText: 'Dubsquared.com -- VIN',
+      innerText: 'Testing Again - VIN',
       class: 'primary_red__--text font-weight-black',
     },
     subHeader: {
