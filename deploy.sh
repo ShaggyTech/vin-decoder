@@ -11,6 +11,6 @@ wait $pid
 
 # Reload the app
 echo "New build completed, running pm2 reload"
-pm2 reload ecosystem.config.js --update-env
+/home/shaggy/.nvm/versions/node/v14.15.3/lib/node_modules/pm2/bin/pm2 reload ecosystem.config.js --update-env
 wait
 echo "pm2 reloaded"
