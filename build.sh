@@ -5,7 +5,10 @@
 
 # Fetch new files
 git fetch --all
-git checkout --force "origin/master"
+git checkout master
+git pull
+
+wait
 
 # Rename the build directory
 mkdir -p dist_next
