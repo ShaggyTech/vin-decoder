@@ -3,6 +3,8 @@
 # Script for zero downtime Nuxt continuous deployment
 # called from ./deploy.sh to deploy new changes
 
+set -e
+
 # Fetch new files
 git fetch --all
 git checkout master
