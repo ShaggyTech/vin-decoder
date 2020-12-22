@@ -1,0 +1,17 @@
+[Unit]
+Description=Github webhook
+After=network.target
+
+[Service]
+Environment=NODE_PORT=9000
+Type=simple
+User=shaggy
+
+# I'm using nvm on my production host, so I have to specify nvm environment path and node bin path
+# to find your path, run 'pm2 startup' and use the path from the printed string with node in it
+Environment=PATH=/home/shaggy/.nvm/versions/node/v14.15.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/shaggy/.nvm/versions/node/v14.15.3/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+ExecStart=/home/shaggy/.nvm/versions/node/v14.15.3/bin/node /home/shaggy/webhooks/webhook.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
