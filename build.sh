@@ -26,5 +26,5 @@ echo "New nuxt app built!"
 sed -i "s/generate: { dir: 'dist_next' },/generate: { dir: 'dist' },/" nuxt.config.ts
 
 # Replace the existing directory with the new build
-echo "Replacing files in .nuxt with new build..."
+echo "Replacing files in ./dist with new build..."
 rm -rf dist && mv dist_next dist

@@ -9,4 +9,4 @@ wait $pid
 
 # Reload the app
 echo "New build completed, running pm2 reload"
-pm2 reload vin.dubsquared.com
+pm2 reload ecosystem.config.js --update-env
