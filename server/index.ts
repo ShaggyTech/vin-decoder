@@ -1,6 +1,8 @@
 export { NuxtServer } from './NuxtServer';
 
-export const PORT = 3000;
+const envPort = process.env.PORT;
+
+export const PORT = envPort ? parseInt(envPort) : 3000;
 
 export const WATCH_FOLDERS = `
   assets

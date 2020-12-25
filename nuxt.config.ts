@@ -28,6 +28,7 @@ const routerBase =
     : {};
 
 const config: NuxtConfig = {
+  rootDir: __dirname,
   target: 'server',
   buildDir: '.nuxt',
   generate: { dir: 'dist' },
