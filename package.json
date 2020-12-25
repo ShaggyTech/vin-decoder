@@ -48,7 +48,7 @@
     "@shaggytools/nhtsa-api-wrapper": "1.1.11",
     "cross-env": "7.0.3",
     "express": "4.17.1",
-    "nuxt-edge": "npm:nuxt-edge",
+    "nuxt-edge": "npm:nuxt-edge@latest",
     "nuxt-typed-vuex": "0.1.22",
     "nuxt-webfontloader": "1.1.0",
     "vee-validate": "3.4.5"
@@ -56,7 +56,7 @@
   "devDependencies": {
     "@babel/core": "7.12.10",
     "@babel/preset-env": "7.12.11",
-    "@nuxt/types": "npm:@nuxt/types-edge",
+    "@nuxt/types": "npm:@nuxt/types-edge@latest",
     "@nuxt/typescript-build": "2.0.3",
     "@nuxt/vue-app": "2.14.12",
     "@nuxtjs/eslint-config-typescript": "5.0.0",
