@@ -67,6 +67,7 @@ export default defineComponent({
           :href="sourceCodeURL"
           target="_blank"
           rel="noopener"
+          aria-label="Source Code URL"
         >
           <v-icon size="32px" color="secondary lighten-2">
             {{ icons.mdiGithub }}
