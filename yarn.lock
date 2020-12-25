@@ -1532,7 +1532,7 @@
     rc9 "^1.2.0"
     std-env "^2.2.1"
 
-"@nuxt/types@npm:@nuxt/types-edge@latest":
+"@nuxt/types@npm:@nuxt/types-edge@2.15.0-26814285.0bc9d249":
   version "2.15.0-26814285.0bc9d249"
   resolved "https://registry.yarnpkg.com/@nuxt/types-edge/-/types-edge-2.15.0-26814285.0bc9d249.tgz#ebfbf2c00ca651bfb5508103d4402dce8beee07a"
   integrity sha512-6dE2moXuAT8oz3zCSpYuHqZq/ZDo7NeOLCBBqdm3mCXQGsWRbNtI0FN7Iv+uQnQEMhclL9lR9YEcnlr0jfT1uA==
@@ -8231,7 +8231,7 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
-"nuxt-edge@npm:nuxt-edge@latest":
+"nuxt-edge@npm:nuxt-edge@2.15.0-26814285.0bc9d249":
   version "2.15.0-26814285.0bc9d249"
   resolved "https://registry.yarnpkg.com/nuxt-edge/-/nuxt-edge-2.15.0-26814285.0bc9d249.tgz#668698ab44574b7410ba9087568de5e4f8bb5dde"
   integrity sha512-+UK/s9GfJ1KOMJ9HrBz6oQ0DbrrGItswMA2+ScmooI7QLumBFolKv/bPK3iGor+d+HLNaj+wBjRv7MGI6B26yw==
