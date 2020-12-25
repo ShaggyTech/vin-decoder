@@ -6,5 +6,6 @@
     "paths": {
       "nuxt-edge": ["../types/nuxt-shim"]
     }
-  }
+  },
+  "transpileOnly": true,
 }

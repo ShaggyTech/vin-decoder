@@ -12,7 +12,10 @@ const typeCheck = isDev
     }
   : false;
 
-const PRODUCTION_HOST_URL = 'shaggytech.com';
+export const PRODUCTION_HOST_URL =
+  process.env.DEPLOY_ENV === 'GH_PAGES'
+    ? 'shaggytech.com'
+    : 'vin.dubsquared.com';
 
 const META_TITLE = 'VIN Decoder';
 const META_URL = isDev ? `localhost:${PORT}/` : PRODUCTION_HOST_URL;
@@ -25,7 +28,6 @@ const routerBase =
     : {};
 
 const config: NuxtConfig = {
-  mode: 'universal',
   target: 'server',
   buildDir: '.nuxt',
   generate: { dir: 'dist' },
@@ -40,7 +42,9 @@ const config: NuxtConfig = {
   // https://nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
   publicRuntimeConfig: {},
   privateRuntimeConfig: {},
-
+  render: {
+    asyncScripts: true,
+  },
   head: {
     // titleTemplate: '%s - ',
     htmlAttrs: {
