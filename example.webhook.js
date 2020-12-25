@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 // Simple example node.js webhook server
 // credit to:
 // https://www.robinwieruch.de/github-webhook-node-js

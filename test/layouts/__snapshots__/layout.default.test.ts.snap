@@ -52,6 +52,7 @@ exports[`Layouts - default component matches snapshot 1`] = `
         class="row justify-center"
       >
         <a
+          aria-label="Source Code URL"
           class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark elevation-1 v-size--default"
           href="https://github.com/ShaggyTech/vin-decoder"
           rel="noopener"
