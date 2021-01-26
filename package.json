@@ -43,7 +43,7 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "2.0.1",
     "@nuxtjs/axios": "5.12.5",
-    "@nuxtjs/pwa": "3.3.4",
+    "@nuxtjs/pwa": "3.3.5",
     "@nuxtjs/composition-api": "0.18.1",
     "@shaggytools/nhtsa-api-wrapper": "1.1.11",
     "cross-env": "7.0.3",
