@@ -57,7 +57,7 @@
     "@babel/core": "7.12.10",
     "@babel/preset-env": "7.12.11",
     "@nuxt/types": "npm:@nuxt/types-edge@2.15.0-26824370.8edafbeb",
-    "@nuxt/typescript-build": "2.0.3",
+    "@nuxt/typescript-build": "2.1.0",
     "@nuxt/vue-app": "2.14.12",
     "@nuxtjs/eslint-config-typescript": "5.0.0",
     "@nuxtjs/eslint-module": "3.0.2",
