@@ -35,7 +35,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const inputValue: Ref<any> = ref(null);
     watch(inputValue, (newInput: string): void => {
-      if (props.toUpperCase === true) {
+      if (props.toUpperCase === true && newInput) {
         inputValue.value = newInput.toUpperCase();
       }
       emit('input', inputValue.value);

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 /* Types */
-import { mutationTree, actionTree } from 'nuxt-typed-vuex';
+import { mutationTree, actionTree } from 'typed-vuex';
 import { DecodeVinValuesExtendedResults } from '@/types';
 
 export type HistoryItem = {
