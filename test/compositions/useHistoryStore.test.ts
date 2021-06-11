@@ -60,11 +60,8 @@ describe('useHistoryStore composition functions', () => {
     });
 
     test('returns composition methods mapped to history store actions', () => {
-      const {
-        addHistoryItem,
-        deleteHistoryItem,
-        clearHistory,
-      } = mapHistoryActions(store);
+      const { addHistoryItem, deleteHistoryItem, clearHistory } =
+        mapHistoryActions(store);
 
       expect(addHistoryItem).toBeDefined();
       expect(typeof addHistoryItem === 'function').toBe(true);

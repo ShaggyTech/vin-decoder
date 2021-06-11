@@ -83,7 +83,7 @@
     "jest": "27.0.4",
     "jest-localstorage-mock": "2.4.14",
     "jest-serializer-vue": "2.0.2",
-    "prettier": "2.2.1",
+    "prettier": "2.3.1",
     "rimraf": "3.0.2",
     "ts-jest": "27.0.3",
     "vue-jest": "3.0.7"

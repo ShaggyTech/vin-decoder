@@ -103,13 +103,8 @@ describe('Module: Setup composition module for VinDecoder component', () => {
     });
 
     test('returns an object containing all applicable refs', () => {
-      const {
-        alertMessage,
-        loading,
-        rawResults,
-        validator,
-        vin,
-      } = componentSetup([]);
+      const { alertMessage, loading, rawResults, validator, vin } =
+        componentSetup([]);
 
       expect(alertMessage).toBeDefined();
       expect(isRef(alertMessage)).toBe(true);
@@ -163,12 +158,8 @@ describe('Module: Setup composition module for VinDecoder component', () => {
       });
 
       test('handles valid vin argument', async () => {
-        const {
-          getResults,
-          rawResults,
-          loading,
-          alertMessage,
-        } = componentSetup([]);
+        const { getResults, rawResults, loading, alertMessage } =
+          componentSetup([]);
 
         spyGetHistoryItemIndex.mockImplementationOnce(() => -1);
         spyFetchDecodeVinResults.mockImplementationOnce(() =>
@@ -191,12 +182,8 @@ describe('Module: Setup composition module for VinDecoder component', () => {
       });
 
       test('handles errors from API', async () => {
-        const {
-          getResults,
-          rawResults,
-          loading,
-          alertMessage,
-        } = componentSetup([]);
+        const { getResults, rawResults, loading, alertMessage } =
+          componentSetup([]);
 
         spyGetHistoryItemIndex.mockImplementationOnce(() => -1);
         spyFetchDecodeVinResults.mockImplementationOnce(() =>
@@ -223,12 +210,8 @@ describe('Module: Setup composition module for VinDecoder component', () => {
       });
 
       test('handles errors from fetchDecodeVinResults util method', async () => {
-        const {
-          getResults,
-          rawResults,
-          loading,
-          alertMessage,
-        } = componentSetup([]);
+        const { getResults, rawResults, loading, alertMessage } =
+          componentSetup([]);
 
         spyFetchDecodeVinResults.mockImplementationOnce(() =>
           Promise.reject(
@@ -255,12 +238,8 @@ describe('Module: Setup composition module for VinDecoder component', () => {
       });
 
       test('retrieves existing item from the store before making unnecessary API calls ', async () => {
-        const {
-          getResults,
-          rawResults,
-          loading,
-          alertMessage,
-        } = componentSetup([mockItem]);
+        const { getResults, rawResults, loading, alertMessage } =
+          componentSetup([mockItem]);
 
         spyGetHistoryItemIndex.mockImplementationOnce(() => 0);
 
