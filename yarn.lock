@@ -1674,12 +1674,12 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.15.tgz#6a9d143f7f4f49db2d782f9e1c8839a29b43ae23"
   integrity sha512-15spi3V28QdevleWBNXE4pIls3nFZmBbUGrW9IVPwiQczuSb9n76TCB4bsk8TSel+I1OkHEdPhu5QKMfY6rQHA==
 
-"@shaggytools/nhtsa-api-wrapper@1.1.11":
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/@shaggytools/nhtsa-api-wrapper/-/nhtsa-api-wrapper-1.1.11.tgz#fb456e72f64128ec355a1c83fca79059992a0ba3"
-  integrity sha512-Y6LZvDWIIy0OWlVxUNM+ubbMldXr5DzOcDiBMFoCjFhmgQoxNp30UiXkNhnnjhptumHqBc1Z5UZI7ZIYojVlkw==
+"@shaggytools/nhtsa-api-wrapper@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@shaggytools/nhtsa-api-wrapper/-/nhtsa-api-wrapper-2.0.0.tgz#0742b5622e67936a9f1e6258216b8a3b59675674"
+  integrity sha512-IGEcAx15HyClqun+BefMMJ1yOil5eJGI8AvyULmuF4xl4EyaUWBUz0pGJIhPUT7b3uYr8Mvlqi9aiN+isJu/Ew==
   dependencies:
-    cross-fetch "^3.0.6"
+    cross-fetch "^3.1.2"
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
@@ -3954,7 +3954,7 @@ cross-env@7.0.3:
   dependencies:
     cross-spawn "^7.0.1"
 
-cross-fetch@^3.0.6:
+cross-fetch@^3.1.2:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.4.tgz#9723f3a3a247bf8b89039f3a380a9244e8fa2f39"
   integrity sha512-1eAtFWdIubi6T4XPy6ei9iUFoKpUkIF971QLN8lIvvvwueI65+Nw5haMNKUwfJxabqlIIDODJKGrQ66gxC0PbQ==
