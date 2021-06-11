@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { isRef } from '@nuxtjs/composition-api';
 import { mapRootState, mapRootActions } from '@/compositions/useRootStore';
 /* Types */

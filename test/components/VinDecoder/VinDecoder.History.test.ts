@@ -1,11 +1,20 @@
-import { mount } from '@vue/test-utils';
+/**
+ * @jest-environment jsdom
+ */
+import Vuetify from 'vuetify';
+
+import { mount, createLocalVue } from '@vue/test-utils';
 /* Component */
 import VinDecoderHistory from '~/components/VinDecoder/History.vue';
 /* Types */
 import { HistoryItem } from '~/types';
 
+const localVue = createLocalVue();
+
 const factory = (options: object) => {
   return mount(VinDecoderHistory, {
+    localVue,
+    vuetify: new Vuetify(),
     ...options,
   });
 };

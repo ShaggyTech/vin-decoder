@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { mount } from '@vue/test-utils';
 /* Component */
 import VinDecoderResults from '~/components/VinDecoder/Results.vue';

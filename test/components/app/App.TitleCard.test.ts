@@ -1,4 +1,6 @@
-// import flushPromises from 'flush-promises';
+/**
+ * @jest-environment jsdom
+ */
 
 import { mount } from '@vue/test-utils';
 
