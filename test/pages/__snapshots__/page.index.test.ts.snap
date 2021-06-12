@@ -151,6 +151,8 @@ exports[`Pages: Home component matches snapshot 1`] = `
     </transition-stub>
   </div>
    
-  <!---->
+  <client-only-stub>
+    <!---->
+  </client-only-stub>
 </div>
 `;
