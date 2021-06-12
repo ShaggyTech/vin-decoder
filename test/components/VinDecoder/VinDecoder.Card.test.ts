@@ -1,8 +1,16 @@
-import { mount } from '@vue/test-utils';
+/**
+ * @jest-environment jsdom
+ */
+
+import Vuetify from 'vuetify';
+
+import { mount, createLocalVue } from '@vue/test-utils';
 /* Component Setup Functions */
 import { VALIDATOR, setupRefs } from '~/components/VinDecoder';
 /* Component */
 import VinDecoderCard from '~/components/VinDecoder/Card.vue';
+
+const localVue = createLocalVue();
 
 const VALID_VIN = 'WVWDM7AJ1BW263846';
 
@@ -11,6 +19,8 @@ const mockGetResults = jest.fn().mockResolvedValue(true);
 
 const factory = (options: { [propName: string]: any } = {}) => {
   return mount(VinDecoderCard, {
+    localVue,
+    vuetify: new Vuetify(),
     setup: () => ({
       ...refs,
       getResults: mockGetResults,
@@ -81,12 +91,12 @@ describe('VinDecoderCard Component Tests', () => {
     const alertElement = wrapper.find('.decoder-card__alert');
     const alertMessageText = 'Oops! Something went wrong.';
 
-    expect(alertElement.element).not.toBeVisible();
+    expect(alertElement.isVisible()).toBe(false);
 
     wrapper.setData({ alertMessage: alertMessageText });
 
     await wrapper.vm.$nextTick();
-    expect(alertElement.element).toBeVisible();
+    expect(alertElement.isVisible()).toBe(true);
     expect(alertElement.text()).toContain(alertMessageText);
   });
 });

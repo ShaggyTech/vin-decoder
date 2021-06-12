@@ -1,4 +1,4 @@
-import { state, mutations, actions, HistoryItem } from '~/store/history.ts';
+import { state, mutations, actions, HistoryItem } from '~/store/history';
 import { mockRawResults } from '~/test/__mocks__/mockDecodeVinValuesExtendedResults';
 
 const {

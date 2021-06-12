@@ -4,8 +4,10 @@ export { HistoryItem, HistoryState } from '~/store/history';
 
 export type ResultsObjectType = { [propName: string]: any };
 
-export type DecodeVinValuesExtendedResponse = ActionTypes.DecodeVinValuesExtendedResponse;
-export type DecodeVinValuesExtendedResults = ActionTypes.DecodeVinValuesExtendedResults;
+export type DecodeVinValuesExtendedResponse =
+  ActionTypes.DecodeVinValuesExtendedResponse;
+export type DecodeVinValuesExtendedResults =
+  ActionTypes.DecodeVinValuesExtendedResults;
 
 export interface Validator {
   rules: {

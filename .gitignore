@@ -71,6 +71,7 @@ next_build
 
 # Nuxt generate
 dist
+dev/
 
 # vuepress build output
 .vuepress/dist

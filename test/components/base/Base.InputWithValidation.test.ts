@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import flushPromises from 'flush-promises';
 
 import { mount } from '@vue/test-utils';
@@ -61,6 +65,7 @@ describe('BaseInputWithValidation Component Tests', () => {
 
   test('shows success on validation success', async () => {
     wrapper.setProps({ validator });
+    await wrapper.vm.$nextTick();
 
     const providerEl = wrapper.find('#validator');
     expect(providerEl.props('validator')).toEqual(validator);

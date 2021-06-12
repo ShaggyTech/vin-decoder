@@ -1,7 +1,6 @@
 import { NuxtConfig } from '@nuxt/types';
 import { name as PACKAGE_NAME } from './package.json';
 import { PORT } from './server';
-import { componentDirs } from './components';
 
 const isDev = process.env.NODE_ENV !== 'production';
 const typeCheck = isDev
@@ -38,7 +37,21 @@ const config: NuxtConfig = {
   loading: { color: '#fff' },
   css: ['~/assets/css/main.scss'],
   /* Auto import components */
-  components: componentDirs,
+  components: [
+    '~/components',
+    {
+      path: '~/components/app/',
+      prefix: 'App',
+    },
+    {
+      path: '~/components/base/',
+      prefix: 'Base',
+    },
+    {
+      path: '~/components/VinDecoder/',
+      prefix: 'VinDecoder',
+    },
+  ],
 
   // https://nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
   publicRuntimeConfig: {},
@@ -69,7 +82,7 @@ const config: NuxtConfig = {
 
   plugins: ['~/plugins/vee-validate.ts'],
   buildModules: [
-    '@nuxtjs/composition-api',
+    '@nuxtjs/composition-api/module',
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
     '@nuxt/typescript-build',

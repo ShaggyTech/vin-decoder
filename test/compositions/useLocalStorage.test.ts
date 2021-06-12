@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { mount } from '@vue/test-utils';
 import { syncHistoryOnMounted } from '@/compositions/useLocalStorage';
 /* Mocks */

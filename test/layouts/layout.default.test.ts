@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuetify from 'vuetify';
 import defaultLayout from '@/layouts/default.vue';

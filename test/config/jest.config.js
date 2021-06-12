@@ -15,7 +15,6 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
     '^vue$': 'vue/dist/vue.common.js',
-    '@nuxtjs/composition-api': '@nuxtjs/composition-api/lib/entrypoint.js',
   },
   moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
   rootDir: '../../',
@@ -24,8 +23,8 @@ module.exports = {
   snapshotSerializers: ['jest-serializer-vue'],
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
   transform: {
-    '^.+\\.js?$': require.resolve('babel-jest'),
     '^.+\\.ts?$': require.resolve('ts-jest'),
+    '^.+\\.js?$': require.resolve('babel-jest'),
     '.*\\.(vue)$': require.resolve('vue-jest'),
     'vee-validate/dist/rules': require.resolve('babel-jest'),
   },

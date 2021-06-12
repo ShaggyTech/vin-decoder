@@ -12,6 +12,7 @@ rules();
 VTUConfig.stubs.Nuxt = true;
 VTUConfig.stubs['nuxt-link'] = true;
 VTUConfig.stubs['router-link'] = true;
+VTUConfig.stubs['client-only'] = true;
 
 const components = [
   /* App */
