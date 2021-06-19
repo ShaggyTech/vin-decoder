@@ -1635,6 +1635,13 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@7.14.6":
+  version "7.14.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
+  integrity sha512-/PCB2uJ7oM44tz8YhC4Z/6PeOKXp4K588f+5M3clr1M4zbqztlo0XEfJ2LEzj/FgwfgGcIdl8n7YYjTCI0BYwg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.10.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.14.0", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.14.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
@@ -2431,12 +2438,13 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.15.tgz#6a9d143f7f4f49db2d782f9e1c8839a29b43ae23"
   integrity sha512-15spi3V28QdevleWBNXE4pIls3nFZmBbUGrW9IVPwiQczuSb9n76TCB4bsk8TSel+I1OkHEdPhu5QKMfY6rQHA==
 
-"@shaggytools/nhtsa-api-wrapper@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@shaggytools/nhtsa-api-wrapper/-/nhtsa-api-wrapper-2.0.0.tgz#0742b5622e67936a9f1e6258216b8a3b59675674"
-  integrity sha512-IGEcAx15HyClqun+BefMMJ1yOil5eJGI8AvyULmuF4xl4EyaUWBUz0pGJIhPUT7b3uYr8Mvlqi9aiN+isJu/Ew==
+"@shaggytools/nhtsa-api-wrapper@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@shaggytools/nhtsa-api-wrapper/-/nhtsa-api-wrapper-2.0.2.tgz#fc40ffbfa0019a655570cd473cdcaf56ac0ab367"
+  integrity sha512-swVOPhOcqLa+LxkJ6lBdQf4g8HwAi0RU1u8HiDNQQ4jP4+J7D26pQ2joLKs/LW+ApLcOcgzTdDcdgDR/TlHDCg==
   dependencies:
-    cross-fetch "^3.1.2"
+    "@babel/runtime" "7.14.6"
+    isomorphic-unfetch "3.1.0"
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
@@ -4711,13 +4719,6 @@ cross-env@7.0.3:
   integrity sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
   dependencies:
     cross-spawn "^7.0.1"
-
-cross-fetch@^3.1.2:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.4.tgz#9723f3a3a247bf8b89039f3a380a9244e8fa2f39"
-  integrity sha512-1eAtFWdIubi6T4XPy6ei9iUFoKpUkIF971QLN8lIvvvwueI65+Nw5haMNKUwfJxabqlIIDODJKGrQ66gxC0PbQ==
-  dependencies:
-    node-fetch "2.6.1"
 
 cross-spawn@^7.0.1, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
@@ -7225,6 +7226,14 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
+isomorphic-unfetch@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-3.1.0.tgz#87341d5f4f7b63843d468438128cb087b7c3e98f"
+  integrity sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==
+  dependencies:
+    node-fetch "^2.6.1"
+    unfetch "^4.2.0"
+
 istanbul-lib-coverage@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/istanbul-lib-coverage/-/istanbul-lib-coverage-3.0.0.tgz#f5944a37c70b550b02a78a5c3b2055b280cec8ec"
@@ -8528,7 +8537,7 @@ node-cache@^4.1.1:
     clone "2.x"
     lodash "^4.17.15"
 
-node-fetch@2.6.1, node-fetch@^2.6.1:
+node-fetch@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
