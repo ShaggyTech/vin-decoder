@@ -1,3 +1,45 @@
+##
+# OPTION 1: use Webhook package as a server to receive our Github webhooks
+#
+# $ sudo apt update
+# $ sudo apt install webhook
+# $ sudo nano /lib/systemd/system/webhook.service
+# - copy/paste below service file
+# - change Environment, ExecStart and User for your needs
+# - save/exit editor
+# 
+# $ sudo systemctl enable webhook.service
+# $ sudo systemctl start webhook.service
+# $ sudo systemctl status webhook.service
+##
+
+[Unit]
+Description=Small server for creating HTTP endpoints (hooks)
+Documentation=https://github.com/adnanh/webhook/
+After=network.target
+
+[Service]
+Environment=PATH=/home/shaggy/.nvm/versions/node/14.17.1/bin/yarn:/home/shaggy/.nvm/versions/node/v14.17.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/shaggy/.nvm/versions/node/v14.17.1/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+ExecStart=/usr/bin/webhook -nopanic -verbose -hotreload -hooks /home/shaggy/webhook/hooks.json
+User=shaggy
+
+[Install]
+WantedBy=multi-user.target
+
+#################
+
+##
+# OPTION 2 (old): use webhook.js simple http server that was used previously
+#
+# $ sudo nano /etc/systemd/system/webhook.service
+# - copy/paste below service file
+# - change Environment, ExecStart and User for your needs
+# - save/exit editor
+
+# $ sudo systemctl enable webhook.service
+# $ sudo systemctl start webhook.service
+# $ sudo systemctl status webhook.service
+
 [Unit]
 Description=Github webhook
 After=network.target

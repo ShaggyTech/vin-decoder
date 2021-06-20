@@ -1,4 +1,7 @@
 // pm2 ecosystem file
+// $ pm2 start ecosystem.config.js
+// $ pm2 save
+// $ pm2 status
 
 module.exports = {
   // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
