@@ -5,31 +5,31 @@
 
 set -e
 
-# Fetch new files
-git fetch --all
-git checkout master
-git pull
+# Fetch new files - Change to 'main' if using newish github repo
+git pull -f origin master
 
-wait
-
-# Rename the build directory
+# New build directory
 mkdir -p dist_next
+
+# Make nuxt temporarily output to dist_next dir so production site is not interrupted
+echo "nuxt.config.ts changes to build in ./dist_next"
 sed -i "s/generate: { dir: 'dist' },/generate: { dir: 'dist_next' },/" nuxt.config.ts
 
-# Update dependencies
+# Make sure we have latest dependencies installed
 echo "Updating Yarn dependencies..."
 yarn
 
-# Build the app
+# Build the new nuxt app
 echo "Generating new nuxt app from master branch into ./dist_next ..."
 yarn generate
-wait
 echo "New build has been output to ./dist_next/"
-echo "New nuxt app built!"
 
-# Revert the rename
-sed -i "s/generate: { dir: 'dist_next' },/generate: { dir: 'dist' },/" nuxt.config.ts
+# Revert the nuxt config change
+git restore nuxt.config.ts
+echo "nuxt.config.ts changes reverted"
 
 # Replace the existing directory with the new build
 echo "Replacing files in ./dist with new build..."
 rm -rf dist && mv dist_next dist
+
+echo "build.sh completed successfully "
