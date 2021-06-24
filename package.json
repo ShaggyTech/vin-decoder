@@ -43,7 +43,6 @@
   "dependencies": {
     "@nuxtjs/axios": "5.13.6",
     "@nuxtjs/composition-api": "0.24.4",
-    "@nuxtjs/pwa": "3.3.5",
     "@shaggytools/nhtsa-api-wrapper": "2.0.2",
     "cross-env": "7.0.3",
     "express": "4.17.1",
@@ -61,6 +60,7 @@
     "@nuxt/vue-app": "2.15.7",
     "@nuxtjs/eslint-config-typescript": "6.0.1",
     "@nuxtjs/eslint-module": "3.0.2",
+    "@nuxtjs/pwa": "3.3.5",
     "@nuxtjs/vuetify": "1.12.1",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/vue": "5.6.2",

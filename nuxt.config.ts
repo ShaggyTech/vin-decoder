@@ -91,12 +91,14 @@ const config: NuxtConfig = {
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa', 'nuxt-webfontloader'],
 
   pwa: {
-    manifest: {
-      name: 'VIN Decoder',
-      short_name: 'Vehicle Information Decoder',
-      lang: 'en',
-      display: 'standalone',
+    meta: {
+      // nativeUI: false,
       theme_color: '#78a0ff',
+      ogHost: 'shaggytech.com',
+    },
+    manifest: {
+      name: 'Vehicle Information Decoder',
+      short_name: 'VIN Decoder',
     },
   },
   // Runtime type checking when running nuxt build
