@@ -49,7 +49,7 @@
     "nuxt-edge": "2.16.0-27069135.35c6ac41",
     "nuxt-typed-vuex": "0.2.0",
     "nuxt-webfontloader": "1.1.0",
-    "vee-validate": "3.4.10"
+    "vee-validate": "4.4.5"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
