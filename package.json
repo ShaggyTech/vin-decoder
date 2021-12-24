@@ -58,7 +58,7 @@
     "@nuxt/types": "npm:@nuxt/types-edge@2.16.0-27069135.35c6ac41",
     "@nuxt/typescript-build": "2.1.0",
     "@nuxt/vue-app": "2.15.7",
-    "@nuxtjs/eslint-config-typescript": "6.0.1",
+    "@nuxtjs/eslint-config-typescript": "8.0.0",
     "@nuxtjs/eslint-module": "3.0.2",
     "@nuxtjs/pwa": "3.3.5",
     "@nuxtjs/vuetify": "1.12.1",
