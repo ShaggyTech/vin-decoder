@@ -1,9 +1,9 @@
-import chokidar from 'chokidar';
+import { watch } from 'chokidar';
 import consola from 'consola';
 import { NuxtServer, WATCH_GLOB } from '.';
 
 const server = new NuxtServer();
-const watcher = chokidar.watch([WATCH_GLOB], {
+const watcher = watch([WATCH_GLOB], {
   ignoreInitial: true,
 });
 
