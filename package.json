@@ -54,7 +54,7 @@
   "devDependencies": {
     "@babel/core": "7.16.5",
     "@babel/preset-env": "7.16.5",
-    "@mdi/js": "5.9.55",
+    "@mdi/js": "6.5.95",
     "@nuxt/types": "npm:@nuxt/types-edge@2.16.0-27069135.35c6ac41",
     "@nuxt/typescript-build": "2.1.0",
     "@nuxt/vue-app": "2.15.7",
