@@ -1,6 +1,6 @@
 {
-  "name": "VIN Decoder",
-  "short_name": "Vehicle Information Decoder",
+  "name": "Vehicle Information Decoder",
+  "short_name": "VIN Decoder",
   "description": "A web app to decode Vehicle Identification Numbers (VIN) using the NHTSA.dot.gov Vehicles API.",
   "icons": [
     {
