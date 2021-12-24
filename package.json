@@ -82,7 +82,7 @@
     "jest-serializer-vue": "2.0.2",
     "prettier": "2.3.1",
     "rimraf": "3.0.2",
-    "ts-jest": "27.0.3",
+    "ts-jest": "27.1.2",
     "vue-jest": "3.0.7"
   }
 }
