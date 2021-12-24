@@ -61,7 +61,9 @@ exports[`VinDecoderCard Component Tests base component state, matches snapshot 1
               <legend
                 style="width: 0px;"
               >
-                <span>
+                <span
+                  class="notranslate"
+                >
                   ​
                 </span>
               </legend>
