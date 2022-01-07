@@ -1,6 +1,6 @@
 import { ActionTypes } from '@shaggytools/nhtsa-api-wrapper';
-export { RootState, TypedVuexStore } from '~/store';
-export { HistoryItem, HistoryState } from '~/store/history';
+export { RootState, TypedVuexStore } from '@/store';
+export { HistoryItem, HistoryState } from '@/store/history';
 
 export type ResultsObjectType = { [propName: string]: any };
 
@@ -10,7 +10,7 @@ export type DecodeVinValuesExtendedResults =
   ActionTypes.DecodeVinValuesExtendedResults;
 
 export interface Validator {
-  rules: {
+  rules?: {
     [propName: string]: any;
   };
   immediate?: boolean;

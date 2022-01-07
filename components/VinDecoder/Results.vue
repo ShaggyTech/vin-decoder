@@ -1,67 +1,44 @@
-<script lang="ts">
-/* Composition API */
-import {
-  defineComponent,
-  ref,
-  watch,
-  PropType,
-  onMounted,
-} from '@nuxtjs/composition-api';
+<script setup lang="ts">
 /* Utility Methods */
-import { filterResults } from '~/utils';
+import { filterResults } from '@/utils';
 /* Types */
-import { ResultsObjectType } from '~/types';
+import { ResultsObjectType } from '@/types';
 
-export default defineComponent({
+interface Props {
+  rawResults?: ResultsObjectType | null;
+  loading?: boolean;
+  transition?: string;
+  tableHeight?: number | string;
+  maxWidth?: number | string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  rawResults: null,
+  loading: false,
+  transition: 'slide-y-transition',
+  tableHeight: 300,
+  maxWidth: 600,
+});
+
+const results = ref<ResultsObjectType | null>(null);
+
+onMounted(() => {
+  results.value = props.rawResults ? filterResults(props.rawResults) : null;
+});
+
+watch(
+  () => props.rawResults,
+  (newRawResults: ResultsObjectType | null): void => {
+    results.value = newRawResults ? filterResults(newRawResults) : null;
+  }
+);
+</script>
+
+<script lang="ts">
+export default {
   name: 'VinDecoderResults',
   inheritAttrs: false,
-  props: {
-    rawResults: {
-      required: false,
-      type: Object as PropType<ResultsObjectType | null>,
-      default: null,
-    },
-    loading: {
-      required: false,
-      type: Boolean as PropType<boolean>,
-      default: false,
-    },
-    transition: {
-      required: false,
-      type: String as PropType<string>,
-      default: 'slide-y-transition',
-    },
-    tableHeight: {
-      required: false,
-      type: [Number, String] as PropType<number | string>,
-      default: 300,
-    },
-    maxWidth: {
-      required: false,
-      type: [Number, String] as PropType<number | string>,
-      default: 600,
-    },
-  },
-
-  setup(props) {
-    const results = ref<ResultsObjectType | null>(null);
-
-    onMounted(() => {
-      results.value = props.rawResults ? filterResults(props.rawResults) : null;
-    });
-
-    watch(
-      () => props.rawResults,
-      (newRawResults: ResultsObjectType | null): void => {
-        results.value = newRawResults ? filterResults(newRawResults) : null;
-      }
-    );
-
-    return {
-      results,
-    };
-  },
-});
+};
 </script>
 
 <template>

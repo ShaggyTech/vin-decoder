@@ -1,15 +1,15 @@
-import { NuxtConfig } from '@nuxt/types';
+import { defineNuxtConfig } from '@nuxt/bridge';
+
 import { name as PACKAGE_NAME } from './package.json';
 import { PORT } from './server';
 
 const isDev = process.env.NODE_ENV !== 'production';
-const typeCheck = isDev
-  ? {
-      eslint: {
-        files: './**/*.{ts,js,vue}',
-      },
-    }
-  : false;
+// const typeCheck = isDev ? {
+//   eslint: {
+//     files: './**/*.{ts,js,vue}',
+//   },
+// }
+//   : false;
 
 export const PRODUCTION_HOST_URL =
   process.env.DEPLOY_ENV === 'GH_PAGES'
@@ -26,38 +26,39 @@ const routerBase =
     ? { router: { base: `/${PACKAGE_NAME}/` } }
     : {};
 
-const config: NuxtConfig = {
+const config = defineNuxtConfig({
   rootDir: __dirname,
   target: 'server',
   buildDir: '.nuxt',
   generate: { dir: 'dist' },
-  telemetry: false,
+  // telemetry: false,
   dev: isDev,
   ...routerBase,
-  loading: { color: '#fff' },
-  css: ['~/assets/css/main.scss'],
+  // loading: { color: '#fff' },
+  css: ['@/assets/css/main.scss'],
   /* Auto import components */
-  components: [
-    '~/components',
-    {
-      path: '~/components/app/',
-      prefix: 'App',
-    },
-    {
-      path: '~/components/base/',
-      prefix: 'Base',
-    },
-    {
-      path: '~/components/VinDecoder/',
-      prefix: 'VinDecoder',
-    },
-  ],
+  components: [{ path: '~/components', extensions: ['vue'] }],
+  // components: [
+  //   '~/components',
+  //   {
+  //     path: '~/components/app/',
+  //     prefix: 'App',
+  //   },
+  //   {
+  //     path: '~/components/base/',
+  //     prefix: 'Base',
+  //   },
+  //   {
+  //     path: '~/components/VinDecoder/',
+  //     prefix: 'VinDecoder',
+  //   },
+  // ],
 
   // https://nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
   publicRuntimeConfig: {},
   privateRuntimeConfig: {},
   render: {
-    asyncScripts: true,
+    // asyncScripts: true,
   },
   head: {
     // titleTemplate: '%s - ',
@@ -81,13 +82,7 @@ const config: NuxtConfig = {
   },
 
   plugins: ['~/plugins/vee-validate.ts'],
-  buildModules: [
-    '@nuxtjs/composition-api/module',
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify',
-    '@nuxt/typescript-build',
-    'nuxt-typed-vuex',
-  ],
+  buildModules: ['@nuxtjs/vuetify', 'nuxt-typed-vuex'],
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa', 'nuxt-webfontloader'],
 
   pwa: {
@@ -102,9 +97,9 @@ const config: NuxtConfig = {
     },
   },
   // Runtime type checking when running nuxt build
-  typescript: {
-    typeCheck,
-  },
+  // typescript: {
+  //   typeCheck,
+  // },
   vuetify: {
     defaultAssets: false,
     optionsPath: '~/plugins/vuetify.ts',
@@ -124,6 +119,6 @@ const config: NuxtConfig = {
       '/typed-vuex/',
     ],
   },
-};
+});
 
 export default config;

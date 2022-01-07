@@ -1,25 +1,22 @@
-<script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+<script setup lang="ts">
 import {
   mapHistoryState,
   mapHistoryActions,
 } from '~/compositions/useHistoryStore';
 
-export default defineComponent({
+import { useNuxtApp } from '#app';
+
+const { $store: $accessor } = useNuxtApp();
+/* Computed history store properties */
+const { history } = mapHistoryState($accessor);
+/* Methods to interact with history store module */
+const { clearHistory } = mapHistoryActions($accessor);
+</script>
+
+<script lang="ts">
+export default {
   name: 'VinDecoderHistory',
-
-  setup(_, { root: { $accessor } }) {
-    /* Computed history store properties */
-    const { history } = mapHistoryState($accessor);
-    /* Methods to interact with history store module */
-    const { clearHistory } = mapHistoryActions($accessor);
-
-    return {
-      history,
-      clearHistory,
-    };
-  },
-});
+};
 </script>
 
 <template>

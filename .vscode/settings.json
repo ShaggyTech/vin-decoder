@@ -1,3 +1,4 @@
 {
-  "jestrunner.configPath": "/test/config/jest.config.js"
+  "jestrunner.configPath": "/test/config/jest.config.js",
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint"
 }

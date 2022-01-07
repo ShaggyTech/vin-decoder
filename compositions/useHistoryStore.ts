@@ -1,5 +1,3 @@
-/* Composition API */
-import { computed } from '@nuxtjs/composition-api';
 /* Types */
 import { TypedVuexStore } from '@/store';
 import { HistoryItem } from '@/store/history';
@@ -7,7 +5,7 @@ import { HistoryItem } from '@/store/history';
 /* Component compition refs */
 export const mapHistoryState = (store: TypedVuexStore) => ({
   /* History Array */
-  history: computed(() => [...store.history.history]),
+  history: computed(() => [...store?.history?.history]),
 });
 
 /* Component methods mapped to history store actions */

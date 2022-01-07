@@ -1,7 +1,6 @@
-import { onMounted } from '@nuxtjs/composition-api';
 /* Types */
-import { TypedVuexStore } from '@/store';
-import { HistoryItem } from '@/store/history';
+import type { TypedVuexStore } from '@/store';
+import type { HistoryItem } from '@/store/history';
 
 const getHistoryFromLocalStorage = (): HistoryItem[] => {
   let storage;
@@ -14,8 +13,9 @@ const getHistoryFromLocalStorage = (): HistoryItem[] => {
         history = [...storage];
       }
     }
-    // eslint-disable-next-line no-empty
-  } catch (e) {}
+  } catch (err) {
+    console.log('getHistoryFromLocalStorage error', err);
+  }
 
   return history;
 };

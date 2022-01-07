@@ -1,28 +1,26 @@
-<script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api';
+<script setup lang="ts">
+interface Props {
+  header?: Record<string, string>;
+  subHeader?: Record<string, string>;
+}
 
-export default defineComponent({
-  name: 'AppTitleCard',
-  // inheritAttrs: false,
-  props: {
-    header: {
-      required: false,
-      type: Object as PropType<Record<string, string>>,
-      default: () => ({
-        innerText: '',
-        class: '',
-      }),
-    },
-    subHeader: {
-      required: false,
-      type: Object as PropType<Record<string, string>>,
-      default: () => ({
-        innerText: '',
-        class: '',
-      }),
-    },
-  },
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const props = withDefaults(defineProps<Props>(), {
+  header: () => ({
+    innerText: '',
+    class: '',
+  }),
+  subHeader: () => ({
+    innerText: '',
+    class: '',
+  }),
 });
+</script>
+
+<script lang="ts">
+export default {
+  name: 'AppTitleCard',
+};
 </script>
 
 <template>

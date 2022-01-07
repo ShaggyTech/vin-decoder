@@ -1,1 +1,5 @@
 sw.js
+dist
+public
+.nuxt
+.output

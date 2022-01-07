@@ -1,24 +1,20 @@
-<script lang="ts">
-/* Composition API */
-import { defineComponent } from '@nuxtjs/composition-api';
-/* Components */
+<script setup lang="ts">
 import { ValidationObserver } from 'vee-validate';
-
-/* Component Setup */
 import { initializeComponent } from './';
+import { useNuxtApp } from '#app';
 
-export default defineComponent({
+const { $store: $accessor } = useNuxtApp();
+const { alertMessage, loading, rawResults, validator, vin, getResults } =
+  initializeComponent($accessor);
+</script>
+
+<script lang="ts">
+export default {
   name: 'VinDecoder',
   components: {
     ValidationObserver,
   },
-
-  setup(_, { root: { $accessor } }) {
-    return {
-      ...initializeComponent($accessor),
-    };
-  },
-});
+};
 </script>
 
 <template>

@@ -1,51 +1,36 @@
-<script lang="ts">
-import {
-  defineComponent,
-  ref,
-  reactive,
-  onErrorCaptured,
-} from '@nuxtjs/composition-api';
+<script setup lang="ts">
 /* Icons */
 import { mdiGithub } from '@mdi/js';
 /* History Setup */
 import { syncHistoryOnMounted } from '@/compositions/useLocalStorage';
+import { useNuxtApp } from '#app';
 
-const setupRefs = () => ({
-  right: ref<boolean>(true),
-  title: reactive({
-    class: 'display-1',
-    header: {
-      innerText: 'VIN',
-      class: 'primary_red__--text font-weight-black',
-    },
-    subHeader: {
-      innerText: 'Decoder',
-      class: 'white__--text',
-    },
-  }),
+const { $store: $accessor } = useNuxtApp();
+const store = computed(() => $accessor);
+syncHistoryOnMounted(store.value);
+
+const sourceCodeURL = 'https://github.com/ShaggyTech/vin-decoder';
+const icons = { mdiGithub };
+// const right = ref<boolean>(true);
+const title = reactive({
+  class: 'display-1',
+  header: {
+    innerText: 'VIN',
+    class: 'primary_red__--text font-weight-black',
+  },
+  subHeader: {
+    innerText: 'Decoder',
+    class: 'white__--text',
+  },
 });
 
-export default defineComponent({
-  setup(_, { root: { $accessor } }) {
-    const icons = { mdiGithub };
-    const sourceCodeURL = 'https://github.com/ShaggyTech/vin-decoder';
-    syncHistoryOnMounted($accessor);
-
-    /* istanbul ignore next */
-    onErrorCaptured((err: Error, _vm: object, info: string): boolean => {
-      // eslint-disable-next-line no-console
-      console.error('Oops! An error occurred: ' + err.toString());
-      // eslint-disable-next-line no-console
-      console.error('info: ' + info);
-      return false;
-    });
-
-    return {
-      ...setupRefs(),
-      icons,
-      sourceCodeURL,
-    };
-  },
+/* istanbul ignore next */
+onErrorCaptured((err: Error, _vm: object, info: string): boolean => {
+  // eslint-disable-next-line no-console
+  console.error('Oops! An error occurred: ', err);
+  // eslint-disable-next-line no-console
+  console.error('info: ' + info);
+  return false;
 });
 </script>
 

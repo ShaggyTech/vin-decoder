@@ -1,49 +1,21 @@
 {
+  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "target": "es2018",
-    "module": "esnext",
-    "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "typeRoots": [
+      "./types",
+      "node_modules/@types"
+    ],
     "esModuleInterop": true,
-    "allowJs": true,
-    "sourceMap": true,
-    "noEmit": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./*"],
-      "@/*": ["./*"]
-    },
-    "types": ["@types/node", "@types/jest", "@nuxt/types", "@nuxt/vue-app", "@nuxtjs/vuetify"],
-
-    /* Strict Type-Checking Options */
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-
-    /* Additional Checks */
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-
-    /* Module Resolution Options */
-    "moduleResolution": "node",
-    "typeRoots": ["./types", "node_modules/@types"],
-
-    /* Experimental Options */
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-
-    /* Advanced Options */
+    "types": [
+      "@types/node",
+      "@types/jest",
+      "@nuxtjs/vuetify"
+    ],
+    // "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
-    "preserveConstEnums": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "pretty": true,
-    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,5 +1,5 @@
 /* Composition API */
-import { ref, Ref } from '@nuxtjs/composition-api';
+import { ref } from '#imports';
 /* Utilities */
 import {
   fetchDecodeVinResults,
@@ -13,14 +13,6 @@ import {
   Validator,
 } from '~/types';
 
-export type Refs = {
-  alertMessage: Ref<string | null>;
-  loading: Ref<boolean>;
-  rawResults: Ref<object | null>;
-  validator: Ref<Validator>;
-  vin: Ref<string | null>;
-};
-
 /* config for VIN input field's validation-provider */
 export const VALIDATOR: Validator = {
   rules: { required: true, vin: true },
@@ -32,12 +24,12 @@ export const VALIDATOR: Validator = {
   },
 };
 
-export const setupRefs = (): Refs => ({
-  alertMessage: ref(null),
-  loading: ref(false),
-  rawResults: ref(null),
-  validator: ref(VALIDATOR),
-  vin: ref(null),
+export const setupRefs = () => ({
+  alertMessage: ref<string | null>(null),
+  loading: ref<boolean>(false),
+  rawResults: ref<object | null>(null),
+  validator: ref<Validator>(VALIDATOR),
+  vin: ref<string | null>(null),
 });
 
 export const initializeComponent = (store: TypedVuexStore) => {
