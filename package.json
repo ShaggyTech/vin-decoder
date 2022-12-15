@@ -45,7 +45,7 @@
     "@nuxtjs/composition-api": "0.31.0",
     "@shaggytools/nhtsa-api-wrapper": "2.0.2",
     "cross-env": "7.0.3",
-    "express": "4.17.2",
+    "express": "4.17.3",
     "nuxt-edge": "2.16.0-27338416.777a4b7f",
     "nuxt-typed-vuex": "0.2.0",
     "nuxt-webfontloader": "1.1.0",
