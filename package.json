@@ -52,8 +52,8 @@
     "vee-validate": "3.4.14"
   },
   "devDependencies": {
-    "@babel/core": "7.16.5",
-    "@babel/preset-env": "7.16.5",
+    "@babel/core": "7.25.8",
+    "@babel/preset-env": "7.25.8",
     "@mdi/js": "6.5.95",
     "@nuxt/types": "npm:@nuxt/types-edge@2.16.0-27338416.777a4b7f",
     "@nuxt/typescript-build": "2.1.0",
